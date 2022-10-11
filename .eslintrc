@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "eqeqeq": "error",
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    // Allow explicity `any` types when needed
+    "@typescript-eslint/no-explicit-any": "off",
+    // Allow to ignore ts errors when explicity needed
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react-hooks/exhaustive-deps": "off"
+  }
+}
