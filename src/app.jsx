@@ -5,11 +5,13 @@ import RatingsReviews from './components/RatingsReviews'
 
 export default function App() {
   return (
-    <div>
+    <main className="container">
       <ProudctOverview />
-      <RelatedProducts />
-      <QA />
-      <RatingsReviews />
-    </div>
+      <div>
+        <RelatedProducts />
+        <QA />
+        <RatingsReviews />
+      </div>
+    </main>
   )
 }
