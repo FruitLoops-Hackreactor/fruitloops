@@ -48,12 +48,18 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(woff|woff2)$/i,
+        use: {
+          loader: 'url-loader',
+        },
+      },
     ],
   },
   plugins: [
     new HTMLWebpackPlugin({
       inject: true,
-      template: path.join(__dirname, 'public/index.html'),
+      template: path.join(__dirname, 'src/index.html'),
     }),
     new webpack.ProvidePlugin({
       React: 'react',
