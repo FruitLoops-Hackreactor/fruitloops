@@ -4,7 +4,7 @@
 }
 
 .product-card h1, .product-card h2, .product-card h3, .product-card h4, .product-card h5, .product-card h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   margin: 1rem 0;
 }
