@@ -7,19 +7,18 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'development',
   target: 'web',
-  entry: path.join(__dirname, 'src/index.jsx'),
+  entry: ['webpack/hot/dev-server', path.join(__dirname, 'src/index.jsx')],
   output: {
     path: path.resolve(__dirname, '/dist'),
   },
   devtool: 'source-map',
-  cache: { type: 'filesystem' },
   devServer: {
     host: 'localhost',
     hot: true,
     port: 4000,
     headers: { 'Access-Control-Allow-Origin': '*' },
     static: {
-      publicPath: '/',
+      publicPath: '/assets',
     },
     historyApiFallback: {
       verbose: true,
@@ -32,7 +31,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js|.jsx$/,
+        test: /\.js|.jsx$/i,
         exclude: /node_modules/,
         use: {
           loader: 'swc-loader',
@@ -44,6 +43,10 @@ module.exports = {
             },
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
