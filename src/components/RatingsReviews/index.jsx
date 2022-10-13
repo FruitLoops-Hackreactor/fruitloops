@@ -1,5 +1,9 @@
-export default function RatingsReviews () {
+var RatingsReviews = () => {
   return (
-    <h1>lol</h1>
+    <section>
+      <h1>Ratings and Reviews</h1>
+    </section>
   )
 }
+
+export default RatingsReviews
