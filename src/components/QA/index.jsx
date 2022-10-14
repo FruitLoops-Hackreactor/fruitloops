@@ -427,8 +427,7 @@ export default function QA() {
         }
     }
 ]
-  let [questions, setQuestions] = useState([exampleQuestions]);
-
+  let [questions, setQuestions] = useState(exampleQuestions.slice(0, 4));
 
   // useEffect(axios.get(
   //   'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', {
@@ -450,7 +449,7 @@ export default function QA() {
     <section>
       <div className="questions-list">
         {questions.map((question, index) => {
-          <Question question={question} key={index} />
+          return <Question question={question} key={index} />
         })}
       </div>
     </section>
