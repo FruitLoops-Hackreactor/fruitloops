@@ -1,25 +1,32 @@
-import axios from 'axios'
+// import axios from 'axios'
 import Answer from './Answer'
+import '../../styles/qa.css'
 
 const Question = ({ question }) => {
-  let {
-    question_body,
-  } = question
-  let answers = []
-
-  for (let [id, answer] of Object.entries(question.answers)) {
-    answers.push(answer);
-  }
+  let { question_body, question_helpfulness } = question
+  let answers = Object.values(question.answers)
 
   answers = answers.slice(0, 2)
 
   console.log('question', question)
-  console.log('answers', question.answers)
+
+  const helpfulnessClickHandler = (event) => {
+    event.preventDefault()
+    console.log('Hello')
+  }
 
   return (
-    <div>
+    <div id="qa-widget">
+      <br></br>
       <div>
-        <p>Q: {question_body}</p>
+        <span id="question-title">Q: {question_body}</span>
+        <span>Helpful?</span>
+        <span>
+          <a onClick={(e) => helpfulnessClickHandler(e)} href="">
+            Yes
+          </a>
+        </span>
+        <span>{`(${question_helpfulness})`}</span>
       </div>
       <div>
         {answers.map((answer, index) => {
