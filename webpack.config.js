@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
 /** @type {import('webpack').Configuration} */
@@ -15,7 +16,7 @@ module.exports = {
   devServer: {
     host: 'localhost',
     hot: true,
-    port: 4000,
+    port: 3000,
     headers: { 'Access-Control-Allow-Origin': '*' },
     static: {
       publicPath: '/assets',
@@ -31,12 +32,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js|.jsx$/i,
+        test: /\.js|.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: 'swc-loader',
           options: {
             jsc: {
+              // Required for the loader to parse JSX
               parser: {
                 jsx: true,
               },
@@ -45,11 +47,11 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(woff|woff2)$/i,
+        test: /\.(woff|woff2)$/,
         use: {
           loader: 'url-loader',
         },
@@ -57,7 +59,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new HTMLWebpackPlugin({
+    new Dotenv(),
+    new HtmlWebpackPlugin({
       inject: true,
       template: path.join(__dirname, 'src/index.html'),
     }),
