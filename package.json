@@ -29,8 +29,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "@tabler/icons": "^1.104.0",
     "axios": "^1.1.2",
     "react": "^18.2.0",
