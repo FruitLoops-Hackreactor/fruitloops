@@ -3,7 +3,7 @@ import '../../styles/productOverview.css'
 
 export default function ProductOverview() {
   return (
-    <section>
+    <section className="product-overview">
       <div className="navbar">
         <SearchBar />
       </div>
