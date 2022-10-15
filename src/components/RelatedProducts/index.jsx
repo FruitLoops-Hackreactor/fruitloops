@@ -12,7 +12,26 @@ import '../../styles/relatedProducts.css'
 //   default_price: string
 // }
 
-const FETCH_DELAY = 3000
+const getProducts = async () => {
+  try {
+    // Get the products from the API
+    const products = await axios.get('/products').then((res) => res.data)
+    // Get each product with the details
+    return await Promise.all(
+      products.map(async ({ id }) => ({
+        ...(await axios.get(`/products/${id}`).then((res) => res.data)),
+        thumbnail: await axios
+          .get(`/products/${id}/styles`)
+          .then((res) => res.data.results[0].photos[0].thumbnail_url),
+      }))
+    )
+  } catch (err) {
+    console.error(err)
+    return []
+  }
+}
+
+const FETCH_DELAY = 1000
 
 export default function RelatedProducts() {
   const [loading, setLoading] = useState(true)
@@ -20,14 +39,12 @@ export default function RelatedProducts() {
 
   useEffect(() => {
     setTimeout(() => {
-      axios.get('/products').then((res) => {
+      getProducts().then((products) => {
         setLoading(false)
-        setProducts(res.data)
+        setProducts(products)
       })
     }, FETCH_DELAY)
   }, [])
-
-  console.log('products', products)
 
   return (
     <section>
@@ -36,36 +53,39 @@ export default function RelatedProducts() {
       </div>
 
       <div className="related-products">
-        {!loading && !products.length && (
-          <div className="no-products">
-            <h3>No related products found</h3>
-          </div>
-        )}
+        <div className="overlay"></div>
 
-        {loading &&
-          Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)}
-
-        {!loading &&
-          products.length &&
-          products.map((product) => (
-            <div className="product-card">
-              <div className="img"></div>
-              <div className="info">
-                <div>
-                  <h4>Category</h4>
+        <div className="products">
+          {!loading && !products.length ? (
+            <div className="no-products">
+              <h3>No related products found</h3>
+            </div>
+          ) : loading ? (
+            Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)
+          ) : (
+            products.map((product) => (
+              <div className="product-card">
+                <div className="img">
+                  <img src={product.thumbnail} alt={product.name} />
                 </div>
-                <div>
-                  <h2>Product name</h2>
-                </div>
-                <div>
-                  <h4>Price</h4>
-                </div>
-                <div>
-                  <h4>Ratings</h4>
+                <div className="info">
+                  <div>
+                    <h4>{product.category}</h4>
+                  </div>
+                  <div>
+                    <h3 className="product-name">{product.name}</h3>
+                  </div>
+                  <div>
+                    <h4>${product.default_price}</h4>
+                  </div>
+                  <div>
+                    <h4>Ratings</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
+        </div>
       </div>
     </section>
   )
