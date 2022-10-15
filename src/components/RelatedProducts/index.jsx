@@ -36,6 +36,7 @@ const FETCH_DELAY = 1000
 export default function RelatedProducts() {
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
+  const [slideIdx, setSlideIdx] = useState(0)
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,7 +54,7 @@ export default function RelatedProducts() {
       </div>
 
       <div className="related-products">
-        <div className="overlay"></div>
+        <div className={`overlay ${slideIdx === 0 ? 'right' : 'left'}`}></div>
 
         <div className="products">
           {!loading && !products.length ? (
