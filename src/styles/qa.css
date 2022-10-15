@@ -1,0 +1,13 @@
+#qa-widget * {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  margin-left: 1rem;
+}
+
+#question-title {
+  font-weight: bold;
+}
+
+#answer-info {
+  font-size: x-small;
+}
