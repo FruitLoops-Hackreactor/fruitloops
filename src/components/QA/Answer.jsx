@@ -13,7 +13,7 @@ const Answer = ({ answer }) => {
       <br></br>
       <span>A:</span>
       <span>{body}</span>
-      <p>by {`${answerer_name}, ${date}`}</p>
+      <p id="answer-info">by {`${answerer_name}, ${date}`}</p>
     </div>
   )
 }

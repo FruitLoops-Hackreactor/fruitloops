@@ -8,8 +8,6 @@ const Question = ({ question }) => {
 
   answers = answers.slice(0, 2)
 
-  console.log('question', question)
-
   const helpfulnessClickHandler = (event) => {
     event.preventDefault()
     console.log('Hello')
