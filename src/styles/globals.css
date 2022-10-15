@@ -20,7 +20,11 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
+section {
+  padding: 4rem 0;
+}
+
 .container {
   background: #fff;
-  max-width: 1080px;
+  padding: 0 12rem;
 }
