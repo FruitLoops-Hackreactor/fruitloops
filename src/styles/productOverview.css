@@ -1,0 +1,36 @@
+nav {
+  background-color: #ccc;
+}
+
+.image-gallery h4, .product-info h4, .style-selector h4, .add-to-cart h4, .description h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+
+// SEARCH BAR COMPONENT
+.div logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+.search input {
+  background: white;
+  border: 0;
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  padding: 15px;
+  height: 10px;
+  width: 225px;
+}
+
+.search-icon {
+  float: right;
+  background-color: transparent;
+  height: 40px;
+  width: 50px;
+  display: grid;
+  place-items: center;
+}
