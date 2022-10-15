@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import SearchIcon from '@mui/icons-material/Search'
+import { IconSearch } from '@tabler/icons'
 import '../../styles/productOverview.css'
 
 export default function SearchBar() {
@@ -10,7 +10,7 @@ export default function SearchBar() {
       <div className="logo">[Insert Logo Here]</div>
       <input ref={searchRef} type="text" placeholder="test"></input>
       <div className="search-icon">
-        <SearchIcon />
+        <IconSearch />
       </div>
     </nav>
   )
