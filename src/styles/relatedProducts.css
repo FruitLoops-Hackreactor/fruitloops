@@ -1,6 +1,16 @@
+.related-products {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 2rem;
+  overflow-x: scroll;
+}*
+
 .product-card {
   background: #eee;
-  width: 280px;
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
 }
 
 .product-card h1, .product-card h2, .product-card h3, .product-card h4, .product-card h5, .product-card h6 {
@@ -16,5 +26,6 @@
 }
 
 .product-card .info {
-  padding: 0.25rem 1rem;
+  padding: 0rem 0.75rem;
 }
+
