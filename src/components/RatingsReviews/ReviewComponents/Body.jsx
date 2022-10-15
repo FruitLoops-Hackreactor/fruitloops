@@ -1,4 +1,4 @@
-import {useState} from "react"
+import { useState } from 'react'
 
 const Body = (props) => {
   if (props.body.length > 250) {
@@ -12,7 +12,8 @@ const Body = (props) => {
 }
 
 const TruncatedBody = (props) => {
-  const [fullBody, showFullBody] = useState(false)
+  // Renamed this to avoid errors and for proper naming conventions
+  const [fullBody, setFullBody] = useState(false)
   var showFullBody = () => {
     props.setFullBody(true)
   }
