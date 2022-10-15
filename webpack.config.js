@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 
 /** @type {import('webpack').Configuration} */
@@ -10,13 +11,15 @@ module.exports = {
   target: 'web',
   entry: ['webpack/hot/dev-server', path.join(__dirname, 'src/index.jsx')],
   output: {
-    path: path.resolve(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
   },
+  cache: { type: 'filesystem' },
   devtool: 'source-map',
   devServer: {
     host: 'localhost',
     hot: true,
     port: 3000,
+    compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     static: {
       publicPath: '/assets',
@@ -48,7 +51,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(woff|woff2)$/,
@@ -67,5 +70,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
+    new MiniCssExtractPlugin(),
   ],
 }

@@ -10,7 +10,7 @@ if (!process.env.GITHUB_TOKEN) {
 
 // Set the baseURL and header for all requests
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'
-axios.defaults.headers.get['Authorization'] = process.env.GITHUB_TOKEN
+axios.defaults.headers.common['Authorization'] = process.env.GITHUB_TOKEN
 
 export default function App() {
   return (
