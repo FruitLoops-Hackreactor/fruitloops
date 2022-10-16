@@ -1,0 +1,25 @@
+.product-comparison {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+}
+
+.product-comparison .title {
+  margin-bottom: 1.25rem;
+}
+
+.product-comparison .title > * {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.product-comparison .product-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  font-size: 1.15rem;
+}

@@ -44,22 +44,20 @@ class Product {
   }
 }
 
+export const getProduct = async (id) =>
+  new Product({
+    // Product details
+    ...(await axios.get(`/products/${id}`).then((res) => res.data)),
+    // Product styles
+    styles: await axios.get(`/products/${id}/styles`).then((res) => res.data.results),
+  })
+
 const getProducts = async () => {
   try {
     // Get the products from the API
     const products = await axios.get(`/products?count=${PROD_COUNT}`).then((res) => res.data)
     // Map each product with the details and styles
-    return await Promise.all(
-      products.map(
-        async ({ id }) =>
-          new Product({
-            // Product details
-            ...(await axios.get(`/products/${id}`).then((res) => res.data)),
-            // Product styles
-            styles: await axios.get(`/products/${id}/styles`).then((res) => res.data.results),
-          })
-      )
-    )
+    return await Promise.all(products.map(({ id }) => getProduct(id)))
   } catch (err) {
     console.error(err)
     return []

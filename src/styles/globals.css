@@ -56,9 +56,8 @@ section {
 
 .modal-content {
   position: absolute;
-  width: 360px;
-  height: 360px;
   z-index: 999;
+  padding: 1.5rem;
   background: #fff;
   border-radius: 8px;
   top: calc(50% - 180px);
