@@ -27,14 +27,14 @@ const PROD_COUNT = 10
 const FETCH_DELAY = 1500
 
 class Product {
-  constructor(props) {
-    this.id = props.id
-    this.name = props.name
-    this.slogan = props.slogan
-    this.description = props.description
-    this.category = props.category
-    this.default_price = props.default_price
-    this.styles = props.styles.map((style) => ({
+  constructor(product) {
+    this.id = product.id
+    this.name = product.name
+    this.slogan = product.slogan
+    this.description = product.description
+    this.category = product.category
+    this.default_price = product.default_price
+    this.styles = product.styles.map((style) => ({
       style_id: style.style_id,
       name: style.name,
       photos: style.photos.map((photo) => ({
@@ -77,7 +77,6 @@ export default function App() {
   // Fetch the products
   useEffect(() => {
     getProducts().then((products) => {
-      // Give a 1s delay to show the skeleton cards
       setTimeout(() => {
         setLoading(false)
         setProducts(products)
