@@ -17,7 +17,6 @@ const defaultAppContext = {
   currentProduct: null,
   products: [],
   loading: true,
-  modalOpen: false,
   setModalOpen: () => null,
 }
 
@@ -49,7 +48,7 @@ const getProducts = async () => {
   try {
     // Get the products from the API
     const products = await axios.get(`/products?count=${PROD_COUNT}`).then((res) => res.data)
-    // Get each product with the details
+    // Map each product with the details and styles
     return await Promise.all(
       products.map(
         async ({ id }) =>
@@ -74,13 +73,16 @@ export default function App() {
   const [products, setProducts] = useState([])
   const [currentProduct, setCurrentProduct] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
+  const [modalContent, setModalContent] = useState(null)
 
+  // TEMP
   console.log('products', products)
 
   // When clicking the modal overlay, close the modal
   const handleModalClick = (e) => {
     if (e.target === modalOverlayRef.current) {
       setModalOpen(false)
+      setModalContent(null)
     }
   }
 
@@ -89,19 +91,25 @@ export default function App() {
     getProducts().then((products) => {
       setLoading(false)
       setProducts(products)
-      setCurrentProduct(products[0])
+      setCurrentProduct(products.length ? products[0] : null)
     })
   }, [])
 
-  // Handle the modal
+  /**
+   * Handles the modal. If the modal is open, it will display the modal and overlay.
+   * It will also set the overflow property on the body element to prevent scrolling
+   * and set the event listener to be able to close the modal.
+   */
   useEffect(() => {
     if (!modalRef.current) return
 
     if (modalOpen) {
       modalRef.current.style.display = 'block'
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden'
       window.addEventListener('click', handleModalClick)
     } else {
       modalRef.current.style.display = 'none'
+      document.getElementsByTagName('body')[0].style.overflow = 'auto'
       window.removeEventListener('click', handleModalClick)
     }
     // Need to specify the cleanup function to remove the event listener
@@ -109,12 +117,12 @@ export default function App() {
   }, [modalRef, modalOpen])
 
   return (
-    <AppContext.Provider value={{ loading, products, currentProduct, modalOpen, setModalOpen }}>
+    <AppContext.Provider
+      value={{ loading, products, currentProduct, modalOpen, setModalOpen, setModalContent }}
+    >
       <div ref={modalRef} className="modal">
         <div ref={modalOverlayRef} className="modal-overlay" />
-        <div className="modal-content">
-          <h1 style={{ textAlign: 'center' }}>Yo, i'm a modal</h1>
-        </div>
+        <div className="modal-content">{modalContent}</div>
       </div>
 
       <main className="container">

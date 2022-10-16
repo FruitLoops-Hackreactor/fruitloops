@@ -9,11 +9,13 @@ import SkeletonCard from '../SkeletonCard'
 const NUM_CARDS = 4
 
 export default function RelatedProducts() {
-  const { loading, products, currentProduct, setModalOpen } = useContext(AppContext)
+  const { loading, products, currentProduct, setModalOpen, setModalContent } =
+    useContext(AppContext)
   const [currentId, setCurrentId] = useState(0)
   const handleProductClick = (id) => () => {
-    setModalOpen(true)
     setCurrentId(id)
+    setModalOpen(true)
+    setModalContent(<h1>Clicked product: {id}</h1>)
   }
 
   return (
