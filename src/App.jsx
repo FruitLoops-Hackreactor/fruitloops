@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
@@ -17,14 +17,14 @@ const defaultAppContext = {
   currentProduct: null,
   products: [],
   loading: true,
+  modalOpen: false,
+  setModalOpen: () => null,
 }
 
 export const AppContext = createContext(defaultAppContext)
 
 // The number of products to request
 const PROD_COUNT = 10
-// Slight delay to show the skeleton cards and give a loading effect
-const FETCH_DELAY = 1500
 
 class Product {
   constructor(product) {
@@ -68,24 +68,55 @@ const getProducts = async () => {
 }
 
 export default function App() {
+  const modalRef = useRef(null)
+  const modalOverlayRef = useRef(null)
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
   const [currentProduct, setCurrentProduct] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
 
   console.log('products', products)
+
+  // When clicking the modal overlay, close the modal
+  const handleModalClick = (e) => {
+    if (e.target === modalOverlayRef.current) {
+      setModalOpen(false)
+    }
+  }
 
   // Fetch the products
   useEffect(() => {
     getProducts().then((products) => {
-      setTimeout(() => {
-        setLoading(false)
-        setProducts(products)
-      }, FETCH_DELAY)
+      setLoading(false)
+      setProducts(products)
+      setCurrentProduct(products[0])
     })
   }, [])
 
+  // Handle the modal
+  useEffect(() => {
+    if (!modalRef.current) return
+
+    if (modalOpen) {
+      modalRef.current.style.display = 'block'
+      window.addEventListener('click', handleModalClick)
+    } else {
+      modalRef.current.style.display = 'none'
+      window.removeEventListener('click', handleModalClick)
+    }
+    // Need to specify the cleanup function to remove the event listener
+    return () => window.removeEventListener('click', handleModalClick)
+  }, [modalRef, modalOpen])
+
   return (
-    <AppContext.Provider value={{ loading, products, currentProduct }}>
+    <AppContext.Provider value={{ loading, products, currentProduct, modalOpen, setModalOpen }}>
+      <div ref={modalRef} className="modal">
+        <div ref={modalOverlayRef} className="modal-overlay" />
+        <div className="modal-content">
+          <h1 style={{ textAlign: 'center' }}>Yo, i'm a modal</h1>
+        </div>
+      </div>
+
       <main className="container">
         <ProductOverview />
         <div>

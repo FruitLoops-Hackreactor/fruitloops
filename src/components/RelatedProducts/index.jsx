@@ -1,18 +1,29 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { IconPlus } from '@tabler/icons'
 import { AppContext } from '@/App'
 import Products from './Products'
-import '@/styles/relatedProducts.css'
+import '@/styles/relatedProducts/main.css'
 import SkeletonCard from '../SkeletonCard'
 
 // The number of cards to display at a time
 const NUM_CARDS = 4
 
 export default function RelatedProducts() {
-  const { loading, products } = useContext(AppContext)
+  const { loading, products, currentProduct, setModalOpen } = useContext(AppContext)
+  const [currentId, setCurrentId] = useState(0)
+  const handleProductClick = (id) => () => {
+    setModalOpen(true)
+    setCurrentId(id)
+  }
 
   return (
     <section className="related-products-comparison">
-      <Products max={NUM_CARDS} loading={loading} products={products} />
+      <Products
+        max={NUM_CARDS}
+        loading={loading}
+        products={products}
+        onClick={handleProductClick}
+      />
 
       <div>
         <div className="section-title">
@@ -28,7 +39,11 @@ export default function RelatedProducts() {
             Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)
           ) : (
             <div className="products">
-              <SkeletonCard />
+              <div className="add-card">
+                <button>
+                  <IconPlus size={24} />
+                </button>
+              </div>
             </div>
           )}
         </div>
