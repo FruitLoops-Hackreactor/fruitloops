@@ -1,17 +1,19 @@
 .related-products {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
 
 .related-products .overlay {
   position: absolute;
   top: 0;
   right: 0;
-  width: 5%;
+  width: 2rem;
   height: 100%;
   z-index: 10;
   opacity: 1;
   transition: opacity 0.3s ease;
-
 }
 
 .related-products .overlay.left {
@@ -36,13 +38,44 @@
   position: relative;
 }
 
+.products .navigation > div {
+  position: absolute;
+  z-index: 20;
+  top: calc(50% - 32px);
+  transition: opacity 0.3s ease;
+}
+
+.products .navigation > .left {
+  left: 0;
+  right: auto;
+}
+
+.products .navigation > .right {
+  right: 0;
+  left: auto;
+}
+
+.products .navigation > div > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .product-card {
+  position: relative;
   background: #fff;
-  width: 280px;
-  min-width: 280px;
-  max-width: 280px;
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
   margin-right: 2rem;
   border: 1px solid gray;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 .product-card h1, .product-card h2, .product-card h3, .product-card h4, .product-card h5, .product-card h6 {
@@ -63,6 +96,13 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+}
+
+.product-card .star {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
 }
 
 .product-card .info {
