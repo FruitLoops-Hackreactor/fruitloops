@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { IconChevronLeft, IconChevronRight, IconStar } from '@tabler/icons'
 import SkeletonCard from '../SkeletonCard'
 
-export default function Products({ max, loading, products }) {
+export default function Products({ max, loading, products, onClick }) {
   const [slideIdx, setSlideIdx] = useState(0)
   const slideLeft = () => setSlideIdx((idx) => (idx === 0 ? 0 : idx - 1))
   const slideRight = () => setSlideIdx((idx) => (idx === products.length - max ? idx : idx + 1))
@@ -20,7 +20,7 @@ export default function Products({ max, loading, products }) {
 
     cards.forEach((card) => {
       // Get the width of the card and the margin-right gap, except when the
-      // slide index is 0, then just set the transform to 0
+      // slide index is 0, then just set the translate to 0
       card.style.transform = `translateX(calc(${slideIdx * -280}px + ${slideIdx * -2}rem))`
     })
   }, [slideIdx])
@@ -60,7 +60,7 @@ export default function Products({ max, loading, products }) {
             </div>
 
             {products.map((product) => (
-              <div key={product.id} className="product-card">
+              <div key={product.id} className="product-card" onClick={onClick(product.id)}>
                 <div className="img">
                   <img src={product.styles[0].photos[0].thumbnail_url} alt={product.name} />
                 </div>

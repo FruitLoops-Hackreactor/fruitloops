@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 >>>>>>> main
 import ProductOverview from './components/ProductOverview'
@@ -20,14 +18,13 @@ const defaultAppContext = {
   currentProduct: null,
   products: [],
   loading: true,
+  setModalOpen: () => null,
 }
 
 export const AppContext = createContext(defaultAppContext)
 
 // The number of products to request
 const PROD_COUNT = 10
-// Slight delay to show the skeleton cards and give a loading effect
-const FETCH_DELAY = 1500
 
 class Product {
   constructor(product) {
@@ -52,7 +49,7 @@ const getProducts = async () => {
   try {
     // Get the products from the API
     const products = await axios.get(`/products?count=${PROD_COUNT}`).then((res) => res.data)
-    // Get each product with the details
+    // Map each product with the details and styles
     return await Promise.all(
       products.map(
         async ({ id }) =>
@@ -71,33 +68,56 @@ const getProducts = async () => {
 }
 
 export default function App() {
+  const modalRef = useRef(null)
+  const modalOverlayRef = useRef(null)
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
   const [currentProduct, setCurrentProduct] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalContent, setModalContent] = useState(null)
 
+  // TEMP
   console.log('products', products)
+
+  // When clicking the modal overlay, close the modal
+  const handleModalClick = (e) => {
+    if (e.target === modalOverlayRef.current) {
+      setModalOpen(false)
+      setModalContent(null)
+    }
+  }
 
   // Fetch the products
   useEffect(() => {
     getProducts().then((products) => {
-      setTimeout(() => {
-        setLoading(false)
-        setProducts(products)
-      }, FETCH_DELAY)
+      setLoading(false)
+      setProducts(products)
+      setCurrentProduct(products.length ? products[0] : null)
     })
   }, [])
 
+  /**
+   * Handles the modal. If the modal is open, it will display the modal and overlay.
+   * It will also set the overflow property on the body element to prevent scrolling
+   * and set the event listener to be able to close the modal.
+   */
+  useEffect(() => {
+    if (!modalRef.current) return
+
+    if (modalOpen) {
+      modalRef.current.style.display = 'block'
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+      window.addEventListener('click', handleModalClick)
+    } else {
+      modalRef.current.style.display = 'none'
+      document.getElementsByTagName('body')[0].style.overflow = 'auto'
+      window.removeEventListener('click', handleModalClick)
+    }
+    // Need to specify the cleanup function to remove the event listener
+    return () => window.removeEventListener('click', handleModalClick)
+  }, [modalRef, modalOpen])
+
   return (
-<<<<<<< HEAD
-    <main className="container">
-      <ProductOverview />
-      <div>
-        <RelatedProducts />
-        <QA />
-        <RatingsReviews />
-      </div>
-    </main>
-=======
     <AppContext.Provider value={{ loading, products, currentProduct }}>
       <main className="container">
         <ProductOverview />
