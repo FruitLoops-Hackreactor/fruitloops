@@ -1,4 +1,9 @@
-.related-products {
+.related-products-comparison > div {
+  margin-bottom: 4rem;
+}
+
+.related-products,
+.outfit-list {
   position: relative;
   display: flex;
   flex-direction: row;
