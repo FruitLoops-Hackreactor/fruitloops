@@ -1,4 +1,4 @@
-import ProudctOverview from './components/ProductOverview'
+import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
 import QA from './components/QA'
 import RatingsReviews from './components/RatingsReviews'
@@ -15,7 +15,7 @@ axios.defaults.headers.common['Authorization'] = process.env.GITHUB_TOKEN
 export default function App() {
   return (
     <main className="container">
-      <ProudctOverview />
+      <ProductOverview />
       <div>
         <RelatedProducts />
         <QA />

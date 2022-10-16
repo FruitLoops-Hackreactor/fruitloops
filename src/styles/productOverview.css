@@ -12,8 +12,7 @@ nav {
   margin: 1rem 0;
 }
 
-
-// SEARCH BAR COMPONENT
+/* SEARCH BAR COMPONENT */
 .div logo {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -38,3 +37,4 @@ nav {
   display: grid;
   place-items: center;
 }
+

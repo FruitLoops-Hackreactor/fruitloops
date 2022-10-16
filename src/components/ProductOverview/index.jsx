@@ -1,4 +1,6 @@
 import SearchBar from './SearchBar'
+import Description from './PO-Components/Description'
+import ProductInformation from './PO-Components/ProductInformation'
 import '../../styles/productOverview.css'
 
 export default function ProductOverview() {
@@ -12,6 +14,7 @@ export default function ProductOverview() {
       </div>
       <div className="product-info">
         <h4>Product Information</h4>
+        <ProductInformation />
       </div>
       <div className="style-selector">
         <h4>Style Selector</h4>
@@ -21,6 +24,7 @@ export default function ProductOverview() {
       </div>
       <div className="description">
         <h4>Description</h4>
+        <Description />
       </div>
     </section>
   )
