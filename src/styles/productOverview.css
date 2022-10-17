@@ -1,4 +1,4 @@
-section.product-overview {
+.product-overview {
   padding-top: 0rem;
 }
 
@@ -12,8 +12,119 @@ nav {
   margin: 1rem 0;
 }
 
+/* CONTAINER */
+.main-container {
+  display: flex;
+}
 
-// SEARCH BAR COMPONENT
+/* IMAGE GALLERY COMPONENT */
+.carousel {
+  background-color: #ccc;
+  position: relative;
+  height: 540px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: auto;
+  max-width: 370px;
+  height: 500px;
+  max-height: 500px;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 75px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 75px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.up-arrow {
+  position: absolute;
+  bottom: 96%;
+  margin-left: 15px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.down-arrow {
+  position: absolute;
+  top: 100%;
+  margin-left: 15px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.container-squares {
+  top: 10%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.square {
+  width: 46px;
+  height: 46px;
+  border: 1px solid gray;
+  margin: 19px 0px 2px 15px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.square.active {
+  background: #ccc;
+}
+
+.snippit {
+  width: 46px;
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.highlight {
+  background-color: gray;
+  border: 1px solid gray;
+  justify-content: center;
+  align-items: center;
+  height: 1px;
+  max-width: 44px;
+  padding: 1px;
+  z-index: 1;
+}
+
+/* SEARCH BAR COMPONENT */
 .div logo {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -38,3 +149,4 @@ nav {
   display: grid;
   place-items: center;
 }
+
