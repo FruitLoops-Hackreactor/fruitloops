@@ -10,7 +10,6 @@ export default function QA() {
   let [moreQuestions, setMoreQuestions] = useState(true)
   let { currentProduct } = useContext(AppContext)
   let [additionalQuestions, setAdditionalQuestions] = useState()
-  console.log('currentProduct', currentProduct)
 
   useEffect(() => {
     if (!currentProduct) return
@@ -48,6 +47,7 @@ export default function QA() {
     }
     setAdditionalQuestions(additionalQuestions + 2)
   }
+
   // Added this so you can view the data results in the console
   console.log('questions', questions)
 
