@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import { IconChevronLeft, IconChevronRight, IconChevronDown, IconChevronUp } from '@tabler/icons'
-import axios from 'axios'
 
-export default function ImageGallery({ products, currentProduct }) {
-  const [photos, setPhotos] = useState([])
+export default function ImageGallery({ photos }) {
   const [slideIdx, setSlideIdx] = useState(0)
   const length = photos.length
 
@@ -22,13 +20,6 @@ export default function ImageGallery({ products, currentProduct }) {
   }
 
   console.log(slideIdx) // TEMP
-
-  useEffect(() => {
-    axios.get(`/products/${currentProduct?.id}/styles`).then((prodInfo) => {
-      setPhotos(prodInfo.data.results[0].photos) // TEMP
-      console.log('this is default style chosen', prodInfo.data.results[0])
-    })
-  }, [currentProduct])
 
   return (
     <div className="image-gallery">

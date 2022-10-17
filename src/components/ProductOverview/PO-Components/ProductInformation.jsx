@@ -1,28 +1,27 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export default function ProductInformation({ currentProduct }) {
-  /*product = {
-    id: number,
-    name: string,
-    slogan: string,
-    campus: string,
-    category: string,
-    created_at: string,
-    default_price: string,
-    description: string,
-    features: Array({feature: string, value: string}, {...}),
-    updated_at: string
-  }*/
-
-  const [product, setProduct] = useState({})
-
-  useEffect(() => {
-    axios.get(`/products/${currentProduct?.id}`).then((prodInfo) => {
-      setProduct(prodInfo.data)
-      // console.log('this is from prodInfo', prodInfo.data)
-    })
-  }, [currentProduct])
+export default function ProductInformation({ product }) {
+  // const product = {
+  //   id = product.id,
+  //   name = product.name,
+  //   slogan = product.slogan,
+  //   description = product.description,
+  //   category = product.category,
+  //   features = product.features,
+  //   default_price = product.default_price,
+  //   styles = product.styles.map((style) => ({
+  //     style_id: style.style_id,
+  //     name: style.name,
+  //     original_price: style.original_price,
+  //     sale_price: style.sale_price,
+  //     default: style['default?'],
+  //     photos: style.photos.map((photo) => ({
+  //       thumbnail_url: photo.thumbnail_url,
+  //       url: photo.url,
+  //     })),
+  //   }))
+  // }
 
   return (
     <div>
