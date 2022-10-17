@@ -26,7 +26,36 @@ section {
 
 .container {
   background: #fffffa;
-  padding: 0 16rem;
+}
+
+@media screen and (min-width: 1441px) {
+  .container {
+    padding: 0 12rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    padding: 0 6rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 .section-title {

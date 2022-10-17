@@ -1,21 +1,18 @@
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import { IconPlus } from '@tabler/icons'
 import { AppContext, getProduct } from '@/App'
 import Products from './Products'
+import OutfitList from './OutfitList'
 import '@/styles/relatedProducts/main.css'
-import SkeletonCard from '../SkeletonCard'
-
-// The max number of cards to display at a time
-const NUM_CARDS = 4
 
 export default function RelatedProducts() {
-  const { currentProduct, setModalOpen, setModalContent, outfit, setOutfit } =
-    useContext(AppContext)
+  const { currentProduct, setModalOpen, setModalContent } = useContext(AppContext)
   const [loading, setLoading] = useState(true)
   const [relatedProducts, setRelatedProducts] = useState([])
+  const relProdEl = document.querySelector('.related-products')
+  // The max number of cards to display at a time
+  const NUM_CARDS = relProdEl?.clientWidth < 1024 ? 2 : relProdEl?.clientWidth < 1280 ? 3 : 4
 
-  // Get the related products
   useEffect(() => {
     if (!currentProduct) return
 
@@ -50,29 +47,7 @@ export default function RelatedProducts() {
         setModalContent={setModalContent}
       />
 
-      <div>
-        <div className="section-title">
-          <h3>Your Outfit</h3>
-        </div>
-
-        <div className="outfit-list">
-          {loading ? (
-            Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)
-          ) : (
-            <div className="products">
-              <div className="add-card">
-                <button>
-                  <IconPlus size={24} />
-                </button>
-                <h2>Add to Outfit</h2>
-              </div>
-              {!outfit.length
-                ? null
-                : outfit.map((product) => <div className="product-card" key={product.id}></div>)}
-            </div>
-          )}
-        </div>
-      </div>
+      <OutfitList max={NUM_CARDS} loading={loading} currentProduct={currentProduct} />
     </section>
   )
 }

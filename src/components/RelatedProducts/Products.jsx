@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
-import SkeletonCard from '../SkeletonCard'
 import ProductCard from './ProductCard'
+import SkeletonCard from '../SkeletonCard'
 
 export default function Products({
   max,
@@ -85,10 +85,9 @@ export default function Products({
     if (!relatedProducts.length) return
 
     const cards = document.querySelectorAll('.related-products .product-card')
-
+    // Get the width of the card and the margin-right gap, except when the
+    // slide index is 0, then just set the translate to 0
     cards.forEach((card) => {
-      // Get the width of the card and the margin-right gap, except when the
-      // slide index is 0, then just set the translate to 0
       card.style.transform = `translateX(calc(${slideIdx * -280}px + ${slideIdx * -2}rem))`
     })
   }, [slideIdx])
@@ -105,9 +104,9 @@ export default function Products({
             <h3>No related products found</h3>
           </div>
         ) : loading ? (
-          Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)
+          Array.from({ length: max }).map((_, i) => <SkeletonCard key={`skeleton-card-${i}`} />)
         ) : (
-          <div className="products">
+          <div className="products-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
             {relatedProducts.length > max && (
               <>
@@ -135,14 +134,16 @@ export default function Products({
               </>
             )}
 
-            {relatedProducts.length &&
-              relatedProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  actionHandler={handleComparisonClick}
-                />
-              ))}
+            {!relatedProducts.length
+              ? null
+              : relatedProducts.map((product) => (
+                  <ProductCard
+                    key={'related-' + product.id}
+                    product={product}
+                    action="compare"
+                    actionHandler={handleComparisonClick}
+                  />
+                ))}
           </div>
         )}
       </div>
