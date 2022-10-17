@@ -28,9 +28,21 @@ section {
   background: #fffffa;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1441px) {
   .container {
     padding: 0 12rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    padding: 0 6rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 4rem;
   }
 }
 

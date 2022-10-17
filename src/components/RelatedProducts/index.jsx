@@ -6,15 +6,16 @@ import Products from './Products'
 import '@/styles/relatedProducts/main.css'
 import SkeletonCard from '../SkeletonCard'
 
-// The max number of cards to display at a time
-const NUM_CARDS = 4
-
 export default function RelatedProducts() {
   const { currentProduct, setModalOpen, setModalContent } = useContext(AppContext)
   const [loading, setLoading] = useState(true)
   const [relatedProducts, setRelatedProducts] = useState([])
   const [outfit, setOutfit] = useState([])
+  const relProdEl = document.querySelector('.related-products')
+  // The max number of cards to display at a time
+  const NUM_CARDS = relProdEl?.clientWidth < 1024 ? 2 : relProdEl?.clientWidth < 1280 ? 3 : 4
 
+  console.log(document.querySelector('.related-products'))
   // Get the related products
   useEffect(() => {
     if (!currentProduct) return
