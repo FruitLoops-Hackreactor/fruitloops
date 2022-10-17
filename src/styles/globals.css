@@ -25,7 +25,7 @@ section {
 }
 
 .container {
-  background: #fff;
+  background: #fffffa;
   padding: 0 16rem;
 }
 
@@ -52,14 +52,14 @@ section {
   height: 100%;
   background: rgba(0,0,0,0.05);
   backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  position: absolute;
   z-index: 999;
   padding: 1.5rem;
   background: #fff;
   border-radius: 8px;
-  top: calc(50% - 180px);
-  left: calc(50% - 180px);
 }

@@ -18,6 +18,9 @@ const defaultAppContext = {
   products: [],
   loading: true,
   setModalOpen: () => null,
+  setModalContent: (content) => content,
+  outfit: [],
+  setOutfit: () => null,
 }
 
 export const AppContext = createContext(defaultAppContext)
@@ -32,10 +35,14 @@ class Product {
     this.slogan = product.slogan
     this.description = product.description
     this.category = product.category
+    this.features = product.features
     this.default_price = product.default_price
     this.styles = product.styles.map((style) => ({
       style_id: style.style_id,
       name: style.name,
+      original_price: style.original_price,
+      sale_price: style.sale_price,
+      default: style['default?'],
       photos: style.photos.map((photo) => ({
         thumbnail_url: photo.thumbnail_url,
         url: photo.url,
@@ -72,9 +79,8 @@ export default function App() {
   const [currentProduct, setCurrentProduct] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState(null)
-
-  // TEMP
-  console.log('products', products)
+  // Outfit list, unique to each customer
+  const [outfit, setOutfit] = useState([])
 
   // When clicking the modal overlay, close the modal
   const handleModalClick = (e) => {
@@ -116,11 +122,21 @@ export default function App() {
 
   return (
     <AppContext.Provider
-      value={{ loading, products, currentProduct, modalOpen, setModalOpen, setModalContent }}
+      value={{
+        loading,
+        products,
+        currentProduct,
+        modalOpen,
+        setModalOpen,
+        setModalContent,
+        outfit,
+        setOutfit,
+      }}
     >
       <div ref={modalRef} className="modal">
-        <div ref={modalOverlayRef} className="modal-overlay" />
-        <div className="modal-content">{modalContent}</div>
+        <div ref={modalOverlayRef} className="modal-overlay">
+          <div className="modal-content">{modalContent}</div>
+        </div>
       </div>
 
       <main className="container">
