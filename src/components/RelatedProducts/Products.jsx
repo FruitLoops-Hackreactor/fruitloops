@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { IconChevronLeft, IconChevronRight, IconStar, IconCheck } from '@tabler/icons'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
 import SkeletonCard from '../SkeletonCard'
+import ProductCard from './ProductCard'
 
 export default function Products({
   max,
@@ -12,13 +13,15 @@ export default function Products({
 }) {
   const [slideIdx, setSlideIdx] = useState(0)
   const slideLeft = () => setSlideIdx((idx) => (idx === 0 ? 0 : idx - 1))
-  const slideRight = () => setSlideIdx((idx) => (idx === products.length - max ? idx : idx + 1))
+  const slideRight = () =>
+    setSlideIdx((idx) => (idx === relatedProducts.length - max ? idx : idx + 1))
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
 
   /**
-   * blah blah blah
+   * Get the features of both the current product and the selected product to compare
+   * and display common and different features.
    */
   const handleComparisonClick = (id) => () => {
     const product = relatedProducts.find((product) => product.id === id)
@@ -132,43 +135,14 @@ export default function Products({
               </>
             )}
 
-            {relatedProducts.map((product) => {
-              const defaultStyle =
-                product.styles.find((style) => style.default) || product.styles[0]
-              const { sale_price } = defaultStyle
-
-              return (
-                <div key={product.id} className="product-card">
-                  <div className="img">
-                    <img src={product.styles[0].photos[0].thumbnail_url} alt={product.name} />
-                  </div>
-                  <div className="star" onClick={handleComparisonClick(product.id)}>
-                    <IconStar size={24} fill="gold" stroke="gold" />
-                  </div>
-                  <div className="info">
-                    <div>
-                      <span>{product.category}</span>
-                    </div>
-                    <div>
-                      <span className="product-name">{product.name}</span>
-                    </div>
-                    <div>
-                      {!sale_price ? (
-                        <span>${product.default_price}</span>
-                      ) : (
-                        <span>
-                          <span className="sale-price">${sale_price}</span>
-                          <span className="original-price">${product.default_price}</span>
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <span>Ratings</span>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+            {relatedProducts.length &&
+              relatedProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  actionHandler={handleComparisonClick}
+                />
+              ))}
           </div>
         )}
       </div>
