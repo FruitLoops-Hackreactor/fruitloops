@@ -2,7 +2,7 @@
 import Answer from './Answer'
 import '../../styles/qa.css'
 
-const Question = ({ question }) => {
+export default function Question({ question }) {
   let { question_body, question_helpfulness } = question
   let answers = Object.values(question.answers)
 
@@ -34,5 +34,3 @@ const Question = ({ question }) => {
     </div>
   )
 }
-
-export default Question
