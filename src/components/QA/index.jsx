@@ -1,5 +1,6 @@
 import Question from './Question'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
+import AddQuestion from './AddQuestion'
 import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import { AppContext } from '@/App'
@@ -17,6 +18,7 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
+          // hardcoded to product id with good sample questions, change to currentProduct.id
           product_id: 40343,
         },
       })
@@ -37,19 +39,21 @@ export default function QA() {
       })
   }, [currentProduct])
 
+  // render additional questions when the additionalQuestion state changes
   useEffect(() => {
     setQuestions(allQuestions.slice(0, 4 + additionalQuestions))
   }, [additionalQuestions])
 
+  /*
+   * check if all questions will be displayed, if so, set moreQuestion state to false
+   * and display up to 2 more questions
+   */
   const handleMoreQuestionsClick = () => {
     if (allQuestions.length <= 4 + additionalQuestions + 2) {
       setMoreQuestions(false)
     }
     setAdditionalQuestions(additionalQuestions + 2)
   }
-
-  // Added this so you can view the data results in the console
-  console.log('questions', questions)
 
   return (
     <section>
@@ -61,6 +65,7 @@ export default function QA() {
       </div>
       <span>
         <MoreQuestionsBtn moreQuestions={moreQuestions} handleClick={handleMoreQuestionsClick} />
+        <AddQuestion />
       </span>
     </section>
   )
