@@ -121,7 +121,24 @@ export default function App() {
   }, [modalRef, modalOpen])
 
   return (
-    <AppContext.Provider value={{ loading, products, currentProduct }}>
+    <AppContext.Provider
+      value={{
+        loading,
+        products,
+        currentProduct,
+        modalOpen,
+        setModalOpen,
+        setModalContent,
+        outfit,
+        setOutfit,
+      }}
+    >
+      <div ref={modalRef} className="modal">
+        <div ref={modalOverlayRef} className="modal-overlay">
+          <div className="modal-content">{modalContent}</div>
+        </div>
+      </div>
+
       <main className="container">
         <ProductOverview />
         <div>
