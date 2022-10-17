@@ -10,10 +10,10 @@ import SkeletonCard from '../SkeletonCard'
 const NUM_CARDS = 4
 
 export default function RelatedProducts() {
-  const { currentProduct, setModalOpen, setModalContent, outfit, setOutfit } =
-    useContext(AppContext)
+  const { currentProduct, setModalOpen, setModalContent } = useContext(AppContext)
   const [loading, setLoading] = useState(true)
   const [relatedProducts, setRelatedProducts] = useState([])
+  const [outfit, setOutfit] = useState([])
 
   // Get the related products
   useEffect(() => {

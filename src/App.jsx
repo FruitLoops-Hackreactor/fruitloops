@@ -19,8 +19,6 @@ const defaultAppContext = {
   loading: true,
   setModalOpen: () => null,
   setModalContent: (content) => content,
-  outfit: [],
-  setOutfit: () => null,
 }
 
 export const AppContext = createContext(defaultAppContext)
@@ -79,8 +77,6 @@ export default function App() {
   const [currentProduct, setCurrentProduct] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState(null)
-  // Outfit list, unique to each customer
-  const [outfit, setOutfit] = useState([])
 
   // When clicking the modal overlay, close the modal
   const handleModalClick = (e) => {
@@ -129,8 +125,6 @@ export default function App() {
         modalOpen,
         setModalOpen,
         setModalContent,
-        outfit,
-        setOutfit,
       }}
     >
       <div ref={modalRef} className="modal">
