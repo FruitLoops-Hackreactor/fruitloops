@@ -18,6 +18,9 @@ const defaultAppContext = {
   products: [],
   loading: true,
   setModalOpen: () => null,
+  setModalContent: (content) => content,
+  outfit: [],
+  setOutfit: () => null,
 }
 
 export const AppContext = createContext(defaultAppContext)
@@ -32,10 +35,14 @@ class Product {
     this.slogan = product.slogan
     this.description = product.description
     this.category = product.category
+    this.features = product.features
     this.default_price = product.default_price
     this.styles = product.styles.map((style) => ({
       style_id: style.style_id,
       name: style.name,
+      original_price: style.original_price,
+      sale_price: style.sale_price,
+      default: style['default?'],
       photos: style.photos.map((photo) => ({
         thumbnail_url: photo.thumbnail_url,
         url: photo.url,
@@ -44,22 +51,20 @@ class Product {
   }
 }
 
+export const getProduct = async (id) =>
+  new Product({
+    // Product details
+    ...(await axios.get(`/products/${id}`).then((res) => res.data)),
+    // Product styles
+    styles: await axios.get(`/products/${id}/styles`).then((res) => res.data.results),
+  })
+
 const getProducts = async () => {
   try {
     // Get the products from the API
     const products = await axios.get(`/products?count=${PROD_COUNT}`).then((res) => res.data)
     // Map each product with the details and styles
-    return await Promise.all(
-      products.map(
-        async ({ id }) =>
-          new Product({
-            // Product details
-            ...(await axios.get(`/products/${id}`).then((res) => res.data)),
-            // Product styles
-            styles: await axios.get(`/products/${id}/styles`).then((res) => res.data.results),
-          })
-      )
-    )
+    return await Promise.all(products.map(({ id }) => getProduct(id)))
   } catch (err) {
     console.error(err)
     return []
@@ -74,9 +79,8 @@ export default function App() {
   const [currentProduct, setCurrentProduct] = useState({})
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState(null)
-
-  // TEMP
-  console.log('products', products)
+  // Outfit list, unique to each customer
+  const [outfit, setOutfit] = useState([])
 
   // When clicking the modal overlay, close the modal
   const handleModalClick = (e) => {

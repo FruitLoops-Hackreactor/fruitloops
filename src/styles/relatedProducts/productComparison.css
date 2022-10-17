@@ -1,0 +1,55 @@
+.product-comparison {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.product-comparison .title {
+  margin-bottom: 1.25rem;
+}
+
+.product-comparison .title > * {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1rem;
+  color: rgb(70, 70, 70);
+}
+
+.product-comparison .product-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(70, 70, 70);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-size: 1.15rem;
+}
+
+.product-comparison .comparison {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.product-comparison .comparison > .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.product-comparison .comparison > .row > .feature {
+  width: 50%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.product-comparison .comparison > .row > span:not(:nth-child(2)) {
+  width: 25%;
+  font-style: italic;
+}
+
+.product-comparison .comparison > .row > span:last-child {
+  text-align: right
+}
