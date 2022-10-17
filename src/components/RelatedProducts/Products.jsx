@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
 import SkeletonCard from '../SkeletonCard'
 import ProductCard from './ProductCard'
@@ -22,68 +22,58 @@ export default function Products({
   /**
    * Get the features of both the current product and the selected product to compare
    * and display common and different features.
-   *
-   * Using the useCallback hook to memoize the function so it doesn't get recreated
-   * on every render for the same current product.
    */
-  const handleComparisonClick = useCallback(
-    (id) => () => {
-      const product = relatedProducts.find((product) => product.id === id)
-      const relFeatures = product.features.sort((a, b) => a.feature.localeCompare(b.feature))
-      const features = []
-      let i = 0
+  const handleComparisonClick = (id) => () => {
+    const product = relatedProducts.find((product) => product.id === id)
+    const relFeatures = product.features.sort((a, b) => a.feature.localeCompare(b.feature))
+    const features = []
+    let i = 0
 
-      for (; i < currFeatures.length; i++) {
+    for (; i < currFeatures.length; i++) {
+      features.push({
+        feature: currFeatures[i].feature,
+        currentProduct: currFeatures[i].value,
+        relatedProduct:
+          relFeatures[i].feature === currFeatures[i].feature ? relFeatures[i].value : null,
+      })
+    }
+
+    for (i = 0; i < relFeatures.length; i++) {
+      if (!features.find((feature) => feature.feature === relFeatures[i].feature)) {
         features.push({
-          feature: currFeatures[i].feature,
-          currentProduct: currFeatures[i].value,
-          relatedProduct:
-            relFeatures[i].feature === currFeatures[i].feature ? relFeatures[i].value : null,
+          feature: relFeatures[i].feature,
+          currentProduct: null,
+          relatedProduct: relFeatures[i].value,
         })
       }
+    }
 
-      for (i = 0; i < relFeatures.length; i++) {
-        if (!features.find((feature) => feature.feature === relFeatures[i].feature)) {
-          features.push({
-            feature: relFeatures[i].feature,
-            currentProduct: null,
-            relatedProduct: relFeatures[i].value,
-          })
-        }
-      }
-
-      setModalOpen(true)
-      setModalContent(
-        <div className="product-comparison">
-          <div className="title">
-            <span>comparing</span>
-          </div>
-          <div className="product-names">
-            <span>{currentProduct.name}</span>
-            <span>{product.name}</span>
-          </div>
-          <div className="comparison">
-            {!features.length ? (
-              <h2>No features on both items</h2>
-            ) : (
-              features.map(({ feature, currentProduct, relatedProduct }) => (
-                <div className="row" key={feature}>
-                  <span>
-                    {currentProduct === 'true' ? <IconCheck size={22} /> : currentProduct}
-                  </span>
-                  <span className="feature">{feature}</span>
-                  <span>
-                    {relatedProduct === 'true' ? <IconCheck size={22} /> : relatedProduct}
-                  </span>
-                </div>
-              ))
-            )}
-          </div>
+    setModalOpen(true)
+    setModalContent(
+      <div className="product-comparison">
+        <div className="title">
+          <span>comparing</span>
         </div>
-      )
-    },
-    []
-  )
+        <div className="product-names">
+          <span>{currentProduct.name}</span>
+          <span>{product.name}</span>
+        </div>
+        <div className="comparison">
+          {!features.length ? (
+            <h2>No features on both items</h2>
+          ) : (
+            features.map(({ feature, currentProduct, relatedProduct }) => (
+              <div className="row" key={feature}>
+                <span>{currentProduct === 'true' ? <IconCheck size={22} /> : currentProduct}</span>
+                <span className="feature">{feature}</span>
+                <span>{relatedProduct === 'true' ? <IconCheck size={22} /> : relatedProduct}</span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    )
+  }
 
   /**
    * Handle the carousel. Need to grab all the product cards and shift them

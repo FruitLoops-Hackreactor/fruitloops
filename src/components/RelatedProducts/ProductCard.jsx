@@ -1,6 +1,7 @@
 import { IconStar } from '@tabler/icons'
 
 export default function ProductCard({ product, actionHandler }) {
+  console.log(product)
   const defaultStyle = product.styles.find((style) => style.default) || product.styles[0]
   const { sale_price } = defaultStyle
 
