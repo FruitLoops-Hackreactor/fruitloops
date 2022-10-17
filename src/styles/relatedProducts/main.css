@@ -37,7 +37,8 @@
   box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.7);
 }
 
-.related-products .products {
+.related-products .products-container,
+.outfit-list .items-container {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -45,24 +46,28 @@
   position: relative;
 }
 
-.related-products .products .navigation > div {
+.related-products .products-container .navigation > div,
+.outfit-list .items-container .navigation > div {
   position: absolute;
   z-index: 20;
   top: calc(50% - 16px);
   transition: opacity 0.3s ease;
 }
 
-.related-products .products .navigation > .left {
+.related-products .products-container .navigation > .left,
+.outfit-list .items-container .navigation > .left {
   left: 0;
   right: auto;
 }
 
-.related-products .products .navigation > .right {
+.related-products .products-container .navigation > .right,
+.outfit-list .items-container .navigation > .right {
   right: 0;
   left: auto;
 }
 
-.related-products .products .navigation > div > button {
+.related-products .products-container .navigation > div > button,
+.outfit-list .items-container .navigation > div > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +106,7 @@
   transition: transform 0.2s ease;
 }
 
-.product-card .star {
+.product-card .action {
   position: absolute;
   top: 1rem;
   right: 1rem;
