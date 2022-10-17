@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { IconSearch } from '@tabler/icons'
-import '../../styles/productOverview.css'
+import '@/styles/productOverview.css'
 
 export default function SearchBar() {
   const searchRef = useRef()

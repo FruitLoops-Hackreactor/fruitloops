@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
->>>>>>> main
 import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
 import QA from './components/QA'
@@ -72,7 +71,7 @@ export default function App() {
   const modalOverlayRef = useRef(null)
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
-  const [currentProduct, setCurrentProduct] = useState(null)
+  const [currentProduct, setCurrentProduct] = useState({})
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState(null)
 
@@ -128,6 +127,5 @@ export default function App() {
         </div>
       </main>
     </AppContext.Provider>
->>>>>>> main
   )
 }
