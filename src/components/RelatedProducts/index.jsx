@@ -15,7 +15,6 @@ export default function RelatedProducts() {
   // The max number of cards to display at a time
   const NUM_CARDS = relProdEl?.clientWidth < 1024 ? 2 : relProdEl?.clientWidth < 1280 ? 3 : 4
 
-  console.log(document.querySelector('.related-products'))
   // Get the related products
   useEffect(() => {
     if (!currentProduct) return
