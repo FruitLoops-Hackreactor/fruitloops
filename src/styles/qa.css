@@ -11,3 +11,11 @@
 #answer-info {
   font-size: x-small;
 }
+
+#more-questions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
