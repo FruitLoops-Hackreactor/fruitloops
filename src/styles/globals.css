@@ -16,45 +16,41 @@
 }
 
 html {
-  background: #111;
   font-family: 'Inter', sans-serif;
+  background: #fffffa;
 }
 
 section {
   padding: 4rem 0;
 }
 
-.container {
-  background: #fffffa;
-}
-
 @media screen and (min-width: 1441px) {
   .container {
-    padding: 0 12rem;
+    padding-inline: 12rem;
   }
 }
 
 @media screen and (max-width: 1440px) {
   .container {
-    padding: 0 6rem;
+    padding-inline: 6rem;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .container {
-    padding: 0 4rem;
+    padding-inline: 4rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
-    padding: 0 2rem;
+    padding-inline: 2rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .container {
-    padding: 0 1rem;
+    padding-inline: 1rem;
   }
 }
 

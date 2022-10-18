@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+import SearchBar from './components/SearchBar'
 import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
 import QA from './components/QA'
@@ -133,6 +134,10 @@ export default function App() {
         <div ref={modalOverlayRef} className="modal-overlay">
           <div className="modal-content">{modalContent}</div>
         </div>
+      </div>
+
+      <div className="navbar">
+        <SearchBar />
       </div>
 
       <main className="container">
