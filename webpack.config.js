@@ -21,9 +21,6 @@ module.exports = {
     port: 3000,
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    static: {
-      publicPath: '/assets',
-    },
     historyApiFallback: {
       verbose: true,
     },
@@ -58,9 +55,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)$/,
-        use: {
-          loader: 'url-loader',
-        },
+        type: 'asset/resource',
       },
     ],
   },
