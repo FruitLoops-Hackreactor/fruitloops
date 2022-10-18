@@ -136,9 +136,9 @@ export default function App() {
         </div>
       </div>
 
-      <div className="navbar">
+      <nav className="navbar">
         <SearchBar />
-      </div>
+      </nav>
 
       <main className="container">
         <ProductOverview />
