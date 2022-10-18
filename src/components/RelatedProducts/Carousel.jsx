@@ -23,8 +23,11 @@ export default function Carousel({ max, children }) {
     })
   }, [slideIdx])
 
+  // Don't display the carousel if there are no children
+  if (!children.length) return null
+
   return (
-    <div className="carousel">
+    <div className="carousel" data-testid="products-carousel">
       <div className="carousel-nav">
         <div className="overlay left" style={{ opacity: slideIdx === 0 ? 0 : 1 }} />
         <div
