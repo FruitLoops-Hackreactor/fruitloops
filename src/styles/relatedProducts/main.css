@@ -23,51 +23,38 @@
   transition: opacity 0.3s ease;
 }
 
-.related-products-comparison .overlay.left {
+.related-products-comparison .carousel > .carousel-nav > .overlay.left {
   left: 0;
   right: auto;
   background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.75) 100%);
   box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.7);
 }
 
-.related-products-comparison .overlay.right {
+.related-products-comparison .carousel > .carousel-nav > .overlay.right {
   right: 0;
   left: auto;
   background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.75) 100%);
   box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.7);
 }
 
-.related-products .products-container,
-.outfit-list .items-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.related-products .products-container .navigation > div,
-.outfit-list .items-container .navigation > div {
+.related-products-comparison .carousel > .carousel-nav > .navigation > div {
   position: absolute;
   z-index: 20;
   top: calc(50% - 16px);
   transition: opacity 0.3s ease;
 }
 
-.related-products .products-container .navigation > .left,
-.outfit-list .items-container .navigation > .left {
+.related-products-comparison .carousel > .carousel-nav > .navigation > .left {
   left: 0;
   right: auto;
 }
 
-.related-products .products-container .navigation > .right,
-.outfit-list .items-container .navigation > .right {
+.related-products-comparison .carousel > .carousel-nav > .navigation > .right {
   right: 0;
   left: auto;
 }
 
-.related-products .products-container .navigation > div > button,
-.outfit-list .items-container .navigation > div > button {
+.related-products-comparison .carousel > .carousel-nav > .navigation > div > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,8 +65,16 @@
   padding: 0;
 }
 
-.product-card,
-.add-card {
+.related-products-comparison .carousel > .carousel-items {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.related-products-comparison .product-card,
+.related-products-comparison .add-card {
   position: relative;
   background: #fff;
   height: 360px;
@@ -91,7 +86,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.product-card .img {
+.related-products-comparison .product-card .img {
   display: flex;
   width: 100%;
   height: 200px;
@@ -99,45 +94,45 @@
   background: #ccc;
 }
 
-.product-card .img img {
+.related-products-comparison .product-card .img img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
   transition: transform 0.2s ease;
 }
 
-.product-card .action {
+.related-products-comparison .product-card .action {
   position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 5;
 }
 
-.product-card .info {
+.related-products-comparison .product-card .info {
   padding: 0rem 0.75rem;
   font-family: 'Inter', sans-serif;
 }
 
-.product-card .info > div {
+.related-products-comparison .product-card .info > div {
   margin: 1rem 0;
 }
 
-.product-card .info .product-name {
+.related-products-comparison .product-card .info .product-name {
   font-weight: 600;
   font-size: 1.15rem;
 }
 
-.product-card .info .sale-price {
+.related-products-comparison .product-card .info .sale-price {
   color: red;
   margin-right: 0.5rem;
 }
 
-.product-card .info .original-price {
+.related-products-comparison .product-card .info .original-price {
   color: gray;
   text-decoration: line-through;
 }
 
-.add-card {
+.related-products-comparison .add-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,7 +140,7 @@
   cursor: default;
 }
 
-.add-card > button {
+.related-products-comparison .add-card > button {
   border: 1px solid black;
   border-radius: 50%;
   padding: 0.5rem;
@@ -154,6 +149,6 @@
   transition: background 0.15s ease;
 }
 
-.add-card > button:hover {
+.related-products-comparison .add-card > button:hover {
   background: rgb(0, 0, 0, 0.1);
 }

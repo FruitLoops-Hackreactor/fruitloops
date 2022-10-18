@@ -20,6 +20,12 @@ html {
   background: #fffffa;
 }
 
+.navbar {
+  height: 64px;
+  display: flex;
+  background-color: #ccc;
+}
+
 section {
   padding: 4rem 0;
 }

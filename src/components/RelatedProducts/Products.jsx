@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
+import Carousel from './Carousel'
 import ProductCard from './ProductCard'
 import SkeletonCard from '../SkeletonCard'
 
@@ -11,10 +10,6 @@ export default function Products({
   setModalOpen,
   setModalContent,
 }) {
-  const [slideIdx, setSlideIdx] = useState(0)
-  const slideLeft = () => setSlideIdx((idx) => (idx === 0 ? 0 : idx - 1))
-  const slideRight = () =>
-    setSlideIdx((idx) => (idx === relatedProducts.length - max ? idx : idx + 1))
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
@@ -75,23 +70,6 @@ export default function Products({
     )
   }
 
-  /**
-   * Handle the carousel. Need to grab all the product cards and shift them
-   * by the amount of the slide index times the width of the card plus the
-   * margin-right gap.
-   */
-  useEffect(() => {
-    // Prevent the hook from running if there are no products
-    if (!relatedProducts.length) return
-
-    const cards = document.querySelectorAll('.related-products .product-card')
-    // Get the width of the card and the margin-right gap, except when the
-    // slide index is 0, then just set the translate to 0
-    cards.forEach((card) => {
-      card.style.transform = `translateX(calc(${slideIdx * -280}px + ${slideIdx * -2}rem))`
-    })
-  }, [slideIdx])
-
   return (
     <div>
       <div className="section-title">
@@ -108,42 +86,20 @@ export default function Products({
         ) : (
           <div className="products-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
-            {relatedProducts.length > max && (
-              <>
-                <div className="overlay left" style={{ opacity: slideIdx === 0 ? 0 : 1 }} />
-                <div
-                  className="overlay right"
-                  style={{ opacity: slideIdx === relatedProducts.length - max ? 0 : 1 }}
-                />
-
-                <div className="navigation">
-                  <div className="left" style={{ opacity: slideIdx > 0 ? 1 : 0 }}>
-                    <button onClick={slideLeft}>
-                      <IconChevronLeft size={32} />
-                    </button>
-                  </div>
-                  <div
-                    className="right"
-                    style={{ opacity: slideIdx < relatedProducts.length - max ? 1 : 0 }}
-                  >
-                    <button onClick={slideRight}>
-                      <IconChevronRight size={32} />
-                    </button>
-                  </div>
-                </div>
-              </>
+            {relatedProducts.length && (
+              <Carousel max={max}>
+                {!relatedProducts.length
+                  ? null
+                  : relatedProducts.map((product) => (
+                      <ProductCard
+                        key={'related-' + product.id}
+                        product={product}
+                        action="compare"
+                        actionHandler={handleComparisonClick}
+                      />
+                    ))}
+              </Carousel>
             )}
-
-            {!relatedProducts.length
-              ? null
-              : relatedProducts.map((product) => (
-                  <ProductCard
-                    key={'related-' + product.id}
-                    product={product}
-                    action="compare"
-                    actionHandler={handleComparisonClick}
-                  />
-                ))}
           </div>
         )}
       </div>
