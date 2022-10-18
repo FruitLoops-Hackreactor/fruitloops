@@ -55,12 +55,47 @@ export default function QA() {
     setAdditionalQuestions(additionalQuestions + 2)
   }
 
+  /*
+   * updates helpfulness value of question on API, uses localstorage to make
+   * sure only once per user per question
+   */
+  const helpfulnessClickHandler = (event, questionId) => {
+    event.preventDefault()
+    if (!localStorage.question_id) {
+      localStorage.setItem('question_id', JSON.stringify([]))
+    }
+    let parsedIds = JSON.parse(localStorage.getItem('question_id'))
+    if (parsedIds.includes(questionId)) {
+      return
+    }
+    let questionsCopy = [...questions]
+    questionsCopy.map((question) => {
+      if (question.question_id === questionId) {
+        question.question_helpfulness++
+      }
+      return question
+    })
+    axios
+      .put(`/qa/questions/${questionId}/helpful`)
+      .then((res) => {
+        console.log('res', res)
+        setQuestions(questionsCopy)
+        parsedIds.push(questionId)
+        localStorage.setItem('question_id', JSON.stringify(parsedIds))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <section>
       <h3 className="section-title">QUESTIONS & ANSWERS</h3>
       <div className="questions-list">
         {questions.map((question, index) => {
-          return <Question question={question} key={index} />
+          return (
+            <Question question={question} helpfulnessClick={helpfulnessClickHandler} key={index} />
+          )
         })}
       </div>
       <span>
