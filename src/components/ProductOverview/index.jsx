@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import ImageGallery from './PO-Components/ImageGallery'
 import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
-import '@/styles/productOverview.css'
+import '@/styles/productOverview/productOverview.css'
 
 export default function ProductOverview() {
   const { products, currentProduct } = useContext(AppContext)
@@ -39,13 +39,11 @@ export default function ProductOverview() {
           <ImageGallery products={products} currentProduct={currentProduct} photos={photos} />
         </div>
         <div className="product-info">
-          <h4>Product Information</h4>
           <ProductInformation product={productById} />
         </div>
       </div>
       <div className="description">
-        <h4>Description</h4>
-        <Description />
+        <Description product={productById} id={productById.id} />
       </div>
     </div>
   )
