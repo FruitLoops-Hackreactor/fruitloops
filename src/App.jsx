@@ -105,6 +105,8 @@ export default function App() {
 
     if (modalOpen) {
       modalRef.current.style.display = 'block'
+      // Set the modal to the current scroll position to always be in view and centered
+      modalRef.current.style.top = window.scrollY + 'px'
       document.getElementsByTagName('body')[0].style.overflow = 'hidden'
       window.addEventListener('click', handleModalClick)
     } else {
