@@ -30,6 +30,7 @@ export default function ImageGallery({ photos }) {
             <div
               className={index === slideIdx ? 'square active' : 'square'}
               onClick={() => moveDot(index)}
+              key={index}
             >
               <img src={photo.thumbnail_url} alt={photo.name} className="snippit" />
               {index === slideIdx && <div className="highlight"></div>}
