@@ -6,12 +6,12 @@ export default function SearchBar() {
   const searchRef = useRef()
 
   return (
-    <div className="search container">
+    <nav className="navbar container">
       <div className="logo">[Insert Logo Here]</div>
       <input ref={searchRef} type="text" placeholder="test"></input>
       <div className="search-icon">
         <IconSearch />
       </div>
-    </div>
+    </nav>
   )
 }

@@ -1,24 +1,20 @@
-.product-overview {
+.product-overview .product-overview {
   padding-top: 0rem;
 }
 
-nav {
-  background-color: #ccc;
-}
-
-.image-gallery h4, .product-info h4, .style-selector h4, .add-to-cart h4, .description h4 {
+.product-overview .image-gallery h4, .product-info h4, .style-selector h4, .add-to-cart h4, .description h4 {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   margin: 1rem 0;
 }
 
 /* CONTAINER */
-.main-container {
+.product-overview .main-container {
   display: flex;
 }
 
 /* IMAGE GALLERY COMPONENT */
-.carousel {
+.product-overview .carousel {
   background-color: #ccc;
   position: relative;
   height: 540px;
@@ -28,7 +24,7 @@ nav {
   align-items: center;
 }
 
-.image {
+.product-overview .image {
   width: auto;
   max-width: 370px;
   height: 500px;
@@ -36,7 +32,7 @@ nav {
   border-radius: 10px;
 }
 
-.right-arrow {
+.product-overview .right-arrow {
   position: absolute;
   top: 50%;
   right: 75px;
@@ -46,7 +42,7 @@ nav {
   user-select: none;
 }
 
-.left-arrow {
+.product-overview .left-arrow {
   position: absolute;
   top: 50%;
   left: 75px;
@@ -56,7 +52,7 @@ nav {
   user-select: none;
 }
 
-.up-arrow {
+.product-overview .up-arrow {
   position: absolute;
   bottom: 96%;
   margin-left: 15px;
@@ -66,7 +62,7 @@ nav {
   user-select: none;
 }
 
-.down-arrow {
+.product-overview .down-arrow {
   position: absolute;
   top: 100%;
   margin-left: 15px;
@@ -76,15 +72,15 @@ nav {
   user-select: none;
 }
 
-.slide {
+.product-overview .slide {
   opacity: 0;
 }
 
-.slide.active {
+.product-overview .slide.active {
   opacity: 1;
 }
 
-.container-squares {
+.product-overview .container-squares {
   top: 10%;
   position: absolute;
   display: flex;
@@ -92,7 +88,7 @@ nav {
   align-items: center;
 }
 
-.square {
+.product-overview .square {
   width: 46px;
   height: 46px;
   border: 1px solid gray;
@@ -101,11 +97,11 @@ nav {
   cursor: pointer;
 }
 
-.square.active {
+.product-overview .square.active {
   background: #ccc;
 }
 
-.snippit {
+.product-overview .snippit {
   width: 46px;
   height: 46px;
   justify-content: center;
@@ -113,7 +109,7 @@ nav {
   z-index: 1;
 }
 
-.highlight {
+.product-overview .highlight {
   background-color: gray;
   border: 1px solid gray;
   justify-content: center;
@@ -125,12 +121,12 @@ nav {
 }
 
 /* SEARCH BAR COMPONENT */
-.div logo {
+.product-overview .div logo {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
 }
 
-.search input {
+.product-overview .search input {
   background: white;
   border: 0;
   border-radius: 2px;
@@ -141,7 +137,7 @@ nav {
   width: 225px;
 }
 
-.search-icon {
+.product-overview .search-icon {
   float: right;
   background-color: transparent;
   height: 40px;
