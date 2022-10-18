@@ -13,8 +13,8 @@ export default function Description({ id }) {
     })
   }, [])
 
-  const listItems = product?.features?.map((feature) => (
-    <li>{`${feature.feature}: ${feature.value}`}</li>
+  const listItems = product?.features?.map((feature, index) => (
+    <li key={index}>{`${feature.feature}: ${feature.value}`}</li>
   ))
   // console.log('this is product.features:', product.features)
   // console.log('these are listItems:', listItems)
