@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+import SearchBar from './components/SearchBar'
 import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
 import QA from './components/QA'
@@ -105,6 +106,8 @@ export default function App() {
 
     if (modalOpen) {
       modalRef.current.style.display = 'block'
+      // Set the modal to the current scroll position to always be in view and centered
+      modalRef.current.style.top = window.scrollY + 'px'
       document.getElementsByTagName('body')[0].style.overflow = 'hidden'
       window.addEventListener('click', handleModalClick)
     } else {
@@ -132,6 +135,10 @@ export default function App() {
           <div className="modal-content">{modalContent}</div>
         </div>
       </div>
+
+      <nav className="navbar">
+        <SearchBar />
+      </nav>
 
       <main className="container">
         <ProductOverview />

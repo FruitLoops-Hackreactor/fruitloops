@@ -1,6 +1,5 @@
 import { AppContext, getProduct } from '@/App'
 import { useContext, useEffect, useState } from 'react'
-import SearchBar from './PO-Components/SearchBar'
 import ImageGallery from './PO-Components/ImageGallery'
 import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
@@ -34,9 +33,6 @@ export default function ProductOverview() {
 
   return (
     <div className="product-overview">
-      <div className="navbar">
-        <SearchBar />
-      </div>
       <div className="main-container">
         <div className="image-gallery">
           <br></br>
