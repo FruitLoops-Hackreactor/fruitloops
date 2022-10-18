@@ -1,0 +1,38 @@
+/* PRODUCT INFORMATION MAIN */
+.prodInfo-container {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.star-reviews {
+  flex: 1;
+}
+
+.category-title {
+  flex: 1;
+}
+
+.product-name {
+  flex: 1;
+}
+
+.product-price {
+  flex: 1;
+}
+
+.style-selector {
+
+}
+
+.atc-container {
+
+}
+
+/*TOGGLE STAR*/
+.icon-star {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #000;
+  padding: 10px;
+}

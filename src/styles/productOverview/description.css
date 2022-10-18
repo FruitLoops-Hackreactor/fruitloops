@@ -1,0 +1,29 @@
+.description-container {
+  font-family: 'Inter', sans-serif;
+  src: url(@/assets/fonts/Inter.woff2) format('woff2');
+  display: grid;
+  grid-template-columns: [line1] 100px [line2] 100px [line3] 100px [line4] 300px [line5] 50px [column-end];
+  grid-template-rows: [row1] 50px [row2] 25px [row3] 5px [row4];
+}
+
+.slogan {
+  padding-top: 15px;
+  grid-column-start: line1;
+  grid-column-end: line5;
+  grid-row-start: row1;
+  grid-row-end: row2;
+}
+
+.desc-summary {
+  grid-column-start: line1;
+  grid-column-end: line5;
+  grid-row-start: row2;
+  grid-row-end: row3;
+}
+
+.features {
+  grid-column-start: line5;
+  grid-column-end: column-end;
+  grid-row-start: row1;
+  grid-row-end: row2;
+}
