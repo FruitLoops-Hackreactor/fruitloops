@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const webpack = require('webpack')
+import path from 'path'
+import DotenvWebpackPlugin from 'dotenv-webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import webpack from 'webpack'
 
 /** @type {import('webpack').Configuration} */
-module.exports = {
+export default {
   mode: 'development',
   target: 'web',
-  entry: ['webpack/hot/dev-server', path.join(__dirname, 'src/index.jsx')],
+  entry: ['webpack/hot/dev-server', path.join(process.cwd(), 'src/index.jsx')],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(process.cwd(), 'dist'),
   },
   cache: { type: 'filesystem' },
   devtool: 'source-map',
@@ -28,8 +27,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
+    // Custom alias to allow easy reference to the /src directory for imports
     alias: {
-      '@': path.join(__dirname, 'src'),
+      '@': path.join(process.cwd(), 'src'),
     },
   },
   module: {
@@ -41,10 +41,11 @@ module.exports = {
           loader: 'swc-loader',
           options: {
             jsc: {
-              // Required for the loader to parse JSX
-              parser: {
-                jsx: true,
+              transform: {
+                react: { runtime: 'automatic' },
               },
+              // Required for the loader to parse JSX
+              parser: { jsx: true },
             },
           },
         },
@@ -60,10 +61,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv(),
+    new DotenvWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.join(__dirname, 'src/index.html'),
+      template: path.join(process.cwd(), 'src/index.html'),
     }),
     new webpack.ProvidePlugin({
       React: 'react',
