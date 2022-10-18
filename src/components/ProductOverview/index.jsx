@@ -43,8 +43,7 @@ export default function ProductOverview() {
         </div>
       </div>
       <div className="description">
-        <h4>Description</h4>
-        <Description />
+        <Description product={productById} id={productById.id} />
       </div>
     </div>
   )

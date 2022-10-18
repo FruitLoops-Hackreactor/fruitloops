@@ -1,23 +1,36 @@
 import { useState, useEffect } from 'react'
+import { IconStar, IconChevronDown, IconPlus } from '@tabler/icons'
 import axios from 'axios'
-import '@/styles/productOverview/productOverview.css'
+import StyleSelector from './StyleSelector'
+import '@/styles/productOverview/productInformation.css'
 
 export default function ProductInformation({ product }) {
   return (
-    <div>
+    <div className="prodInfo-container">
       <div className="product-info">
-        <div>Read all reviews</div>
+        <div className="star-reviews">Read all reviews</div>
         <div className="category-title">CATEGORY</div>
         <div className="product-name">{product.name}</div>
         <div className="product-price">${product.default_price}</div>
       </div>
 
-      <div className="style-selector">
-        <div>Style &gt; SELECTED STYLE</div>
+      <div className="styleSelector-container">
+        <StyleSelector product={product} id={product.id} />
+        <button className="select-size">
+          SELECT SIZE
+          <IconChevronDown className="icon-down" />
+        </button>
+        <button className="select-qty">
+          1
+          <IconChevronDown className="icon-down" />
+        </button>
       </div>
 
-      <div className="add-to-cart">
-        <div>ADD TO CART</div>
+      <div className="atc-container">
+        <button className="add-to-bag">
+          ADD TO BAG <IconPlus className="icon-plus" />
+        </button>
+        <IconStar className="icon-star" />
       </div>
     </div>
   )

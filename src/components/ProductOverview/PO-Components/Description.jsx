@@ -1,26 +1,13 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import '@/styles/productOverview/description.css'
 
-export default function Description({ id }) {
-  id = id ? id : 40344 // delete this later
-
-  const [product, setProduct] = useState({})
-
-  useEffect(() => {
-    axios.get(`/products/${id}`).then((prodInfo) => {
-      // console.log('this is from getting product info for 1 id:', prodInfo.data)
-      setProduct(prodInfo.data)
-    })
-  }, [])
-
+export default function Description({ product, id }) {
   const listItems = product?.features?.map((feature, index) => (
     <li key={index}>{`${feature.feature}: ${feature.value}`}</li>
   ))
-  // console.log('this is product.features:', product.features)
-  // console.log('these are listItems:', listItems)
 
   return (
-    <div>
+    <div className="description-container">
       <div className="slogan">{product.slogan}</div>
       <br></br>
       <div className="desc-summary">{product.description}</div>
