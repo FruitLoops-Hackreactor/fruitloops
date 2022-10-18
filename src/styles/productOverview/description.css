@@ -2,24 +2,28 @@
   font-family: 'Inter', sans-serif;
   src: url(@/assets/fonts/Inter.woff2) format('woff2');
   display: grid;
-  grid-template-columns: [first] 100px [line2] 100px [line3] 100px [col4-start] 200px [five] 100px [end];
-  grid-template-rows: [row1-start] 25% [row1-end] 75% [third-line] auto [last-line];
+  grid-template-columns: [line1] 100px [line2] 100px [line3] 100px [line4] 300px [line5] 50px [column-end];
+  grid-template-rows: [row1] 50px [row2] 25px [row3] 5px [row4];
 }
 
 .slogan {
-  grid-column-start: first;
-  grid-column-end: five;
-  grid-row-start: row1-start;
-  grid-row-end: 1;
+  padding-top: 15px;
+  grid-column-start: line1;
+  grid-column-end: line5;
+  grid-row-start: row1;
+  grid-row-end: row2;
 }
 
 .desc-summary {
-  grid-column-start: first;
-  grid-column-end: span col4-start;
-  grid-row-start: 2;
-  grid-row-end: span 2;
+  grid-column-start: line1;
+  grid-column-end: line5;
+  grid-row-start: row2;
+  grid-row-end: row3;
 }
 
 .features {
-  grid-area: 1 / col3-start / last-line / 6;
+  grid-column-start: line5;
+  grid-column-end: column-end;
+  grid-row-start: row1;
+  grid-row-end: row2;
 }
