@@ -38,7 +38,8 @@ export default {
     // Handles mocking static assets to stubs, which aren't needed for testing
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__tests__/mocks/fileMock.js',
-    '\\.(css)$': '<rootDir>/__tests__/mocks/styleMock.js',
+    '\\.(css)$': '<rootDir>/__tests__/mocks/styleMock.js', // static files
+    '\\.(css)$': 'identity-obj-proxy', // css files
     // Handles our custom webpack aliases
     // () is group capture; capture the directory and then the file path
     // $1/$2 are match references; $1 is the directory and then $2 is the file path
