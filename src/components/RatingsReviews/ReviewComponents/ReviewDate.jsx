@@ -3,7 +3,6 @@
 import React from 'react'
 
 const ReviewDate = (props) => {
-
   var convertDate = (date) => {
     let month = date.slice(5, 7)
     let day = date.slice(8, 10)
