@@ -1,7 +1,10 @@
-// import axios from 'axios'
+import { useContext } from 'react'
+import { AppContext } from '@/App'
 import Answer from './Answer'
+import AnswerForm from './AnswerForm'
 
 export default function Question({ question, helpfulnessClick }) {
+  const { currentProduct, setModalContent, setModalOpen } = useContext(AppContext)
   let { question_body, question_helpfulness, question_id } = question
   let answers = Object.values(question.answers)
 
@@ -19,6 +22,20 @@ export default function Question({ question, helpfulnessClick }) {
           </a>
         </span>
         <span>{`(${question_helpfulness})`}</span>
+        <span>
+          <a
+            onClick={(event) => {
+              event.preventDefault()
+              setModalOpen(true)
+              setModalContent(
+                <AnswerForm currentProduct={currentProduct} questionBody={question_body} />
+              )
+            }}
+            href=""
+          >
+            Add Answer
+          </a>
+        </span>
       </div>
       <div>
         {answers.map((answer, index) => {
