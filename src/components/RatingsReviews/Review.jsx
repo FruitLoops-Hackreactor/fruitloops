@@ -6,7 +6,7 @@ import React from 'react'
 
 const Review = (props) => {
   return (
-    <div>
+    <div data-testid="review">
       <StarRating rating={props.review.rating} />
       <Summary summary={props.review.summary} />
       <Body body={props.review.body} />
