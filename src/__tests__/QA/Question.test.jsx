@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import QuestionsList from '@/components/QA/QuestionsList'
 
 describe('individual question', () => {
@@ -9,8 +9,8 @@ describe('individual question', () => {
   ]
 
   it('should display one question if there is one question', () => {
-    render(<QuestionsList questions={questions} />)
+    const { queryByTestId } = render(<QuestionsList questions={questions} />)
 
-    expect(screen.queryByTestId('questions-list').children.length).toBe(1)
+    expect(queryByTestId('questions-list').children).toHaveLength(1)
   })
 })
