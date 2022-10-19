@@ -18,11 +18,12 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
-          // hardcoded to product id with good sample questions, change to currentProduct.id
+          // TEMP: hardcoded to product id with good sample questions, change to currentProduct.id
           product_id: 40343,
         },
       })
       .then((res) => {
+        console.log('questions', res.data.results)
         setAllQuestions(res.data.results)
         setAdditionalQuestions(0)
         return res.data.results
@@ -56,7 +57,7 @@ export default function QA() {
   }
 
   /*
-   * updates helpfulness value of question on API, uses localstorage to make
+   * updates helpfulness value of question on API, uses localStorage to make
    * sure only once per user per question
    */
   const helpfulnessClickHandler = (event, questionId) => {
