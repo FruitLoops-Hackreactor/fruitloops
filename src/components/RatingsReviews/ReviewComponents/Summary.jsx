@@ -11,7 +11,9 @@ const Summary = (props) => {
 
   return (
     <div>
-      <span className="reviewSummary"><b>{truncateSummary(props.summary)}</b></span>
+      <span className="reviewSummary">
+        <b>{truncateSummary(props.summary)}</b>
+      </span>
     </div>
   )
 }
