@@ -1,11 +1,11 @@
-.bubble-container {
+.product-overview .bubble-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.style-bubble {
+.product-overview .style-bubble {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -16,7 +16,7 @@
   flex-wrap: wrap;
 }
 
-.bubble-check {
+.product-overview .bubble-check {
   position: absolute;
   width: 20px;
   height: 20px;
