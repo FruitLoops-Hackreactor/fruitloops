@@ -1,9 +1,10 @@
-import Question from './Question'
+import QuestionsList from './QuestionsList'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
 import AddQuestion from './AddQuestion'
 import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import { AppContext } from '@/App'
+import '@/styles/qa.css'
 
 export default function QA() {
   let [questions, setQuestions] = useState([])
@@ -18,7 +19,7 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
-          // hardcoded to product id with good sample questions, change to currentProduct.id
+          // TEMP: hardcoded to product id with good sample questions, change to currentProduct.id
           product_id: 40343,
         },
       })
@@ -56,7 +57,7 @@ export default function QA() {
   }
 
   /*
-   * updates helpfulness value of question on API, uses localstorage to make
+   * updates helpfulness value of question on API, uses localStorage to make
    * sure only once per user per question
    */
   const helpfulnessClickHandler = (event, questionId) => {
@@ -91,13 +92,7 @@ export default function QA() {
   return (
     <section>
       <h3 className="section-title">QUESTIONS & ANSWERS</h3>
-      <div className="questions-list">
-        {questions.map((question, index) => {
-          return (
-            <Question question={question} helpfulnessClick={helpfulnessClickHandler} key={index} />
-          )
-        })}
-      </div>
+      <QuestionsList questions={questions} helpfulnessClick={helpfulnessClickHandler} />
       <span>
         <MoreQuestionsBtn moreQuestions={moreQuestions} handleClick={handleMoreQuestionsClick} />
         <AddQuestion />

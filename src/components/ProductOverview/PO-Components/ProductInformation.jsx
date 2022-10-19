@@ -8,19 +8,19 @@ export default function ProductInformation({ product }) {
   return (
     <div className="prodInfo-container">
       <div className="product-info">
-        <div className="star-reviews">Read all reviews</div>
-        <div className="category-title">CATEGORY</div>
-        <div className="product-name">{product.name}</div>
-        <div className="product-price">${product.default_price}</div>
+        <div className="star-reviews space">Read all reviews</div>
+        <div className="category-title space">CATEGORY</div>
+        <div className="product-name space">{product.name}</div>
+        <div className="product-price space">${product.default_price}</div>
       </div>
 
       <div className="styleSelector-container">
         <StyleSelector product={product} id={product.id} />
-        <button className="select-size">
+        <button className="select-size space">
           SELECT SIZE
           <IconChevronDown className="icon-down" />
         </button>
-        <button className="select-qty">
+        <button className="select-qty space">
           1
           <IconChevronDown className="icon-down" />
         </button>

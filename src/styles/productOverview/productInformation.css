@@ -1,36 +1,43 @@
 /* PRODUCT INFORMATION MAIN */
-.prodInfo-container {
-
+.product-overview .prodInfo-container {
   display: flex;
   flex-direction: column;
 }
 
-.star-reviews {
+.product-overview .product-info {
+  padding: 2rem 1rem;
+}
+
+.product-overview .space {
+  padding-bottom: .5rem;
+}
+
+.product-overview .star-reviews {
   flex: 1;
 }
 
-.category-title {
+.product-overview .category-title {
   flex: 1;
 }
 
-.product-name {
+.product-overview .product-name {
   flex: 1;
 }
 
-.product-price {
+.product-overview .product-price {
   flex: 1;
 }
 
-.style-selector {
+.product-overview .style-selector {
 
 }
 
-.atc-container {
+.product-overview .atc-container {
 
 }
 
 /*TOGGLE STAR*/
-.icon-star {
+.product-overview .icon-star {
   height: 15px;
   width: 15px;
   border: 1px solid #000;

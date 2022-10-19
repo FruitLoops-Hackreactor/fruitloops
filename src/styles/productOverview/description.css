@@ -1,4 +1,4 @@
-.description-container {
+.product-overview .description-container {
   font-family: 'Inter', sans-serif;
   src: url(@/assets/fonts/Inter.woff2) format('woff2');
   display: grid;
@@ -6,7 +6,7 @@
   grid-template-rows: [row1] 50px [row2] 25px [row3] 5px [row4];
 }
 
-.slogan {
+.product-overview .slogan {
   padding-top: 15px;
   grid-column-start: line1;
   grid-column-end: line5;
@@ -14,14 +14,14 @@
   grid-row-end: row2;
 }
 
-.desc-summary {
+.product-overview .desc-summary {
   grid-column-start: line1;
   grid-column-end: line5;
   grid-row-start: row2;
   grid-row-end: row3;
 }
 
-.features {
+.product-overview .features {
   grid-column-start: line5;
   grid-column-end: column-end;
   grid-row-start: row1;

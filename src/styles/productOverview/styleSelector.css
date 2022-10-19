@@ -1,4 +1,11 @@
-.style-bubble {
+.product-overview .bubble-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-overview .style-bubble {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -7,4 +14,18 @@
   align-items: center;
   z-index: 1;
   flex-wrap: wrap;
+}
+
+.product-overview .bubble-check {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: #5A5A5A;
+  background: white;
+  border: 1px solid #5A5A5A;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
