@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import ImageGallery from './PO-Components/ImageGallery'
 import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
-import '@/styles/productOverview/productOverview.css'
+import '@/styles/productOverview/main.css'
 
 export default function ProductOverview() {
   const { products, currentProduct } = useContext(AppContext)
@@ -24,7 +24,7 @@ export default function ProductOverview() {
     }
 
     getPhotos().then((product) => {
-      console.log('these r the styles:', product.styles) // TEMP
+      // console.log('these r the styles:', product.styles) // TEMP
       setPhotos(product.styles[0].photos) // NEED TO REFACTOR FOR WHEN SPECIFIC STYLE IS CHOSEN
       // console.log('these r the product:', product)
       setProductById(product)

@@ -1,5 +1,5 @@
 /* IMAGE GALLERY COMPONENT */
-.product-overview .carousel {
+.carousel {
   background-color: #ccc;
   position: relative;
   height: 540px;
@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.product-overview .image {
+.image {
   width: auto;
   max-width: 370px;
   height: 500px;
@@ -17,7 +17,7 @@
   border-radius: 10px;
 }
 
-.product-overview .right-arrow {
+.right-arrow {
   position: absolute;
   top: 50%;
   right: 75px;
@@ -27,7 +27,7 @@
   user-select: none;
 }
 
-.product-overview .left-arrow {
+.left-arrow {
   position: absolute;
   top: 50%;
   left: 75px;
@@ -37,7 +37,7 @@
   user-select: none;
 }
 
-.product-overview .up-arrow {
+.up-arrow {
   position: absolute;
   bottom: 96%;
   margin-left: 15px;
@@ -47,7 +47,7 @@
   user-select: none;
 }
 
-.product-overview .down-arrow {
+.down-arrow {
   position: absolute;
   top: 100%;
   margin-left: 15px;
@@ -57,15 +57,15 @@
   user-select: none;
 }
 
-.product-overview .slide {
+.slide {
   opacity: 0;
 }
 
-.product-overview .slide.active {
+.slide.active {
   opacity: 1;
 }
 
-.product-overview .container-squares {
+.container-squares {
   top: 10%;
   position: absolute;
   display: flex;
@@ -73,7 +73,7 @@
   align-items: center;
 }
 
-.product-overview .square {
+.square {
   width: 46px;
   height: 46px;
   border: 1px solid gray;
@@ -82,11 +82,11 @@
   cursor: pointer;
 }
 
-.product-overview .square.active {
+.square.active {
   background: #ccc;
 }
 
-.product-overview .snippit {
+.snippit {
   width: 46px;
   height: 46px;
   justify-content: center;
@@ -94,7 +94,7 @@
   z-index: 1;
 }
 
-.product-overview .highlight {
+.highlight {
   background-color: gray;
   border: 1px solid gray;
   justify-content: center;
@@ -105,3 +105,6 @@
   z-index: 1;
 }
 
+.space {
+  padding-bottom: 1rem;
+}

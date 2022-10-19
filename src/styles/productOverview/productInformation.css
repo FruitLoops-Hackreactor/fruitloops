@@ -1,8 +1,15 @@
 /* PRODUCT INFORMATION MAIN */
 .prodInfo-container {
-
   display: flex;
   flex-direction: column;
+}
+
+.product-info {
+  padding: 2rem 1rem;
+}
+
+.space {
+  padding-bottom: .5rem;
 }
 
 .star-reviews {

@@ -57,7 +57,12 @@ export default function ImageGallery({ photos }) {
           return (
             <div className={index === slideIdx ? 'slide active' : 'slide'} key={index}>
               {index === slideIdx && (
-                <img src={photo.thumbnail_url} alt={photo.name} className="image" />
+                <img
+                  src={photo.thumbnail_url}
+                  alt={photo.name}
+                  className="image"
+                  data-testid="image-test"
+                />
               )}
             </div>
           )
