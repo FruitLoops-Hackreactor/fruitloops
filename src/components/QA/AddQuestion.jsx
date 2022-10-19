@@ -15,7 +15,6 @@ export default function AddQuestion() {
     const questionSubmitHandler = (event) => {
       event.preventDefault()
 
-      console.log('submit email', email)
       if (!emailRegex.test(email)) {
         alert('You must enter the following: Valid email address')
         return
@@ -30,7 +29,6 @@ export default function AddQuestion() {
           .filter((value) => !value[1])
           .map((value) => value[0])
           .join(', ')
-        console.log(falsyValues)
         alert(`You must enter the following: ${falsyValues}`)
       }
       let question = {
