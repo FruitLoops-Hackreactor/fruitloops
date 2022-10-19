@@ -1,6 +1,5 @@
 // import axios from 'axios'
 import Answer from './Answer'
-import '../../styles/qa.css'
 
 export default function Question({ question, helpfulnessClick }) {
   let { question_body, question_helpfulness, question_id } = question
