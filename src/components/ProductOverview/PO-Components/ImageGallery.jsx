@@ -26,7 +26,7 @@ export default function ImageGallery({ photos }) {
     setSlideIdx(idx)
   }
 
-  console.log(slideIdx) // TEMP
+  // console.log(slideIdx) // TEMP
 
   return (
     <div className="image-gallery">
