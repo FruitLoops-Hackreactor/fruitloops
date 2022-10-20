@@ -60,6 +60,13 @@ section {
   }
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
 .section-title {
   margin-bottom: 2rem;
 }

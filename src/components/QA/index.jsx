@@ -20,7 +20,7 @@ export default function QA() {
       .get('/qa/questions', {
         params: {
           // TEMP: hardcoded to product id with good sample questions, change to currentProduct.id
-          product_id: 40343,
+          product_id: currentProduct.id,
         },
       })
       .then((res) => {
