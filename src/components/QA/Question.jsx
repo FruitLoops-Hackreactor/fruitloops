@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { AppContext } from '@/App'
+import { useStore } from '@/utils/fastContext'
 import Answer from './Answer'
 import AnswerForm from './AnswerForm'
 
 export default function Question({ question, helpfulnessClick }) {
-  const { currentProduct, setModalContent, setModalOpen } = useContext(AppContext)
+  const setModalContent = useStore('modalContent')[1]
+  const [currentProduct] = useStore('currentProduct')
   let { question_body, question_helpfulness, question_id } = question
   let answers = Object.values(question.answers)
 
@@ -26,7 +26,6 @@ export default function Question({ question, helpfulnessClick }) {
           <a
             onClick={(event) => {
               event.preventDefault()
-              setModalOpen(true)
               setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
             }}
             href=""

@@ -31,15 +31,15 @@ export default function AddQuestion() {
           .join(', ')
         alert(`You must enter the following: ${falsyValues}`)
       }
-      // let question = {
-      //   body: questionBody,
-      //   name: username,
-      //   email: email,
-      // }
-      // axios
-      //   .post('/qa/questions', question)
-      //   .then((res) => console.log(res))
-      //   .catch((err) => console.log(err))
+      let question = {
+        body: questionBody,
+        name: username,
+        email: email,
+      }
+      axios
+        .post('/qa/questions', question)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
     }
 
     return (
