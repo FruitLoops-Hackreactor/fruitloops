@@ -1,9 +1,9 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { createFastContext } from './utils/fastContext'
 import App from './App'
 import './styles/normalize.css'
 import './styles/globals.css'
-import { createFastContext } from './utils/fastContext'
 
 const Provider = createFastContext({
   currentProduct: null,
