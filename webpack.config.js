@@ -54,7 +54,7 @@ export default {
     ],
   },
   plugins: [
-    new DotenvWebpackPlugin(),
+    process.env.NODE_ENV !== 'production' && new DotenvWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: path.join(process.cwd(), 'src/index.html'),
@@ -63,5 +63,5 @@ export default {
       React: 'react',
     }),
     new MiniCssExtractPlugin(),
-  ],
+  ].filter(Boolean),
 }
