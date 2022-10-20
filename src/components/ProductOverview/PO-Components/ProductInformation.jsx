@@ -16,10 +16,12 @@ export default function ProductInformation({ product }) {
 
       <div className="styleSelector-container">
         <StyleSelector product={product} id={product.id} />
-        <button className="select-size space">
-          SELECT SIZE
-          <IconChevronDown className="icon-down" />
-        </button>
+        <select className="select-size space">
+          <option value="none">
+            Select a size
+            <IconChevronDown className="icon-down" />
+          </option>
+        </select>
         <button className="select-qty space">
           1
           <IconChevronDown className="icon-down" />

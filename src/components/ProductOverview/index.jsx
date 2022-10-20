@@ -1,12 +1,14 @@
-import { AppContext, getProduct } from '@/App'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useStore } from '@/utils/fastContext'
+import { getProduct } from '@/utils/products'
 import ImageGallery from './PO-Components/ImageGallery'
 import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
 import '@/styles/productOverview/main.css'
 
 export default function ProductOverview() {
-  const { products, currentProduct } = useContext(AppContext)
+  const [products] = useStore('products')
+  const [currentProduct] = useStore('currentProduct')
   const [photos, setPhotos] = useState([])
   const [productById, setProductById] = useState({})
 
@@ -14,14 +16,11 @@ export default function ProductOverview() {
   useEffect(() => {
     if (!currentProduct) return
 
-    const getPhotos = async () => {
-      try {
-        return getProduct(currentProduct.id)
-      } catch (err) {
-        console.log(err)
+    const getPhotos = async () =>
+      getProduct(currentProduct.id).catch((err) => {
+        console.error(err)
         return []
-      }
-    }
+      })
 
     getPhotos().then((product) => {
       // console.log('these r the styles:', product.styles) // TEMP
