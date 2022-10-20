@@ -2,9 +2,17 @@ import { useState, useEffect } from 'react'
 import { IconStar, IconChevronDown, IconPlus } from '@tabler/icons'
 import axios from 'axios'
 import StyleSelector from './StyleSelector'
+import AddToCart from './AddToCart'
 import '@/styles/productOverview/productInformation.css'
 
 export default function ProductInformation({ product }) {
+  const [skus, setSkus] = useState([])
+
+  const skusHandler = (skusObj) => {
+    console.log('these are the SKUs', skusObj)
+    setSkus(skusObj)
+  }
+
   return (
     <div className="prodInfo-container">
       <div className="product-info">
@@ -15,22 +23,8 @@ export default function ProductInformation({ product }) {
       </div>
 
       <div className="styleSelector-container">
-        <StyleSelector product={product} id={product.id} />
-        <button className="select-size space">
-          SELECT SIZE
-          <IconChevronDown className="icon-down" />
-        </button>
-        <button className="select-qty space">
-          1
-          <IconChevronDown className="icon-down" />
-        </button>
-      </div>
-
-      <div className="atc-container">
-        <button className="add-to-bag">
-          ADD TO BAG <IconPlus className="icon-plus" />
-        </button>
-        <IconStar className="icon-star" />
+        <StyleSelector product={product} id={product.id} skusHandler={skusHandler} />
+        <AddToCart skus={skus} />
       </div>
     </div>
   )
