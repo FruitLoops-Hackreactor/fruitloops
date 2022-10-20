@@ -27,9 +27,7 @@ export default function Question({ question, helpfulnessClick }) {
             onClick={(event) => {
               event.preventDefault()
               setModalOpen(true)
-              setModalContent(
-                <AnswerForm currentProduct={currentProduct} questionBody={question_body} />
-              )
+              setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
             }}
             href=""
           >
