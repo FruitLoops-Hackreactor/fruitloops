@@ -5,22 +5,31 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
   node: circleci/node@5.0.3
+  ggshield: gitguardian/ggshield@1.1.4
 
 jobs:
   test_and_build: # this can be any name you choose
-    executor: node/default # use the default executor defined within the orb
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Test
-          command: npm test --runInBand || exit 1
-      - run:
-          name: Build
-          command: npm run build || exit 1
+      executor: node/default # use the default executor defined within the orb
+      steps:
+        - checkout
+        - node/install-packages:
+            pkg-manager: npm
+          # Need to exit the commands with a non-zero code to fail fast
+        - run:
+            name: Test
+            # https://circleci.com/docs/collect-test-data/#jest
+            command: npm test --runInBand || exit 1
+        - run:
+            name: Build
+            command: npm run build || exit 1
 
 workflows:
-  test_and_build:
+  version: 2
+  main:
     jobs:
+      - ggshield/scan:
+          name: ggshield-scan # best practice is to name each orb job
+          base_revision: << pipeline.git.base_revision >>
+          revision: <<pipeline.git.revision>>
       - test_and_build
+
