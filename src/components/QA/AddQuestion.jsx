@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useStore } from '@/utils/fastContext'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default function AddQuestion() {
   const setModalContent = useStore('modalContent')[1]
@@ -15,21 +15,22 @@ export default function AddQuestion() {
     const questionSubmitHandler = (event) => {
       event.preventDefault()
 
-      if (!emailRegex.test(email)) {
-        alert('You must enter the following: Valid email address')
-        return
-      }
       if (!email || !questionBody || !username) {
         let values = [
-          ['email', email],
-          ['question', questionBody],
-          ['username', username],
+          ['Email', email],
+          ['Question', questionBody],
+          ['Nickname', username],
         ]
         let falsyValues = values
           .filter((value) => !value[1])
           .map((value) => value[0])
           .join(', ')
         alert(`You must enter the following: ${falsyValues}`)
+        return
+      }
+      if (!emailRegex.test(email)) {
+        alert('You must enter the following: Valid email address')
+        return
       }
       let question = {
         body: questionBody,

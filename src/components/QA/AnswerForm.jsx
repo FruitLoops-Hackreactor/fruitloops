@@ -13,10 +13,6 @@ export default function AnswerForm({ currentProduct, question }) {
   const answerSubmitHandler = (event) => {
     event.preventDefault()
 
-    if (!emailRegex.test(email)) {
-      alert('You must enter the following: Valid email address')
-      return
-    }
     if (!email || !answerBody || !username) {
       let values = [
         ['Email', email],
@@ -28,6 +24,11 @@ export default function AnswerForm({ currentProduct, question }) {
         .map((value) => value[0])
         .join(', ')
       alert(`You must enter the following: ${falsyValues}`)
+      return
+    }
+    if (!emailRegex.test(email)) {
+      alert('You must enter the following: Valid email address')
+      return
     }
     let answer = {
       body: answerBody,
