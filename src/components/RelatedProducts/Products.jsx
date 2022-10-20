@@ -1,15 +1,10 @@
+import { useStore } from '@/utils/fastContext'
 import Carousel from './Carousel'
 import ProductCard from './ProductCard'
 import SkeletonCard from '../SkeletonCard'
 
-export default function Products({
-  max,
-  loading,
-  currentProduct,
-  relatedProducts,
-  setModalOpen,
-  setModalContent,
-}) {
+export default function Products({ max, loading, currentProduct, relatedProducts }) {
+  const setModalContent = useStore('modalContent')[1]
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
@@ -43,7 +38,6 @@ export default function Products({
       }
     }
 
-    setModalOpen(true)
     setModalContent(
       <div className="product-comparison">
         <div className="title">
