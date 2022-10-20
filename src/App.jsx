@@ -21,9 +21,9 @@ axios.defaults.headers.common['Authorization'] = process.env.GITHUB_TOKEN
 const PROD_COUNT = 10
 
 export default function App() {
-  const [loading, setLoading] = useStore('loading')
-  const [products, setProducts] = useStore('products')
-  const [currentProduct, setCurrentProduct] = useStore('currentProduct')
+  const setLoading = useStore('loading')[1]
+  const setProducts = useStore('products')[1]
+  const setCurrentProduct = useStore('currentProduct')[1]
 
   // Fetch the products
   useEffect(() => {

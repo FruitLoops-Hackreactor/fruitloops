@@ -7,20 +7,22 @@ orbs:
   node: circleci/node@5.0.3
 
 jobs:
-  build_and_test: # this can be any name you choose
+  test_and_build: # this can be any name you choose
     executor: node/default # use the default executor defined within the orb
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm test
           name: Test
+          command: npm test --runInBand || exit 1
+      - store_test_results:
+          path: ./reports/
       - run:
-          command: npm build
           name: Build
+          command: npm run build || exit 1
 
 workflows:
-  build_and_test:
+  test_and_build:
     jobs:
-      - build_and_test
+      - test_and_build

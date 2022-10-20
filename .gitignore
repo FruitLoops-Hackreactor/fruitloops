@@ -40,3 +40,6 @@ yarn-error.log*
 # personal notes
 NOTES.md
 TODO.md
+
+tsconfig.json
+**/*.tsx
