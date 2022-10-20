@@ -1,16 +1,16 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useStore } from '@/utils/fastContext'
 import QuestionsList from './QuestionsList'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
 import AddQuestion from './AddQuestion'
-import axios from 'axios'
-import { useState, useEffect, useContext } from 'react'
-import { AppContext } from '@/App'
 import '@/styles/qa.css'
 
 export default function QA() {
+  const [currentProduct] = useStore('currentProduct')
   let [questions, setQuestions] = useState([])
   let [allQuestions, setAllQuestions] = useState([])
   let [moreQuestions, setMoreQuestions] = useState(true)
-  let { currentProduct } = useContext(AppContext)
   let [additionalQuestions, setAdditionalQuestions] = useState()
 
   useEffect(() => {

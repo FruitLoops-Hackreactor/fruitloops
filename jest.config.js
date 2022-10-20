@@ -8,7 +8,15 @@ export default {
   testEnvironment: 'jsdom',
   // An array of glob patterns to match files that coverage should be collected from.
   // https://jestjs.io/docs/configuration#collectcoveragefrom-array
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}', '!<rootDir>/src/__tests__/**/*.{js,jsx}'],
+  // The threshold to determine what percentage of coverage is acceptable
+  // https://jestjs.io/docs/configuration#coveragethreshold-object
+  coverageThreshold: {
+    // We are deeming that 70% of all lines covered is acceptable
+    global: {
+      lines: 70,
+    },
+  },
   // Glob pattern to determine what files to test
   testMatch: ['<rootDir>/src/**/__tests__/**/*{spec,test}.{js,jsx}'],
   transform: {
