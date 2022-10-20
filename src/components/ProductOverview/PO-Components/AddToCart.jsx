@@ -10,7 +10,7 @@ export default function AddToCart({ skus }) {
     const sizeAndQuantity = Object.keys(skus).map((sku) => {
       return skus[sku]
     })
-    console.log('this is sizeAndQuantity', sizeAndQuantity)
+    // console.log('this is sizeAndQuantity', sizeAndQuantity)
     return sizeAndQuantity
   }
 
@@ -29,10 +29,10 @@ export default function AddToCart({ skus }) {
     const totalQuantity = getQuantity(selectedSize)
     // create an array from 1 to N [1, 2, 3, ...N]
     const stock = Array.from({ length: totalQuantity }, (v, i) => i + 1)
-    console.log('this is stock', stock)
+    // console.log('this is stock', stock)
     // map over the stock array
     return stock?.map((num, index) => {
-      console.log('this is num', num)
+      // console.log('this is num', num)
       return (
         <option className="qty-options" value={num} key={index}>
           {num}
@@ -58,10 +58,10 @@ export default function AddToCart({ skus }) {
       <select className="qty" onChange={(event) => setQuantity(event.target.value)}>
         {getQuantity(selectedSize) > 0 ? (
           <>
-            <option value="">SELECT QTYYEE</option>
+            <option value="">SELECT QTY</option>
             {numDropdown()}
           </>
-        ) : (
+        ) : getQuantity(selectedSize) === 0 ? null : (
           <option value="">SELECT QTY</option>
         )}
       </select>

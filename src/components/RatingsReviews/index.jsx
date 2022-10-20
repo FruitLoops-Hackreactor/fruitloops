@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
-import { AppContext } from '@/App'
-import ReviewsList from './ReviewsList'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useStore } from '@/utils/fastContext'
+import ReviewsList from './ReviewsList'
 
 export default function RatingsReviews() {
-  const { currentProduct } = useContext(AppContext)
+  const [currentProduct] = useStore('currentProduct')
   const [reviews, setReviews] = useState([])
 
   useEffect(() => {

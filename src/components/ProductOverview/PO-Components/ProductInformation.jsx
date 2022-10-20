@@ -9,7 +9,7 @@ export default function ProductInformation({ product }) {
   const [skus, setSkus] = useState([])
 
   const skusHandler = (skusObj) => {
-    console.log('these are the SKUs', skusObj)
+    // console.log('these are the SKUs', skusObj)
     setSkus(skusObj)
   }
 

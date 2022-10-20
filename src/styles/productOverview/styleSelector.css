@@ -5,6 +5,10 @@
   gap: 1rem;
 }
 
+.product-overview .bubble {
+  position: relative;
+}
+
 .product-overview .style-bubble {
   width: 70px;
   height: 70px;
@@ -18,6 +22,8 @@
 
 .product-overview .bubble-check {
   position: absolute;
+  top: 0;
+  right: 0;
   width: 20px;
   height: 20px;
   color: #5A5A5A;

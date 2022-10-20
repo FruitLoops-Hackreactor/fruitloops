@@ -32,9 +32,9 @@ export default function StyleSelector({ product, id, skusHandler }) {
         setStyles(styleObj.data.results) // the entire styles array
         setCurrentStyle(styleObj.data.results[0]) // the first style
         // console.log('results array in styles:', styleObj.data.results)
-        console.log('currentStyle:', styleObj.data.results[0])
+        // console.log('currentStyle:', styleObj.data.results[0])
         skusHandler(styleObj.data.results[0].skus)
-        console.log('currentSku:', styleObj.data.results[0].skus)
+        // console.log('currentSku:', styleObj.data.results[0].skus)
       })
       .catch((err) => console.log(err))
   }, [id])

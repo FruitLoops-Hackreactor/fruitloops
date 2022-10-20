@@ -1,14 +1,15 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { AppContext, getProduct } from '@/App'
+import { getProduct } from '@/utils/products'
 import Products from './Products'
 import OutfitList from './OutfitList'
 import '@/styles/relatedProducts/main.css'
+import { useStore } from '@/utils/fastContext'
 
 export default function RelatedProducts() {
-  const { currentProduct, setModalOpen, setModalContent } = useContext(AppContext)
   const [loading, setLoading] = useState(true)
   const [relatedProducts, setRelatedProducts] = useState([])
+  const [currentProduct] = useStore('currentProduct')
   const relProdEl = document.querySelector('.related-products')
   // The max number of cards to display at a time
   const NUM_CARDS = relProdEl?.clientWidth < 1024 ? 2 : relProdEl?.clientWidth < 1280 ? 3 : 4
@@ -43,8 +44,6 @@ export default function RelatedProducts() {
         loading={loading}
         currentProduct={currentProduct}
         relatedProducts={relatedProducts}
-        setModalOpen={setModalOpen}
-        setModalContent={setModalContent}
       />
 
       <OutfitList max={NUM_CARDS} loading={loading} currentProduct={currentProduct} />

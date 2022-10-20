@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "npx webpack serve -c ./webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "coverage:summary": "jest --coverage --coverageReporters=text-summary || exit 0"
   },
   "lint-staged": {
     "./src/**/*.{js,jsx}": "eslint --fix --cache"

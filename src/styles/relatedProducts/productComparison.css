@@ -47,7 +47,6 @@
 
 .product-comparison .comparison > .row > span:not(:nth-child(2)) {
   width: 25%;
-  font-style: italic;
 }
 
 .product-comparison .comparison > .row > span:last-child {
