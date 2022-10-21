@@ -1,0 +1,65 @@
+.notification-error-container {
+  border: 1px solid #990f02;
+  border-radius: 10px;
+  max-width: 45vh;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: .25rem;
+}
+
+.notification-success {
+  border: 1px solid #006400;
+  border-radius: 10px;
+  max-width: 45vh;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.notification-body-error {
+  padding-left: 1.5rem;
+  color:#990f02;
+  font-size: 1rem;
+}
+
+.notification-body-success {
+  padding-left: 1.5rem;
+  color:#006400;
+  font-size: 1rem;
+}
+
+.close-notification {
+  background: transparent;
+  border: none;
+}
+
+.error-space {
+  flex-grow: 4;
+}
+
+.exclamation-mark {
+  border: 1px solid #990f02;
+  border-radius: 50%;
+  color: #990f02;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.check-mark {
+  border: 1px solid #006400;
+  border-radius: 50%;
+  color: #006400;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.x-symbol {
+  height: 1.3rem;
+  width: 1.3rem;
+  position: relative;
+  top: 0.15rem;
+  color: #000;
+}

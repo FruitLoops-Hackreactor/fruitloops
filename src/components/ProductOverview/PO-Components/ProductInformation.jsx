@@ -5,7 +5,7 @@ import StyleSelector from './StyleSelector'
 import AddToCart from './AddToCart'
 import '@/styles/productOverview/productInformation.css'
 
-export default function ProductInformation({ product }) {
+export default function ProductInformation({ product, changePhotos }) {
   const [skus, setSkus] = useState([])
 
   const skusHandler = (skusObj) => {
@@ -16,14 +16,19 @@ export default function ProductInformation({ product }) {
   return (
     <div className="prodInfo-container">
       <div className="product-info">
-        <div className="star-reviews space">Read all reviews</div>
-        <div className="category-title space">CATEGORY</div>
+        <div className="brand-name space">BRANDLESS</div>
+        <div className="category-title space">{product.category}</div>
         <div className="product-name space">{product.name}</div>
         <div className="product-price space">${product.default_price}</div>
       </div>
 
       <div className="styleSelector-container">
-        <StyleSelector product={product} id={product.id} skusHandler={skusHandler} />
+        <StyleSelector
+          product={product}
+          id={product.id}
+          skusHandler={skusHandler}
+          changePhotos={changePhotos}
+        />
         <AddToCart skus={skus} />
       </div>
     </div>
