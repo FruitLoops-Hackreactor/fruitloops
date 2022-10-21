@@ -32,3 +32,13 @@ form .question-form-body {
 form .question-form-email {
   width: 30rem;
 }
+
+/* answer modal form styles */
+form .answer-form-body {
+  width: 30rem;
+  height: 20rem;
+}
+
+form .answer-form-email {
+  width: 30rem;
+}

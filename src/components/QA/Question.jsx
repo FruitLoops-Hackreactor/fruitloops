@@ -1,7 +1,10 @@
-// import axios from 'axios'
+import { useStore } from '@/utils/fastContext'
 import Answer from './Answer'
+import AnswerForm from './AnswerForm'
 
 export default function Question({ question, helpfulnessClick }) {
+  const setModalContent = useStore('modalContent')[1]
+  const [currentProduct] = useStore('currentProduct')
   let { question_body, question_helpfulness, question_id } = question
   let answers = Object.values(question.answers)
 
@@ -19,6 +22,17 @@ export default function Question({ question, helpfulnessClick }) {
           </a>
         </span>
         <span>{`(${question_helpfulness})`}</span>
+        <span>
+          <a
+            onClick={(event) => {
+              event.preventDefault()
+              setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
+            }}
+            href=""
+          >
+            Add Answer
+          </a>
+        </span>
       </div>
       <div>
         {answers.map((answer, index) => {

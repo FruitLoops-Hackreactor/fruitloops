@@ -1,6 +1,14 @@
 import { render } from '@testing-library/react'
 import QuestionsList from '@/components/QA/QuestionsList'
 
+jest.mock('axios', () => ({
+  get: jest.fn(),
+}))
+
+jest.mock('@/utils/fastContext', () => ({
+  useStore: jest.fn(() => [jest.fn(), jest.fn()]),
+}))
+
 describe('individual question', () => {
   const questions = [
     JSON.parse(

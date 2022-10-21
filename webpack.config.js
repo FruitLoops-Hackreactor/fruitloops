@@ -6,23 +6,16 @@ import webpack from 'webpack'
 
 /** @type {import('webpack').Configuration} */
 export default {
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   target: 'web',
-  entry: ['webpack/hot/dev-server', path.join(process.cwd(), 'src/index.jsx')],
+  entry: path.join(process.cwd(), 'src/index.jsx'),
   output: {
     path: path.resolve(process.cwd(), 'dist'),
   },
   cache: { type: 'filesystem' },
   devtool: 'source-map',
-  devServer: {
-    host: 'localhost',
-    hot: true,
-    port: 3000,
-    compress: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    historyApiFallback: {
-      verbose: true,
-    },
+  optimization: {
+    minimize: process.env.NODE_ENV === 'production',
   },
   resolve: {
     modules: ['node_modules'],
@@ -61,7 +54,7 @@ export default {
     ],
   },
   plugins: [
-    new DotenvWebpackPlugin(),
+    process.env.NODE_ENV !== 'production' && new DotenvWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: path.join(process.cwd(), 'src/index.html'),
@@ -70,5 +63,5 @@ export default {
       React: 'react',
     }),
     new MiniCssExtractPlugin(),
-  ],
+  ].filter(Boolean),
 }
