@@ -18,5 +18,9 @@ describe('image gallery', () => {
     expect(queryAllByRole('img')).toBeTruthy()
   })
 
+  it('should fail', () => {
+    expect(true).toBeFalsy()
+  })
+
   // make test for how many photos on the page
 })
