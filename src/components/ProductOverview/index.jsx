@@ -23,12 +23,17 @@ export default function ProductOverview() {
       })
 
     getPhotos().then((product) => {
-      // console.log('these r the styles:', product.styles) // TEMP
+      // console.log('this is 1 style for the product:', product.styles[0]) // TEMP
       setPhotos(product.styles[0].photos) // NEED TO REFACTOR FOR WHEN SPECIFIC STYLE IS CHOSEN
-      // console.log('these r the product:', product)
+      console.log('these r the product:', product)
       setProductById(product)
     })
   }, [currentProduct])
+
+  // when user clicks new style, we want image gallery to update
+  const changePhotos = (styleObj) => {
+    setPhotos(styleObj.photos)
+  }
 
   return (
     <div className="product-overview">
@@ -38,7 +43,7 @@ export default function ProductOverview() {
           <ImageGallery products={products} currentProduct={currentProduct} photos={photos} />
         </div>
         <div className="product-info">
-          <ProductInformation product={productById} />
+          <ProductInformation product={productById} changePhotos={changePhotos} />
         </div>
       </div>
       <div className="description">

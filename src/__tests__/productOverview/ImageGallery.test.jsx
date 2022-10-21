@@ -17,4 +17,12 @@ describe('image gallery', () => {
 
     expect(queryAllByRole('img')).toBeTruthy()
   })
+
+  // make test for how many photos on the page
+})
+
+describe('test', () => {
+  it('should pass', () => {
+    expect(true).toBe(true)
+  })
 })

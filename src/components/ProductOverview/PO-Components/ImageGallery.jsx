@@ -6,7 +6,7 @@ import {
   IconChevronUp,
   IconMaximize,
 } from '@tabler/icons'
-import '@/styles/productOverview/imageGallery.css'
+import '/src/styles/productOverview/imageGallery.css'
 
 export default function ImageGallery({ photos }) {
   const [slideIdx, setSlideIdx] = useState(0)
