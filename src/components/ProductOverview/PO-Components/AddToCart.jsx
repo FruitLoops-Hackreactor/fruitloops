@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { IconStar, IconPlus } from '@tabler/icons'
+import { IconStar, IconPlus, IconExclamationMark, IconX, IconCheck } from '@tabler/icons'
+import '@/styles/productOverview/addToCart.css'
 
 export default function AddToCart({ skus }) {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(0)
+  const [errorMsg, setErrorMsg] = useState(false)
+  const [successMsg, setSuccessMsg] = useState(false)
 
   const getSizeAndQuantity = () => {
     if (skus.length === 0) return
@@ -41,12 +44,35 @@ export default function AddToCart({ skus }) {
     })
   }
 
+  const checkout = () => {
+    if (!selectedSize || !quantity) {
+      setErrorMsg(true)
+      setSuccessMsg(false)
+    } else if (selectedSize && quantity) {
+      setSelectedSize('')
+      setQuantity(0)
+      setSuccessMsg(true)
+      setErrorMsg(false)
+    }
+  }
+
   return (
     <div className="atc-container">
-      {/* <button type="submit" onClick={getSizeAndQuantity}>
-        Check
-      </button> */}
-      <select className="size" onChange={(event) => setSelectedSize(event.target.value)}>
+      {errorMsg && (
+        <div className="notification-error-container">
+          <IconExclamationMark className="exclamation-mark" />
+          <div className="notification-body-error">Please select a size and quantity.</div>
+          <div className="error-space"></div>
+          <button className="close-notification" onClick={() => setErrorMsg(false)}>
+            <IconX className="x-symbol" />
+          </button>
+        </div>
+      )}
+      <select
+        value={selectedSize}
+        className="size"
+        onChange={(event) => setSelectedSize(event.target.value)}
+      >
         <option value="">SELECT SIZE</option>
         {getSizeAndQuantity(skus)?.map((sku, index) => (
           <option className="size-options" value={sku.size} key={index}>
@@ -55,7 +81,11 @@ export default function AddToCart({ skus }) {
         ))}
       </select>
 
-      <select className="qty" onChange={(event) => setQuantity(event.target.value)}>
+      <select
+        className="qty"
+        value={quantity}
+        onChange={(event) => setQuantity(event.target.value)}
+      >
         {getQuantity(selectedSize) > 0 ? (
           <>
             <option value="">SELECT QTY</option>
@@ -66,10 +96,21 @@ export default function AddToCart({ skus }) {
         )}
       </select>
 
-      <button className="add-to-bag">
+      <button className="add-to-bag" onClick={() => checkout()}>
         ADD TO BAG <IconPlus className="icon-plus" />
       </button>
       <IconStar className="icon-star" />
+
+      {successMsg && (
+        <div className="notification-success">
+          <IconCheck className="check-mark" />
+          <div className="notification-body-success">Successfully added to cart</div>
+          <div className="error-space"></div>
+          <button className="close-notification" onClick={() => setSuccessMsg(false)}>
+            <IconX className="x-symbol" />
+          </button>
+        </div>
+      )}
     </div>
   )
 }

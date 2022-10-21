@@ -3,7 +3,7 @@ import axios from 'axios'
 import '@/styles/productOverview/styleSelector.css'
 import { IconCheck } from '@tabler/icons'
 
-export default function StyleSelector({ product, id, skusHandler }) {
+export default function StyleSelector({ product, id, skusHandler, changePhotos }) {
   const [styles, setStyles] = useState([])
   const [currentStyle, setCurrentStyle] = useState({})
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,6 +17,8 @@ export default function StyleSelector({ product, id, skusHandler }) {
     console.log('newStyle based on style_id', selectedStyle)
     // change the current style state
     setCurrentStyle(selectedStyle)
+    // change photos in the image gallery component
+    changePhotos(selectedStyle)
     // pass up the skus to parent component
     skusHandler(selectedStyle.skus)
     // helpful for the conditional rendering below
