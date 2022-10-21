@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useStore } from '@/utils/fastContext'
+import SearchQuestions from './SearchQuestions'
 import QuestionsList from './QuestionsList'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
 import AddQuestion from './AddQuestion'
@@ -19,7 +20,6 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
-          // TEMP: hardcoded to product id with good sample questions, change to currentProduct.id
           product_id: currentProduct.id,
         },
       })
@@ -44,7 +44,6 @@ export default function QA() {
   useEffect(() => {
     setQuestions(allQuestions.slice(0, 4 + additionalQuestions))
   }, [additionalQuestions])
-
   /*
    * check if all questions will be displayed, if so, set moreQuestion state to false
    * and display up to 2 more questions
@@ -89,9 +88,20 @@ export default function QA() {
       })
   }
 
+  const searchQuestionsSubmitHandler = (event, searchString) => {
+    event.preventDefault()
+    console.log('search string', searchString)
+    console.log('all questions', allQuestions)
+    // let allQuestionsCopy = [...allQuestions]
+    // console.log(allQuestionsCopy)
+    // allQuestionsCopy.pop()
+    // setAllQuestions(allQuestionsCopy)
+  }
+
   return (
     <section>
       <h3 className="section-title">QUESTIONS & ANSWERS</h3>
+      <SearchQuestions submitHandler={searchQuestionsSubmitHandler} />
       <QuestionsList questions={questions} helpfulnessClick={helpfulnessClickHandler} />
       <span>
         <MoreQuestionsBtn moreQuestions={moreQuestions} handleClick={handleMoreQuestionsClick} />
