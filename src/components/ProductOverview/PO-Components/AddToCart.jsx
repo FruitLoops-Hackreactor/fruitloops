@@ -68,7 +68,11 @@ export default function AddToCart({ skus }) {
           </button>
         </div>
       )}
-      <select className="size" onChange={(event) => setSelectedSize(event.target.value)}>
+      <select
+        value={selectedSize}
+        className="size"
+        onChange={(event) => setSelectedSize(event.target.value)}
+      >
         <option value="">SELECT SIZE</option>
         {getSizeAndQuantity(skus)?.map((sku, index) => (
           <option className="size-options" value={sku.size} key={index}>
@@ -77,7 +81,11 @@ export default function AddToCart({ skus }) {
         ))}
       </select>
 
-      <select className="qty" onChange={(event) => setQuantity(event.target.value)}>
+      <select
+        className="qty"
+        value={quantity}
+        onChange={(event) => setQuantity(event.target.value)}
+      >
         {getQuantity(selectedSize) > 0 ? (
           <>
             <option value="">SELECT QTY</option>

@@ -7,7 +7,6 @@ import SearchBar from './components/SearchBar'
 import ProductOverview from './components/ProductOverview'
 import RelatedProducts from './components/RelatedProducts'
 import QA from './components/QA'
-import RatingsReviews from './components/RatingsReviews'
 
 if (!process.env.GITHUB_TOKEN) {
   throw new Error('GITHUB_TOKEN is not defined')
@@ -44,7 +43,6 @@ export default function App() {
         <div>
           <RelatedProducts />
           <QA />
-          <RatingsReviews />
         </div>
       </main>
     </>
