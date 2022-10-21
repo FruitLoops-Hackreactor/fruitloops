@@ -5,11 +5,29 @@ export default function AnswerForm({ currentProduct, question }) {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [answerBody, setAnswerBody] = useState('')
+  const [photos, setPhotos] = useState([])
+  const [morePhotos, setMorePhotos] = useState(true)
+  const uploadWidget = cloudinary.createUploadWidget(
+    { cloudName: process.env.CLOUD_NAME, uploadPreset: 'fec-upload' },
+    (err, res) => {
+      if (!err && res && res.event === 'success') {
+        console.log('Done! Here is the image info: ', res.info.url)
+        setPhotos([...photos, res.info.url])
+        if (photos.length >= 4) {
+          setMorePhotos(false)
+        }
+      }
+      if (err) {
+        console.log(err)
+      }
+    }
+  )
 
   const emailRegex =
     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
   const { question_id, question_body: questionBody } = question
 
+  // form submit handler and add photo button click handler
   const answerSubmitHandler = (event) => {
     event.preventDefault()
 
@@ -34,13 +52,42 @@ export default function AnswerForm({ currentProduct, question }) {
       body: answerBody,
       name: username,
       email: email,
-      // TEMP: replace with array of user supplied photos
-      photos: [],
+      photos: photos,
     }
     axios
       .post(`/qa/questions/${question_id}/answers`, answer)
       .then((res) => console.log('new answer post response', res))
       .catch((err) => console.log(err))
+  }
+
+  const addPhotoClickHandler = () => {
+    uploadWidget.open()
+  }
+
+  // conditional rendering for thumbnails and the add photo button
+  let thumbnails
+  if (photos.length) {
+    let photosCopy = [...photos]
+    thumbnails = (
+      <div>
+        {photosCopy.map((photo, index) => {
+          return <img src={`${photo}`} key={index} height="160"></img>
+        })}
+      </div>
+    )
+  } else {
+    thumbnails = <></>
+  }
+
+  let addPhotoBtn
+  if (morePhotos) {
+    addPhotoBtn = (
+      <button onClick={() => addPhotoClickHandler()} type="button">
+        Add Photo
+      </button>
+    )
+  } else {
+    addPhotoBtn = <></>
   }
 
   return (
@@ -54,8 +101,11 @@ export default function AnswerForm({ currentProduct, question }) {
           defaultValue={username}
           type="text"
           placeholder="Example: jack543!"
+          className="answer-form-username"
         ></input>
-        <span>For privacy reasons, do not use your full name or email address</span>
+        <span className="input-info">
+          For privacy reasons, do not use your full name or email address
+        </span>
       </div>
       <div className="input-group">
         <span>*Email</span>
@@ -67,7 +117,7 @@ export default function AnswerForm({ currentProduct, question }) {
           className="answer-form-email"
           maxLength="60"
         ></input>
-        <span>For authentication reasons, you will not be emailed</span>
+        <span className="input-info">For authentication reasons, you will not be emailed</span>
       </div>
       <div className="input-group">
         <span>*Answer</span>
@@ -78,7 +128,9 @@ export default function AnswerForm({ currentProduct, question }) {
           maxLength="1000"
         ></textarea>
       </div>
-      <input type="file"></input>
+      {addPhotoBtn}
+      <div className="answer-form-photos"></div>
+      {thumbnails}
       <button type="submit">Submit</button>
     </form>
   )
