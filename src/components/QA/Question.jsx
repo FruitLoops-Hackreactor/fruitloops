@@ -1,43 +1,61 @@
 import { useStore } from '@/utils/fastContext'
+import { useEffect, useState } from 'react'
+import MoreAnswersLink from './MoreAnswersLink'
 import Answer from './Answer'
 import AnswerForm from './AnswerForm'
 
 export default function Question({ question, helpfulnessClick }) {
   const setModalContent = useStore('modalContent')[1]
   const [currentProduct] = useStore('currentProduct')
+  const [answers, setAnswers] = useState([])
+  const [moreAnswers, setMoreAnswers] = useState(true)
+  const [additionalAnswers, setAdditionalAnswers] = useState(0)
   let { question_body, question_helpfulness, question_id } = question
-  let answers = Object.values(question.answers)
+  let allAnswers = Object.values(question.answers)
 
-  answers = answers.slice(0, 2)
+  useEffect(() => {
+    setAnswers(allAnswers.slice(0, 2 + additionalAnswers))
+  }, [additionalAnswers])
+
+  const handleMoreAnswersClick = (event) => {
+    event.preventDefault()
+    if (allAnswers.length <= 2 + additionalAnswers + 2) {
+      setMoreAnswers(false)
+    }
+    setAdditionalAnswers(additionalAnswers + 2)
+  }
 
   return (
-    <div id="qa-widget">
+    <div id="question-container">
       <br></br>
-      <div>
-        <span id="question-title">Q: {question_body}</span>
-        <span>Helpful?</span>
-        <span>
-          <a onClick={(e) => helpfulnessClick(e, question_id)} href="">
-            Yes
-          </a>
-        </span>
-        <span>{`(${question_helpfulness})`}</span>
-        <span>
-          <a
-            onClick={(event) => {
-              event.preventDefault()
-              setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
-            }}
-            href=""
-          >
-            Add Answer
-          </a>
-        </span>
+      <div className="question-title">
+        <span id="question-body">Q: {question_body}</span>
+        <div className="question-requests">
+          <span>Helpful?</span>
+          <span>
+            <a onClick={(e) => helpfulnessClick(e, question_id)} href="">
+              Yes
+            </a>
+          </span>
+          <span>{`(${question_helpfulness})`}</span>
+          <span>
+            <a
+              onClick={(event) => {
+                event.preventDefault()
+                setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
+              }}
+              href=""
+            >
+              Add Answer
+            </a>
+          </span>
+        </div>
       </div>
-      <div>
+      <div className="answers-container">
         {answers.map((answer, index) => {
           return <Answer answer={answer} key={index} />
         })}
+        <MoreAnswersLink moreAnswers={moreAnswers} handleClick={handleMoreAnswersClick} />
       </div>
     </div>
   )

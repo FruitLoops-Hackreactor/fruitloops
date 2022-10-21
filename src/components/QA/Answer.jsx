@@ -7,12 +7,17 @@ const Answer = ({ answer }) => {
   }
 
   let date = formatDate(answer.date)
+  console.log('answer', answer)
 
   return (
     <div>
-      <br></br>
-      <span>A:</span>
+      <span>{`A: `}</span>
       <span>{body}</span>
+      <div className="answer-thumbnails">
+        {answer.photos.map((photo) => {
+          return <img src={`${photo}`} height="160" />
+        })}
+      </div>
       <p id="answer-info">by {`${answerer_name}, ${date}`}</p>
     </div>
   )

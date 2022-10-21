@@ -69,11 +69,11 @@ export default function AnswerForm({ currentProduct, question }) {
   if (photos.length) {
     let photosCopy = [...photos]
     thumbnails = (
-      <div>
+      <>
         {photosCopy.map((photo, index) => {
           return <img src={`${photo}`} key={index} height="160"></img>
         })}
-      </div>
+      </>
     )
   } else {
     thumbnails = <></>
@@ -82,7 +82,11 @@ export default function AnswerForm({ currentProduct, question }) {
   let addPhotoBtn
   if (morePhotos) {
     addPhotoBtn = (
-      <button onClick={() => addPhotoClickHandler()} type="button">
+      <button
+        onClick={() => addPhotoClickHandler()}
+        type="button"
+        className="answer-form-add-photo"
+      >
         Add Photo
       </button>
     )
@@ -129,8 +133,7 @@ export default function AnswerForm({ currentProduct, question }) {
         ></textarea>
       </div>
       {addPhotoBtn}
-      <div className="answer-form-photos"></div>
-      {thumbnails}
+      <div className="answer-form-photos">{thumbnails}</div>
       <button type="submit">Submit</button>
     </form>
   )

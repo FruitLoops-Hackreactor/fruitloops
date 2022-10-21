@@ -4,7 +4,7 @@
   margin-left: 1rem;
 }
 
-#question-title {
+#question-body {
   font-weight: bold;
 }
 
@@ -23,15 +23,35 @@
   padding: 1rem 0.5rem;
 }
 
+.question-title {
+  margin-bottom: 1rem;
+  padding-right: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.question-requests {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* question modal form styles */
-form .question-form-body {
-  width: 30rem;
-  height: 20rem;
+form .question-form-username {
+  width: 20rem;
 }
 
 form .question-form-email {
-  width: 30rem;
+  width: 20rem;
 }
+
+form .question-form-body {
+  width: 35rem;
+  height: 15rem;
+}
+
 
 /* answer modal form styles */
 form .input-info {
@@ -46,6 +66,35 @@ form .answer-form-email {
   width: 20rem;
 }
 form .answer-form-body {
-  width: 40rem;
-  height: 10rem;
+  width: 30rem;
+  height: 8rem;
+}
+
+form .answer-form-add-photo {
+  margin-bottom: 1rem;
+}
+
+form .answer-form-photos {
+  margin-bottom: 0.5rem;
+}
+
+.answers-container {
+  overflow-y: auto;
+  max-height: 50vh;
+  width: 75%;
+  box-shadow: 1px 23px 37px -40px rgb(0 0 0 / 58%) inset;
+}
+
+.question-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.questions-list{
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }

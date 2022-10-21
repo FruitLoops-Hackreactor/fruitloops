@@ -20,7 +20,8 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
-          product_id: currentProduct.id,
+          // TEMP: hardcoded to id with good example data for testing
+          product_id: 40343,
         },
       })
       .then((res) => {
