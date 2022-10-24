@@ -2,6 +2,17 @@
 .product-overview .prodInfo-container {
   display: flex;
   flex-direction: column;
+  visibility: visible;
+  transition-property: visibility;
+  transition-duration: 500ms;
+}
+
+.product-overview .prodInfo-container-invisible {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  transition-property: visibility;
+  transition-duration: 0ms;
 }
 
 .product-overview .product-info {

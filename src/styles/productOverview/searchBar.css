@@ -5,7 +5,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 18px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-inline: 14rem;
 }
 
 .empty-space {
@@ -19,7 +21,6 @@
   font-weight: bold;
   font-style: italic;
   text-decoration: #000 underline solid 2px;
-  padding-left: 25px;
 }
 
 .text-box {
@@ -47,7 +48,8 @@
   background-color: transparent;
   height: 30px;
   width: 35x;
-  padding: 10px;
+  padding-left: 1rem;
+  padding-right: 4rem;
   display: flex;
   align-items: center;
 }

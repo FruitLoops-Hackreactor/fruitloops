@@ -11,6 +11,7 @@ export default function ProductOverview() {
   const [currentProduct] = useStore('currentProduct')
   const [photos, setPhotos] = useState([])
   const [productById, setProductById] = useState({})
+  const [expand, setExpand] = useState(false)
 
   // get the currentProduct
   useEffect(() => {
@@ -40,10 +41,16 @@ export default function ProductOverview() {
       <div className="main-container">
         <div className="image-gallery">
           <br></br>
-          <ImageGallery products={products} currentProduct={currentProduct} photos={photos} />
+          <ImageGallery
+            products={products}
+            currentProduct={currentProduct}
+            photos={photos}
+            expand={expand}
+            setExpand={setExpand}
+          />
         </div>
         <div className="product-info">
-          <ProductInformation product={productById} changePhotos={changePhotos} />
+          <ProductInformation product={productById} changePhotos={changePhotos} expand={expand} />
         </div>
       </div>
       <div className="description">

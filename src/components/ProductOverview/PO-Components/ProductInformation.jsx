@@ -5,7 +5,7 @@ import StyleSelector from './StyleSelector'
 import AddToCart from './AddToCart'
 import '@/styles/productOverview/productInformation.css'
 
-export default function ProductInformation({ product, changePhotos }) {
+export default function ProductInformation({ product, changePhotos, expand }) {
   const [skus, setSkus] = useState([])
   const [salePrice, setSalePrice] = useState('')
 
@@ -20,7 +20,7 @@ export default function ProductInformation({ product, changePhotos }) {
   }
 
   return (
-    <div className="prodInfo-container">
+    <div className={expand === false ? 'prodInfo-container' : 'prodInfo-container-invisible'}>
       <div className="product-info">
         <div className="brand-name space">BRANDLESS</div>
         <div className="category-title space">{product.category}</div>
