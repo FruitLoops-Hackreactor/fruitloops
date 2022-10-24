@@ -8,7 +8,7 @@ import {
 } from '@tabler/icons'
 import '/src/styles/productOverview/imageGallery.css'
 
-export default function ImageGallery({ photos }) {
+export default function ImageGallery({ photos, expand, setExpand }) {
   const [slideIdx, setSlideIdx] = useState(0)
   const length = photos.length
 
@@ -29,7 +29,7 @@ export default function ImageGallery({ photos }) {
   // console.log(slideIdx) // TEMP
 
   return (
-    <div className="image-gallery">
+    <div className="image-gallery-container">
       <div className="container-squares">
         {slideIdx !== 0 ? <IconChevronUp className="up-arrow" onClick={prevSlide} /> : null}
         {photos?.map((photo, index) => {
@@ -49,7 +49,7 @@ export default function ImageGallery({ photos }) {
         ) : null}
       </div>
 
-      <div className="carousel">
+      <div className={expand === false ? 'carousel' : 'carousel-expanded'}>
         {/* left arrow clickHandler */}
         {slideIdx !== 0 ? <IconChevronLeft className="left-arrow" onClick={prevSlide} /> : null}
         {/*  */}
@@ -60,7 +60,7 @@ export default function ImageGallery({ photos }) {
                 <img
                   src={photo.thumbnail_url}
                   alt={photo.name}
-                  className="image"
+                  className={expand === false ? 'image' : 'expanded-image'}
                   data-testid="image-test"
                 />
               )}
@@ -71,6 +71,7 @@ export default function ImageGallery({ photos }) {
         {slideIdx !== length - 1 ? (
           <IconChevronRight className="right-arrow" onClick={nextSlide} />
         ) : null}
+        <IconMaximize className="expand-button" onClick={() => setExpand(!expand)} />
       </div>
     </div>
   )

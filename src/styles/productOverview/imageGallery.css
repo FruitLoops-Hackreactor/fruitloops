@@ -2,59 +2,52 @@
 .product-overview .carousel {
   background-color: #ccc;
   position: relative;
-  height: 540px;
-  width: 600px;
+  height: 40vw;
+  width: 40vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-property: width, height;
+  transition-duration: 500ms;
+  z-index: 10;
+}
+
+.product-overview .image-gallery-container {
+  position: relative;
+}
+
+.product-overview .carousel-expanded {
+  background-color: #ccc;
+  position: relative;
+  height: 40vw;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: width, height;
+  transition-duration: 500ms;
+  z-index: 10;
 }
 
 .product-overview .image {
+  object-fit: cover;
   width: auto;
-  max-width: 370px;
-  height: 500px;
-  max-height: 500px;
+  max-width: 28vw;
+  height: 33vw;
   border-radius: 10px;
+  transition-property: width, height;
+  transition-duration: 500ms;
 }
 
-.product-overview .right-arrow {
-  position: absolute;
-  top: 50%;
-  right: 75px;
-  font-size: 3rem;
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
-}
-
-.product-overview .left-arrow {
-  position: absolute;
-  top: 50%;
-  left: 75px;
-  font-size: 3rem;
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
-}
-
-.product-overview .up-arrow {
-  position: absolute;
-  bottom: 96%;
-  margin-left: 15px;
-  font-size: 3rem;
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
-}
-
-.product-overview .down-arrow {
-  position: absolute;
-  top: 100%;
-  margin-left: 15px;
-  font-size: 3rem;
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
+.product-overview .expanded-image {
+  object-fit: cover;
+  width: auto;
+  max-width: 30vw;
+  height: 38vw;
+  border-radius: 10px;
+  transition-property: width, height;
+  transition-duration: 500ms;
+  z-index: 12;
 }
 
 .product-overview .slide {
@@ -66,7 +59,7 @@
 }
 
 .product-overview .container-squares {
-  top: 10%;
+  top: 7%;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -74,27 +67,82 @@
 }
 
 .product-overview .square {
-  width: 46px;
-  height: 46px;
-  border: 1px solid gray;
-  margin: 19px 0px 2px 15px;
-  z-index: 1;
+  width: 3vw;
+  height: 3vw;
+  border: 1px solid #ccc;
+  margin: 18px 0px 2px 15px;
+  z-index: 12;
   cursor: pointer;
 }
 
 .product-overview .square.active {
-  background: #ccc;
+  border: 1px solid #000;
 }
 
 .product-overview .snippit {
-  width: 46px;
-  height: 46px;
+  width: 3vw;
+  height: 3vw;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 12;
+  object-fit: cover;
 }
 
-.product-overview .highlight {
+.product-overview .space {
+  padding-bottom: 1rem;
+}
+
+/* ARROWS BUTTONS */
+.product-overview .right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 4.5vw;
+  font-size: 3rem;
+  z-index: 11;
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-overview .left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 4.5vw;
+  font-size: 3rem;
+  z-index: 11;
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-overview .up-arrow {
+  position: absolute;
+  bottom: 97%;
+  margin-left: 15px;
+  font-size: 3rem;
+  z-index: 11;
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-overview .down-arrow {
+  position: absolute;
+  top: 102%;
+  margin-left: 15px;
+  font-size: 3rem;
+  z-index: 11;
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-overview .expand-button {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* .product-overview .highlight {
   background-color: gray;
   border: 1px solid gray;
   justify-content: center;
@@ -103,8 +151,4 @@
   max-width: 44px;
   padding: 1px;
   z-index: 1;
-}
-
-.product-overview .space {
-  padding-bottom: 1rem;
-}
+} */
