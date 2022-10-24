@@ -15,8 +15,8 @@ export default function ProductInformation({ product, changePhotos, expand }) {
   }
 
   const percentFormat = () => {
-    const percentOff = Number(product.default_price) / Number(salePrice) - 1 || 'not defined'
-    return Math.round(percentOff * 100)
+    const percentOff = 100 - (Number(salePrice) / Number(product.default_price)) * 100 || 1
+    return Math.round(percentOff)
   }
 
   return (
