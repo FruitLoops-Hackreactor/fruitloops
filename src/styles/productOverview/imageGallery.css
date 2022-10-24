@@ -42,8 +42,8 @@
 .product-overview .expanded-image {
   object-fit: cover;
   width: auto;
-  max-width: 33vw;
-  height: 33vw;
+  max-width: 30vw;
+  height: 38vw;
   border-radius: 10px;
   transition-property: width, height;
   transition-duration: 500ms;
