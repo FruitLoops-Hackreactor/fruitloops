@@ -4,17 +4,12 @@ import ProductCard from './ProductCard'
 import SkeletonCard from '../SkeletonCard'
 
 export default function Products({ max, loading, currentProduct, relatedProducts }) {
-  const [products] = useStore('products')
-  const setCurrentProduct = useStore('currentProduct')[1]
   const setModalContent = useStore('modalContent')[1]
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
 
-  const handleProductClick = (id) => () => {
-    const product = products.find((prod) => prod.id === id)
-    setCurrentProduct(product)
-  }
+  const handleProductClick = (id) => () => (window.location.href = `/${id}`)
 
   /**
    * Get the features of both the current product and the selected product to compare
@@ -88,7 +83,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
           <div className="products-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
             {relatedProducts.length && (
-              <Carousel max={max}>
+              <Carousel group="products-carousel" max={max}>
                 {!relatedProducts.length
                   ? null
                   : relatedProducts.map((product) => (

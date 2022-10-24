@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./server.js",
     "build": "cross-env NODE_ENV=production npx webpack build -c ./webpack.config.js",
-    "dev": "npx webpack-dev-server --hot --port=3000 -c ./webpack.config.js",
+    "dev": "npx webpack-dev-server --hot --port=3000 --history-api-fallback -c ./webpack.config.js",
     "test": "jest",
     "coverage": "jest --coverage",
     "coverage:summary": "jest --coverage --coverageReporters=text-summary || exit 0"

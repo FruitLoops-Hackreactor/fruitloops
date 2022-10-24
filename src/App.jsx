@@ -22,29 +22,30 @@ const PROD_COUNT = 10
 export default function App() {
   const setLoading = useStore('loading')[1]
   const setProducts = useStore('products')[1]
-  const [currentProduct, setCurrentProduct] = useStore('currentProduct')
+  const setCurrentProduct = useStore('currentProduct')[1]
 
   // Fetch the products
   useEffect(() => {
     getProducts(PROD_COUNT).then((products) => {
       setLoading(false)
       setProducts(products)
-      setCurrentProduct(products.length ? products[0] : null)
+
+      const id = window.location.pathname.split('/')[1]
+      // Check for product id param, if none, set the first product as the current product
+      if (!id) {
+        setCurrentProduct(products[0])
+        // Otherwise, set the product with the matching id as the current product
+      } else {
+        const idx = products.findIndex((prod) => prod.id === Number(id))
+        setCurrentProduct(products[idx])
+      }
     })
   }, [])
-
-  // Set the URL to the current product
-  useEffect(() => {
-    if (!currentProduct) return
-
-    window.history.replaceState({}, null, `/product/${currentProduct.id}`)
-  }, [currentProduct])
 
   return (
     <>
       <Modal />
       <SearchBar />
-
       <main className="container">
         <ProductOverview />
         <div>
