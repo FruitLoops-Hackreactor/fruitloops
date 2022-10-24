@@ -4,10 +4,17 @@ import ProductCard from './ProductCard'
 import SkeletonCard from '../SkeletonCard'
 
 export default function Products({ max, loading, currentProduct, relatedProducts }) {
+  const [products] = useStore('products')
+  const setCurrentProduct = useStore('currentProduct')[1]
   const setModalContent = useStore('modalContent')[1]
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
+
+  const handleProductClick = (id) => () => {
+    const product = products.find((prod) => prod.id === id)
+    setCurrentProduct(product)
+  }
 
   /**
    * Get the features of both the current product and the selected product to compare
@@ -90,6 +97,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
                         product={product}
                         action="compare"
                         actionHandler={handleComparisonClick}
+                        onProductClick={handleProductClick(product.id)}
                       />
                     ))}
               </Carousel>

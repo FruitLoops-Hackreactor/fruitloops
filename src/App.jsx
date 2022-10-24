@@ -22,7 +22,7 @@ const PROD_COUNT = 10
 export default function App() {
   const setLoading = useStore('loading')[1]
   const setProducts = useStore('products')[1]
-  const setCurrentProduct = useStore('currentProduct')[1]
+  const [currentProduct, setCurrentProduct] = useStore('currentProduct')
 
   // Fetch the products
   useEffect(() => {
@@ -32,6 +32,13 @@ export default function App() {
       setCurrentProduct(products.length ? products[0] : null)
     })
   }, [])
+
+  // Set the URL to the current product
+  useEffect(() => {
+    if (!currentProduct) return
+
+    window.history.replaceState({}, null, `/product/${currentProduct.id}`)
+  }, [currentProduct])
 
   return (
     <>
