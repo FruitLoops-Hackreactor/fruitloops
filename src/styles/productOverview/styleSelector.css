@@ -30,12 +30,13 @@
   align-items: center;
   z-index: 1;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .product-overview .bubble-check {
   position: absolute;
   top: 0;
-  right: 2%;
+  right: 12%;
   width: 20px;
   height: 20px;
   color: #5A5A5A;

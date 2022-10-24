@@ -16,3 +16,10 @@ nav {
 .product-overview .main-container {
   display: flex;
 }
+
+.banner {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1rem;
+}

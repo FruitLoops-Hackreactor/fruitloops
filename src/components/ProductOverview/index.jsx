@@ -38,6 +38,10 @@ export default function ProductOverview() {
 
   return (
     <div className="product-overview">
+      <span className="banner">
+        BEST PRICE GUARANTEE If you find a lower price, we'll match it. FREE shipping on all orders
+        over $100 (US only)
+      </span>
       <div className="main-container">
         <div className="image-gallery">
           <br></br>

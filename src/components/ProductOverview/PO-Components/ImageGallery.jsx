@@ -6,6 +6,7 @@ import {
   IconChevronUp,
   IconMaximize,
 } from '@tabler/icons'
+// import ReactImageMagnify from 'react-image-magnify';
 import '/src/styles/productOverview/imageGallery.css'
 
 export default function ImageGallery({ photos, expand, setExpand }) {
@@ -36,7 +37,7 @@ export default function ImageGallery({ photos, expand, setExpand }) {
           return (
             <div
               className={index === slideIdx ? 'square active' : 'square'}
-              onClick={() => moveDot(index)}
+              onMouseEnter={() => moveDot(index)}
               key={index}
             >
               <img src={photo.thumbnail_url} alt={photo.name} className="snippit" />

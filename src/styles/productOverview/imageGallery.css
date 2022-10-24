@@ -2,8 +2,8 @@
 .product-overview .carousel {
   background-color: #ccc;
   position: relative;
-  height: 40vw;
-  width: 40vw;
+  height: 44vw;
+  width: 48vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
 .product-overview .carousel-expanded {
   background-color: #ccc;
   position: relative;
-  height: 40vw;
+  height: 44vw;
   width: 75vw;
   display: flex;
   justify-content: center;
@@ -67,21 +67,23 @@
 }
 
 .product-overview .square {
-  width: 3vw;
-  height: 3vw;
-  border: 1px solid #ccc;
-  margin: 18px 0px 2px 15px;
+  width: 3.5vw;
+  height: 3.5vw;
+  border: 1px solid #808080;
+  margin: 18px 0px 0px 15px;
   z-index: 12;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .product-overview .square.active {
-  border: 1px solid #000;
+  border: 1px solid #e77600;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .product-overview .snippit {
-  width: 3vw;
-  height: 3vw;
+  width: 3.5vw;
+  height: 3.5vw;
   justify-content: center;
   align-items: center;
   z-index: 12;
@@ -96,7 +98,7 @@
 .product-overview .right-arrow {
   position: absolute;
   top: 50%;
-  right: 4.5vw;
+  right: 7vw;
   font-size: 3rem;
   z-index: 11;
   cursor: pointer;
@@ -106,7 +108,7 @@
 .product-overview .left-arrow {
   position: absolute;
   top: 50%;
-  left: 4.5vw;
+  left: 7vw;
   font-size: 3rem;
   z-index: 11;
   cursor: pointer;

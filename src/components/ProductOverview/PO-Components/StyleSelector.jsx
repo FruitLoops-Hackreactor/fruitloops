@@ -27,7 +27,7 @@ export default function StyleSelector({ product, id, skusHandler, changePhotos, 
   }
 
   useEffect(() => {
-    if (!product) return
+    if (!id) return
 
     axios
       .get(`/products/${id}/styles`)
