@@ -29,7 +29,7 @@ export default function ImageGallery({ photos }) {
   // console.log(slideIdx) // TEMP
 
   return (
-    <div className="image-gallery">
+    <div className="image-gallery-container">
       <div className="container-squares">
         {slideIdx !== 0 ? <IconChevronUp className="up-arrow" onClick={prevSlide} /> : null}
         {photos?.map((photo, index) => {

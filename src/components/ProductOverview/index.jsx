@@ -25,7 +25,7 @@ export default function ProductOverview() {
     getPhotos().then((product) => {
       // console.log('this is 1 style for the product:', product.styles[0]) // TEMP
       setPhotos(product.styles[0].photos) // NEED TO REFACTOR FOR WHEN SPECIFIC STYLE IS CHOSEN
-      console.log('these r the product:', product)
+      console.log('this is the product:', product)
       setProductById(product)
     })
   }, [currentProduct])

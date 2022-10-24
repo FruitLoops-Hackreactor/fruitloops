@@ -2,21 +2,68 @@
 .product-overview .carousel {
   background-color: #ccc;
   position: relative;
-  height: 540px;
-  width: 600px;
+  height: 40vw;
+  width: 40vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.product-overview .image-gallery-container {
+  position: relative;
+}
+
 .product-overview .image {
+  object-fit: cover;
   width: auto;
-  max-width: 370px;
-  height: 500px;
-  max-height: 500px;
+  max-width: 28vw;
+  height: 33vw;
   border-radius: 10px;
 }
 
+.product-overview .slide {
+  opacity: 0;
+}
+
+.product-overview .slide.active {
+  opacity: 1;
+}
+
+.product-overview .container-squares {
+  top: 10%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-overview .square {
+  width: 3vw;
+  height: 3vw;
+  border: 1px solid #ccc;
+  margin: 19px 0px 2px 15px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.product-overview .square.active {
+  border: 1px solid #000;
+}
+
+.product-overview .snippit {
+  width: 3vw;
+  height: 3vw;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.product-overview .space {
+  padding-bottom: 1rem;
+}
+
+/* ARROWS BUTTONS */
 .product-overview .right-arrow {
   position: absolute;
   top: 50%;
@@ -39,7 +86,7 @@
 
 .product-overview .up-arrow {
   position: absolute;
-  bottom: 96%;
+  bottom: 97%;
   margin-left: 15px;
   font-size: 3rem;
   z-index: 10;
@@ -49,7 +96,7 @@
 
 .product-overview .down-arrow {
   position: absolute;
-  top: 100%;
+  top: 102%;
   margin-left: 15px;
   font-size: 3rem;
   z-index: 10;
@@ -57,44 +104,11 @@
   user-select: none;
 }
 
-.product-overview .slide {
-  opacity: 0;
+@media all and (max-width: 500px) {
+
 }
 
-.product-overview .slide.active {
-  opacity: 1;
-}
-
-.product-overview .container-squares {
-  top: 10%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.product-overview .square {
-  width: 46px;
-  height: 46px;
-  border: 1px solid gray;
-  margin: 19px 0px 2px 15px;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.product-overview .square.active {
-  background: #ccc;
-}
-
-.product-overview .snippit {
-  width: 46px;
-  height: 46px;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.product-overview .highlight {
+/* .product-overview .highlight {
   background-color: gray;
   border: 1px solid gray;
   justify-content: center;
@@ -103,8 +117,4 @@
   max-width: 44px;
   padding: 1px;
   z-index: 1;
-}
-
-.product-overview .space {
-  padding-bottom: 1rem;
-}
+} */
