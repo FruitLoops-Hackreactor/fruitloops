@@ -40,13 +40,19 @@ export default function RelatedProducts() {
   return (
     <section className="related-products-comparison">
       <Products
+        group=".related-products"
         max={NUM_CARDS}
         loading={loading}
         currentProduct={currentProduct}
         relatedProducts={relatedProducts}
       />
 
-      <OutfitList max={NUM_CARDS} loading={loading} currentProduct={currentProduct} />
+      <OutfitList
+        group=".outfit-list"
+        max={NUM_CARDS}
+        loading={loading}
+        currentProduct={currentProduct}
+      />
     </section>
   )
 }

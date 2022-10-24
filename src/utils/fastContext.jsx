@@ -40,7 +40,9 @@ export function createFastContext(intitialState) {
      *
      * If a key is specified, only the property with that key will be updated and
      * trigger the subscribers for that key. Otherwise, the entire store will be
-     * updated and all subscribers will be called.
+     * updated and all subscribers will be called. Every subscriber has to be called
+     * because it is used to trigger a re-render of the component that is using the
+     * hook.
      *
      * `useCallback` is used so that it is memoized and doesn't change on every
      * render. The `key` is outside of the callback so that the actuall callback
@@ -87,7 +89,7 @@ export function createFastContext(intitialState) {
           if (key) {
             subscribers.current.select[key].delete(callback)
             // If there are no more subscribers for this key, remove the key
-            if (subscribe.current.select[key].size === 0) {
+            if (subscribers.current.select[key].size === 0) {
               delete subscribers.current.select[key]
             }
           } else {

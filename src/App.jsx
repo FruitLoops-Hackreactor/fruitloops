@@ -29,7 +29,16 @@ export default function App() {
     getProducts(PROD_COUNT).then((products) => {
       setLoading(false)
       setProducts(products)
-      setCurrentProduct(products.length ? products[0] : null)
+
+      const id = window.location.pathname.split('/')[1]
+      // Check for product id param, if none, set the first product as the current product
+      if (!id) {
+        setCurrentProduct(products[0])
+        // Otherwise, set the product with the matching id as the current product
+      } else {
+        const idx = products.findIndex((prod) => prod.id === Number(id))
+        setCurrentProduct(products[idx])
+      }
     })
   }, [])
 
@@ -37,7 +46,6 @@ export default function App() {
     <>
       <Modal />
       <SearchBar />
-
       <main className="container">
         <ProductOverview />
         <div>
