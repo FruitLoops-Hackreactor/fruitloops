@@ -2,14 +2,27 @@
 .product-overview .prodInfo-container {
   display: flex;
   flex-direction: column;
+  visibility: visible;
+  transition-property: visibility;
+  transition-duration: 500ms;
+}
+
+.product-overview .prodInfo-container-invisible {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  transition-property: visibility;
+  transition-duration: 0ms;
 }
 
 .product-overview .product-info {
-  padding: 2rem 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: .5rem;
+  padding-left: .5rem;
 }
 
 .product-overview .space {
-  padding-bottom: .5rem;
+  padding-bottom: .85rem;
 }
 
 .product-overview .star-reviews {
@@ -26,20 +39,4 @@
 
 .product-overview .product-price {
   flex: 1;
-}
-
-.product-overview .style-selector {
-
-}
-
-.product-overview .atc-container {
-
-}
-
-/*TOGGLE STAR*/
-.product-overview .icon-star {
-  height: 15px;
-  width: 15px;
-  border: 1px solid #000;
-  padding: 10px;
 }
