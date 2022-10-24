@@ -1,6 +1,6 @@
 import { IconStar, IconX } from '@tabler/icons'
 
-export default function ProductCard({ product, action, actionHandler }) {
+export default function ProductCard({ product, onProductClick, action, actionHandler }) {
   const defaultStyle = product.styles.find((style) => style.default) || product.styles[0]
   const { sale_price } = defaultStyle
 
@@ -16,7 +16,7 @@ export default function ProductCard({ product, action, actionHandler }) {
           <IconX size={28} color="black" />
         ) : null}
       </div>
-      <div className="info">
+      <div className="info" onClick={onProductClick}>
         <div>
           <span>{product.category}</span>
         </div>

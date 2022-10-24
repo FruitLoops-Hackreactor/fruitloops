@@ -9,6 +9,8 @@ export default function Products({ max, loading, currentProduct, relatedProducts
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
 
+  const handleProductClick = (id) => () => (window.location.href = `/${id}`)
+
   /**
    * Get the features of both the current product and the selected product to compare
    * and display common and different features.
@@ -81,7 +83,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
           <div className="products-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
             {relatedProducts.length && (
-              <Carousel max={max}>
+              <Carousel group="products-carousel" max={max}>
                 {!relatedProducts.length
                   ? null
                   : relatedProducts.map((product) => (
@@ -90,6 +92,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
                         product={product}
                         action="compare"
                         actionHandler={handleComparisonClick}
+                        onProductClick={handleProductClick(product.id)}
                       />
                     ))}
               </Carousel>
