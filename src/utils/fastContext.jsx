@@ -1,6 +1,6 @@
 import { useRef, useCallback, createContext, useContext, useSyncExternalStore } from 'react'
 
-const Context = createContext(null)
+const StoreContext = createContext(null)
 
 /**
  * This is best used for a form or anything that uses high velocity data. Place
@@ -51,20 +51,25 @@ export function createFastContext(intitialState) {
      */
     const set = (key) =>
       useCallback((value) => {
-        if (!subscribers.current) {
+        if (
+          !subscribers.current ||
+          (!Object.keys(subscribers.current.select).length && !subscribers.current.all.size)
+        ) {
           throw new Error('No subscribers')
         }
 
         if (key) {
           store.current = { ...store.current, [key]: value }
 
-          if (subscribers.current.select[key]) {
-            subscribers.current.select[key].forEach((callback) => callback())
-          }
+          subscribers.current.select[key].forEach((callback) => callback())
         } else {
           store.current = { ...store.current, ...value }
+
           subscribers.current.all.forEach((callback) => callback())
-          subscribers.current.select.forEach((callback) => callback())
+          // Only call the subscribers for the specific keys if any exist
+          if (Object.keys(subscribers.current.select).length) {
+            subscribers.current.select.forEach((callback) => callback())
+          }
         }
       }, [])
     /**
@@ -105,14 +110,20 @@ export function createFastContext(intitialState) {
     }
   }
 
-  return ({ children }) => <Context.Provider value={useStoreData()}>{children}</Context.Provider>
+  return {
+    useStoreData,
+    StoreContext,
+    StoreProvider: ({ children }) => (
+      <StoreContext.Provider value={useStoreData()}>{children}</StoreContext.Provider>
+    ),
+  }
 }
 
 /**
  * The hook to access the store.
  */
 export const useStore = (key, selector) => {
-  const store = useContext(Context)
+  const store = useContext(StoreContext)
 
   if (!store) {
     throw new Error('Store not found')
@@ -127,7 +138,7 @@ export const useStore = (key, selector) => {
     stateSelector = (state) => state
     // If a selector is provided, return the value returned by the selector.
   } else if (selector) {
-    stateSelector = selector
+    stateSelector = (state) => selector(state[key])
     // Otherwise, set the selector to the key and return the value of the key.
   } else {
     stateSelector = (state) => state[key]

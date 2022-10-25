@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class Product {
+export class Product {
   constructor(product) {
     this.id = product.id
     this.name = product.name
