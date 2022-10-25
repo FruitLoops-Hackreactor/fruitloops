@@ -72,7 +72,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
         <h3>Related Products</h3>
       </div>
 
-      <div className="related-products">
+      <div className="related-products" data-testid="products">
         {!loading && !relatedProducts.length ? (
           <div className="no-products">
             <h3>No related products found</h3>

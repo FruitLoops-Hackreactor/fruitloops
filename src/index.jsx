@@ -5,7 +5,7 @@ import App from './App'
 import './styles/normalize.css'
 import './styles/globals.css'
 
-const Provider = createFastContext({
+const { Provider } = createFastContext({
   currentProduct: null,
   products: [],
   loading: true,

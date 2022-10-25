@@ -5,7 +5,7 @@ export default function ProductCard({ product, onProductClick, action, actionHan
   const { sale_price } = defaultStyle
 
   return (
-    <div key={product.id} className="product-card">
+    <div key={product.id} className="product-card" data-testid="product-card">
       <div className="img">
         <img src={product.styles[0].photos[0].thumbnail_url} alt={product.name} />
       </div>

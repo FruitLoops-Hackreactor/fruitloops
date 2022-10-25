@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
 
 export default function Carousel({ group, max, children }) {
+  children = !children.length ? [] : children.filter(Boolean)
   const [slideIdx, setSlideIdx] = useState(0)
   const slideLeft = () => setSlideIdx((idx) => (idx === 0 ? 0 : idx - 1))
   const slideRight = () => setSlideIdx((idx) => (idx === children.length - max ? idx : idx + 1))
@@ -23,8 +24,8 @@ export default function Carousel({ group, max, children }) {
     })
   }, [slideIdx])
 
-  // Don't display the carousel if there are no children
-  if (!children.length) return null
+  // Don't display the carousel if the number of products is less than the max
+  if (children.length < max) return children
 
   return (
     <div className="carousel" data-testid="products-carousel">
