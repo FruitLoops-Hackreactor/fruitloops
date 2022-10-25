@@ -6,41 +6,48 @@
   flex-direction: column;
   overflow: auto;
   max-height: 14em;
+  margin-top: .75rem;
 }
 
 .product-overview .desc-title {
   font-weight:400;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #333;
   padding-bottom: .75rem;
+  max-width: 21rem;
 }
 
 .product-overview .slogan {
   font-weight:400;
-  font-size: .95rem;
+  font-size: .9rem;
   color: #333;
   padding-bottom: .5rem;
+  max-width: 21rem;
 }
 
 .product-overview .desc-summary {
-  max-width: 22rem;
+  max-width: 21rem;
   font-weight: 400;
-  font-size: .9rem;
+  font-size: .85rem;
   color: #333;
+  line-height: 1.25rem;
 }
 
 .product-overview .features {
   font-weight:400;
-  font-size: .9rem;
+  font-size: .85rem;
   color: #333;
+  max-width: 21rem;
 }
 
 ul {
   list-style: none;
   padding-left: .5rem;
-  line-height: 1.4rem;
+  line-height: 1.25rem;
+  max-width: 21rem;
 }
 
 li {
   padding-left: .5rem;
+  max-width: 21rem;
 }

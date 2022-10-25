@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '@/utils/fastContext'
 import ImageGallery from './PO-Components/ImageGallery'
-import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
 import '@/styles/productOverview/main.css'
 

@@ -8,11 +8,12 @@ import {
 } from '@tabler/icons'
 // import ReactImageMagnify from 'react-image-magnify';
 import '/src/styles/productOverview/imageGallery.css'
+import PrismaZoom from 'react-prismazoom'
 
 export default function ImageGallery({ photos, expand, setExpand }) {
   const [slideIdx, setSlideIdx] = useState(0)
   const length = photos.length
-  const max = 7
+  const [zoom, setZoom] = useState(1)
 
   // given the current index, if the index reaches the max, reset the index back to 0, otherwise increment upwards
   const nextSlide = () => {
@@ -26,6 +27,10 @@ export default function ImageGallery({ photos, expand, setExpand }) {
 
   const moveDot = (idx) => {
     setSlideIdx(idx)
+  }
+
+  const zoomChange = (newZoom) => {
+    setZoom(newZoom)
   }
 
   // console.log(slideIdx) // TEMP
@@ -72,15 +77,19 @@ export default function ImageGallery({ photos, expand, setExpand }) {
             )
           } else {
             return (
-              <div className={index === slideIdx ? 'slide active' : 'slide'} key={index}>
-                {index === slideIdx && (
-                  <img
-                    src={photo.thumbnail_url}
-                    alt={photo.name}
-                    className={expand === false ? 'image' : 'expanded-image'}
-                    data-testid="image-test"
-                  />
-                )}
+              <div className="app-image">
+                <PrismaZoom onZoomChange={zoomChange} maxZoom={4} scrollVelocity={0.2}>
+                  <div className={index === slideIdx ? 'slide active' : 'slide'} key={index}>
+                    {index === slideIdx && (
+                      <img
+                        src={photo.thumbnail_url}
+                        alt={photo.name}
+                        className={expand === false ? 'image' : 'expanded-image'}
+                        data-testid="image-test"
+                      />
+                    )}
+                  </div>
+                </PrismaZoom>
               </div>
             )
           }

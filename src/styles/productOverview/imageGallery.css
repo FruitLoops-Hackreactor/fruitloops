@@ -10,6 +10,7 @@
   transition-property: width, height;
   transition-duration: 500ms;
   z-index: 10;
+  overflow: hidden;
 }
 
 .product-overview .image-gallery-container {
@@ -27,6 +28,11 @@
   transition-property: width, height;
   transition-duration: 500ms;
   z-index: 10;
+  overflow: hidden;
+}
+
+.app-image {
+  overflow: hidden;
 }
 
 .product-overview .image {
@@ -52,10 +58,14 @@
 
 .product-overview .slide {
   opacity: 0;
+  overflow: hidden;
+
 }
 
 .product-overview .slide.active {
   opacity: 1;
+  overflow: hidden;
+
 }
 
 .product-overview .container-squares {
