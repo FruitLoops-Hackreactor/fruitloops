@@ -106,7 +106,7 @@ export default function AddToCart({ skus }) {
           <button className="add-to-bag" onClick={() => checkout()}>
             ADD TO BAG
           </button>
-          <IconStar className="icon-star" />
+          {/* <IconStar className="icon-star" /> */}
         </div>
 
         <div className="conditional-success-msg">

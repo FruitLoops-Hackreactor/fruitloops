@@ -2,7 +2,7 @@
 .product-overview .carousel {
   background-color: #ccc;
   position: relative;
-  height: 44vw;
+  height: 42vw;
   width: 48vw;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@
 .product-overview .carousel-expanded {
   background-color: #ccc;
   position: relative;
-  height: 44vw;
+  height: 42vw;
   width: 75vw;
   display: flex;
   justify-content: center;
@@ -43,7 +43,7 @@
   object-fit: cover;
   width: auto;
   max-width: 32vw;
-  height: 40vw;
+  height: 38.5vw;
   border-radius: 10px;
   transition-property: width, height;
   transition-duration: 500ms;
@@ -64,7 +64,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 28.85rem;
 }
 
 .product-overview .square {
@@ -116,20 +115,20 @@
   user-select: none;
 }
 
-.product-overview .up-arrow {
+.product-overview .up {
   position: absolute;
   bottom: 96%;
-  left: 1.7rem;
+  left: 2.4rem;
   font-size: 3rem;
   z-index: 13;
   cursor: pointer;
   user-select: none;
 }
 
-.product-overview .down-arrow {
+.product-overview .down {
   position: absolute;
-  top: 102%;
-  right: .9rem;
+  top: 98%;
+  right: 1.4rem;
   font-size: 3rem;
   z-index: 13;
   cursor: pointer;

@@ -1,5 +1,6 @@
 .product-overview .bubble-container {
   display: grid;
+  padding-top: .25rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
@@ -22,12 +23,12 @@
 }
 
 .product-overview .style-bubble {
-  width: 70px;
-  height: 70px;
-  max-width: 70px;
-  min-width:70px;
-  min-height: 70px;
-  max-height:70px;
+  width: 75px;
+  height: 75px;
+  max-width: 75px;
+  min-width:75px;
+  min-height: 75px;
+  max-height:75px;
   border-radius: 50%;
   border: 1px solid #000;
   justify-content: center;
@@ -41,7 +42,7 @@
 .product-overview .bubble-check {
   position: absolute;
   top: 0;
-  right: 12%;
+  right: 5%;
   width: 20px;
   height: 20px;
   color: #5A5A5A;
@@ -52,4 +53,10 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+.product-overview .style-heading {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #333;
 }

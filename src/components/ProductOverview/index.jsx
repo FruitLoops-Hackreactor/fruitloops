@@ -30,10 +30,16 @@ export default function ProductOverview() {
 
   return (
     <div className="product-overview">
-      <span className="banner">
-        BEST PRICE GUARANTEE If you find a lower price, we'll match it. FREE shipping on all orders
-        over $100 (US only)
-      </span>
+      <h4 className="banner">
+        <span className="banner-sub-1">BEST PRICE GUARANTEE</span>{' '}
+        <span className="banner-sub-2 banner-padding">
+          If you find a lower price, we'll match it.
+        </span>
+        <span className="banner-sub-3 banner-padding">
+          <b>FREE</b> shipping on all orders over $100
+          <span className="banner-sub-2 banner-padding">(continental US only)</span>
+        </span>
+      </h4>
       <div className="main-container">
         <div className="image-gallery">
           <br></br>
@@ -47,9 +53,9 @@ export default function ProductOverview() {
           />
         </div>
       </div>
-      <div className="description">
+      {/* <div className="description">
         <Description product={currentProduct} />
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import StyleSelector from './StyleSelector'
 import AddToCart from './AddToCart'
+import Description from './Description'
 import '@/styles/productOverview/productInformation.css'
 
 export default function ProductInformation({ product, changePhotos, expand }) {
@@ -22,19 +23,19 @@ export default function ProductInformation({ product, changePhotos, expand }) {
   return (
     <div className={expand === false ? 'prodInfo-container' : 'prodInfo-container-invisible'}>
       <div className="product-info">
-        <div className="brand-name space">BRANDLESS</div>
+        {/* <div className="brand-name space">BRANDLESS</div> */}
         <div className="category-title space">{product.category}</div>
         <div className="product-name space">{product.name}</div>
         {salePrice && <div className="sale-price-msg">LOWEST PRICE OF THE SEASON</div>}
-        <div>
+        <div className="price-container">
           {!salePrice ? (
-            <span>${product.default_price}</span>
+            <span className="default-price">${product.default_price}</span>
           ) : (
-            <span>
+            <div>
               <span className="sale-price">${salePrice}</span>
               <span className="og-price">${product.default_price}</span>
               <span className="percent-off">{percentFormat()}% discount </span>
-            </span>
+            </div>
           )}
         </div>
       </div>
@@ -49,6 +50,7 @@ export default function ProductInformation({ product, changePhotos, expand }) {
         />
         <AddToCart skus={skus} />
       </div>
+      <Description product={product} />
     </div>
   )
 }

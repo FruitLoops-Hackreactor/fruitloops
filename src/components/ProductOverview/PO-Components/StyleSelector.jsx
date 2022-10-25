@@ -47,7 +47,9 @@ export default function StyleSelector({ product, id, skusHandler, changePhotos, 
 
   return (
     <div className="style-container">
-      <div className="style-heading">STYLE &gt; {currentStyle.name}</div>
+      <div className="style-heading">
+        <b>STYLE &gt;</b> {currentStyle.name}
+      </div>
       <div className="bubble-container">
         {styles?.map((style, index) => {
           return (

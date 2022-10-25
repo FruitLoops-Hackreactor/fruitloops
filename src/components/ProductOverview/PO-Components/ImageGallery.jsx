@@ -33,7 +33,7 @@ export default function ImageGallery({ photos, expand, setExpand }) {
   return (
     <div className="image-gallery-container">
       <div className="container-squares">
-        <div className="up" style={{ opacity: slideIdx > 0 ? 1 : 0 }}>
+        <div className="up">
           {slideIdx !== 0 ? <IconChevronUp className="up-arrow" onClick={prevSlide} /> : null}
         </div>
         {photos?.map((photo, index) => {
@@ -52,10 +52,11 @@ export default function ImageGallery({ photos, expand, setExpand }) {
             )
           }
         })}
-        <div className="down" style={{ opacity: slideIdx < photos.length - max ? 1 : 0 }}></div>
-        {slideIdx !== length - 1 ? (
-          <IconChevronDown className="down-arrow" onClick={nextSlide} />
-        ) : null}
+        <div className="down">
+          {slideIdx !== length - 1 ? (
+            <IconChevronDown className="down-arrow" onClick={nextSlide} />
+          ) : null}
+        </div>
       </div>
 
       <div className={expand === false ? 'carousel' : 'carousel-expanded'}>
