@@ -9,11 +9,19 @@ export default function OutfitList({ max, loading, currentProduct }) {
   const [outfit, setOutfit] = useState([])
   const addItem = () => {
     if (!outfit.find((product) => product.id === currentProduct.id)) {
-      setOutfit((currOutfit) => [...currOutfit, currentProduct])
+      setOutfit((currOutfit) => {
+        const newOutfit = [...currOutfit, currentProduct]
+        localStorage.setItem('outfit', JSON.stringify(newOutfit))
+        return newOutfit
+      })
     }
   }
-  const removeItem = (id) => () => {
-    setOutfit((currOutfit) => currOutfit.filter((product) => product.id !== id))
+  const removeItem = (id) => {
+    setOutfit((currOutfit) => {
+      const newOutfit = currOutfit.filter((product) => product.id !== id)
+      localStorage.setItem('outfit', JSON.stringify(newOutfit))
+      return newOutfit
+    })
   }
 
   /**
@@ -33,13 +41,6 @@ export default function OutfitList({ max, loading, currentProduct }) {
     }
   }, [])
 
-  /**
-   * Save the outfit to local storage when it changes
-   */
-  useEffect(() => {
-    localStorage.setItem('outfit', JSON.stringify(outfit))
-  }, [outfit])
-
   return (
     <div className="your-outfit">
       <div className="section-title">
@@ -53,7 +54,7 @@ export default function OutfitList({ max, loading, currentProduct }) {
         ) : (
           <div className="items-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
-            <Carousel group="outfit-carousel" max={max}>
+            <Carousel group="outfit-carousel" max={max} type="outfit">
               <div className="add-card" data-testid="add-to-outfit-card">
                 <button onClick={addItem}>
                   <IconPlus size={24} />
