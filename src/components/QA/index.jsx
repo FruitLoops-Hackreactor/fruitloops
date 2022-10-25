@@ -22,7 +22,7 @@ export default function QA() {
       .get('/qa/questions', {
         params: {
           // TEMP: hardcoded to id with good example data for testing
-          product_id: 43043,
+          product_id: currentProduct.id,
         },
       })
       .then((res) => {
@@ -96,19 +96,22 @@ export default function QA() {
       })
   }
 
-  const searchQuestionsSubmitHandler = (event, searchString) => {
-    event.preventDefault()
-    setSearchedQuestions(
-      allQuestions.filter((question) =>
-        question.question_body.toLowerCase().includes(searchString.toLowerCase())
+  const searchQuestionsChangeHandler = (event) => {
+    if (event.target.value.length >= 3) {
+      setSearchedQuestions(
+        allQuestions.filter((question) =>
+          question.question_body.toLowerCase().includes(event.target.value.toLowerCase())
+        )
       )
-    )
+    } else {
+      setSearchedQuestions(allQuestions)
+    }
   }
 
   return (
     <section>
       <h3 className="section-title">QUESTIONS & ANSWERS</h3>
-      <SearchQuestions submitHandler={searchQuestionsSubmitHandler} />
+      <SearchQuestions changeHandler={searchQuestionsChangeHandler} />
       <QuestionsList questions={questions} helpfulnessClick={helpfulnessClickHandler} />
       <span>
         <MoreQuestionsBtn moreQuestions={moreQuestions} handleClick={handleMoreQuestionsClick} />

@@ -1,5 +1,5 @@
-const Answer = ({ answer }) => {
-  let { answerer_name, body } = answer
+const Answer = ({ answer, helpfulnessClick }) => {
+  let { answerer_name, body, id: answer_id } = answer
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -17,7 +17,14 @@ const Answer = ({ answer }) => {
           return <img src={`${photo}`} height="160" key={`I-${index}`} />
         })}
       </div>
-      <p id="answer-info">by {`${answerer_name}, ${date}`}</p>
+      <div className="answer-info">
+        <span>by {`${answerer_name}, ${date}`}</span>
+        <span>Helpful?</span>
+        <a onClick={(e) => helpfulnessClick(e, answer_id)} href="">
+          Yes
+        </a>
+        <span className="answer-helpfulness">{`(${answer.helpfulness})`}</span>
+      </div>
     </div>
   )
 }
