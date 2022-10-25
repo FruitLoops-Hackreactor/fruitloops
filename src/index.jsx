@@ -5,7 +5,7 @@ import App from './App'
 import './styles/normalize.css'
 import './styles/globals.css'
 
-const { Provider } = createFastContext({
+const { StoreProvider } = createFastContext({
   currentProduct: null,
   products: [],
   loading: true,
@@ -14,8 +14,8 @@ const { Provider } = createFastContext({
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider>
+    <StoreProvider>
       <App />
-    </Provider>
+    </StoreProvider>
   </React.StrictMode>
 )
