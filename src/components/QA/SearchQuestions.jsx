@@ -11,6 +11,7 @@ export default function SearchQuestions({ submitHandler }) {
         }}
         defaultValue={searchString}
         placeholder="Have a question? Search for answers…"
+        className="search-bar"
       ></input>
       <button>Search</button>
     </form>
