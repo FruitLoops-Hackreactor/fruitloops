@@ -49,9 +49,6 @@ export default function ProductCard({ product, onProductClick, action, actionHan
             </span>
           )}
         </div>
-        <div>
-          <span>Ratings</span>
-        </div>
       </div>
     </div>
   )
