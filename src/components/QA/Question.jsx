@@ -26,8 +26,7 @@ export default function Question({ question, helpfulnessClick }) {
   }
 
   return (
-    <div id="question-container">
-      <br></br>
+    <div className="question-container">
       <div className="question-title">
         <span id="question-body">Q: {question_body}</span>
         <div className="question-requests">
@@ -52,8 +51,8 @@ export default function Question({ question, helpfulnessClick }) {
         </div>
       </div>
       <div className="answers-container">
-        {answers.map((answer, index) => {
-          return <Answer answer={answer} key={index} />
+        {answers.map((answer) => {
+          return <Answer answer={answer} key={`A-${answer.id}`} />
         })}
         <MoreAnswersLink moreAnswers={moreAnswers} handleClick={handleMoreAnswersClick} />
       </div>

@@ -9,12 +9,12 @@ const Answer = ({ answer }) => {
   let date = formatDate(answer.date)
 
   return (
-    <div>
+    <div className="answer">
       <span>{`A: `}</span>
       <span>{body}</span>
       <div className="answer-thumbnails">
-        {answer.photos.map((photo) => {
-          return <img src={`${photo}`} height="160" />
+        {answer.photos.map((photo, index) => {
+          return <img src={`${photo}`} height="160" key={`I-${index}`} />
         })}
       </div>
       <p id="answer-info">by {`${answerer_name}, ${date}`}</p>

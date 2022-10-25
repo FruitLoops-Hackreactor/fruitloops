@@ -40,6 +40,7 @@
 
 .search-bar {
   width: 23rem;
+  margin-bottom: 1rem;
 }
 
 /* question modal form styles */
@@ -87,6 +88,11 @@ form .answer-form-photos {
   max-height: 50vh;
   width: 75%;
   box-shadow: 1px 23px 37px -40px rgb(0 0 0 / 58%) inset;
+  margin-left: 1rem;
+}
+
+.answer {
+  margin-bottom: 1.5rem;
 }
 
 .question-container {
@@ -94,6 +100,7 @@ form .answer-form-photos {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .questions-list{
