@@ -15,7 +15,7 @@ export default function Products({ max, loading, currentProduct, relatedProducts
    * Get the features of both the current product and the selected product to compare
    * and display common and different features.
    */
-  const handleComparisonClick = (id) => () => {
+  const handleComparisonClick = (id) => {
     const product = relatedProducts.find((product) => product.id === id)
     const relFeatures = product.features.sort((a, b) => a.feature.localeCompare(b.feature))
     const features = []
