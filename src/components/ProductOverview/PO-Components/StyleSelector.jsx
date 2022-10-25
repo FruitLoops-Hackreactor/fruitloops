@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import '@/styles/productOverview/styleSelector.css'
 import { IconCheck } from '@tabler/icons'
@@ -11,10 +11,10 @@ export default function StyleSelector({ product, id, skusHandler, changePhotos, 
   const handleStyleClick = (styleId, index) => {
     // console.log('style_id that was clicked', styleId)
     // .filter returns an array, filteredStyle -> [{styles}]
-    const filteredStyle = styles.filter((style, index) => style.style_id === styleId)
+    const filteredStyle = styles.filter((style) => style.style_id === styleId)
     // format into its own object
     const selectedStyle = { ...filteredStyle[0] }
-    console.log('newStyle based on style_id', selectedStyle)
+    // console.log('newStyle based on style_id', selectedStyle)
     // change the current style state
     setCurrentStyle(selectedStyle)
     // change photos in the image gallery component
@@ -28,19 +28,19 @@ export default function StyleSelector({ product, id, skusHandler, changePhotos, 
 
   useEffect(() => {
     if (!id) return
+    const defaultStyle = product.styles.find((style) => style.default) || product.styles[0]
+    setCurrentStyle(defaultStyle)
 
     axios
       .get(`/products/${id}/styles`)
       .then((styleObj) => {
         setStyles(styleObj.data.results) // the entire styles array
-        const defaultStyle = product.styles.find((style) => style.default) || product.styles[0]
-        setCurrentStyle(defaultStyle)
         const { sale_price } = defaultStyle
         // console.log('results array in styles:', styleObj.data.results)
         // console.log('currentStyle:', styleObj.data.results[0])
+        // console.log('currentSku:', styleObj.data.results[0].skus)
         skusHandler(styleObj.data.results[0].skus)
         setSalePrice(sale_price)
-        // console.log('currentSku:', styleObj.data.results[0].skus)
       })
       .catch((err) => console.log(err))
   }, [id])

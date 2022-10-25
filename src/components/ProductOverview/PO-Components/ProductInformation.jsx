@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import { IconStar, IconChevronDown, IconPlus } from '@tabler/icons'
-import axios from 'axios'
+import { useState } from 'react'
 import StyleSelector from './StyleSelector'
 import AddToCart from './AddToCart'
 import '@/styles/productOverview/productInformation.css'
@@ -8,6 +6,8 @@ import '@/styles/productOverview/productInformation.css'
 export default function ProductInformation({ product, changePhotos, expand }) {
   const [skus, setSkus] = useState([])
   const [salePrice, setSalePrice] = useState('')
+
+  if (!product) return
 
   const skusHandler = (skusObj) => {
     // console.log('these are the SKUs', skusObj)

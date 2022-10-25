@@ -1,38 +1,30 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '@/utils/fastContext'
-import { getProduct } from '@/utils/products'
 import ImageGallery from './PO-Components/ImageGallery'
 import Description from './PO-Components/Description'
 import ProductInformation from './PO-Components/ProductInformation'
 import '@/styles/productOverview/main.css'
 
 export default function ProductOverview() {
-  const [products] = useStore('products')
   const [currentProduct] = useStore('currentProduct')
   const [photos, setPhotos] = useState([])
-  const [productById, setProductById] = useState({})
   const [expand, setExpand] = useState(false)
 
   // get the currentProduct
   useEffect(() => {
     if (!currentProduct) return
+    console.log('this is the currentProduct', currentProduct)
 
-    const getPhotos = async () =>
-      getProduct(currentProduct.id).catch((err) => {
-        console.error(err)
-        return []
-      })
-
-    getPhotos().then((product) => {
-      // console.log('this is 1 style for the product:', product.styles[0]) // TEMP
-      setPhotos(product.styles[0].photos) // NEED TO REFACTOR FOR WHEN SPECIFIC STYLE IS CHOSEN
-      console.log('this is the product:', product)
-      setProductById(product)
-    })
+    // console.log('this is the currentProduct from store', currentProduct)
+    const defaultStyle =
+      currentProduct.styles.find((style) => style.default) || currentProduct.styles[0]
+    // console.log('this is the photos from store', defaultStyle)
+    setPhotos(defaultStyle.photos)
   }, [currentProduct])
 
   // when user clicks new style, we want image gallery to update
   const changePhotos = (styleObj) => {
+    // const newProd = product.find((prod) => prod.id === id)
     setPhotos(styleObj.photos)
   }
 
@@ -45,20 +37,18 @@ export default function ProductOverview() {
       <div className="main-container">
         <div className="image-gallery">
           <br></br>
-          <ImageGallery
-            products={products}
-            currentProduct={currentProduct}
-            photos={photos}
-            expand={expand}
-            setExpand={setExpand}
-          />
+          <ImageGallery photos={photos} expand={expand} setExpand={setExpand} />
         </div>
         <div className="product-info">
-          <ProductInformation product={productById} changePhotos={changePhotos} expand={expand} />
+          <ProductInformation
+            product={currentProduct}
+            changePhotos={changePhotos}
+            expand={expand}
+          />
         </div>
       </div>
       <div className="description">
-        <Description product={productById} id={productById.id} />
+        <Description product={currentProduct} />
       </div>
     </div>
   )
