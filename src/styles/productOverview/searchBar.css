@@ -44,12 +44,10 @@
 }
 
 .search-icon {
-  float: right;
   background-color: transparent;
   height: 30px;
   width: 35x;
   padding-left: 1rem;
-  padding-right: 4rem;
   display: flex;
   align-items: center;
 }
