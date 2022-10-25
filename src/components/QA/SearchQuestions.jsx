@@ -1,19 +1,12 @@
-import { useState } from 'react'
-
-export default function SearchQuestions({ submitHandler }) {
-  const [searchString, setSearchString] = useState('')
-
+export default function SearchQuestions({ changeHandler }) {
   return (
-    <form onSubmit={(e) => submitHandler(e, searchString)}>
-      <input
-        onChange={(e) => {
-          setSearchString(e.target.value)
-        }}
-        defaultValue={searchString}
-        placeholder="Have a question? Search for answers…"
-        className="search-bar"
-      ></input>
-      <button>Search</button>
-    </form>
+    <input
+      onChange={(e) => {
+        changeHandler(e)
+      }}
+      defaultValue={''}
+      placeholder="Have a question? Search for answers…"
+      className="search-bar"
+    ></input>
   )
 }

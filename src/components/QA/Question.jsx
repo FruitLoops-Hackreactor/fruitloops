@@ -19,10 +19,12 @@ export default function Question({ question, helpfulnessClick }) {
 
   const handleMoreAnswersClick = (event) => {
     event.preventDefault()
-    if (allAnswers.length <= 2 + additionalAnswers + 2) {
-      setMoreAnswers(false)
+    setMoreAnswers(!moreAnswers)
+    if (!additionalAnswers) {
+      setAdditionalAnswers(allAnswers.length - 2)
+    } else {
+      setAdditionalAnswers(0)
     }
-    setAdditionalAnswers(additionalAnswers + 2)
   }
 
   return (
@@ -54,7 +56,9 @@ export default function Question({ question, helpfulnessClick }) {
         {answers.map((answer) => {
           return <Answer answer={answer} key={`A-${answer.id}`} />
         })}
-        <MoreAnswersLink moreAnswers={moreAnswers} handleClick={handleMoreAnswersClick} />
+        {allAnswers.length > 2 && (
+          <MoreAnswersLink moreAnswers={moreAnswers} handleClick={handleMoreAnswersClick} />
+        )}
       </div>
     </div>
   )
