@@ -77,7 +77,7 @@ export default function ImageGallery({ photos, expand, setExpand }) {
             )
           } else {
             return (
-              <div className="app-image">
+              <div className="app-image" key={index}>
                 <PrismaZoom maxZoom={3} scrollVelocity={0.2}>
                   <div className={index === slideIdx ? 'slide active' : 'slide'} key={index}>
                     {index === slideIdx && (

@@ -12,7 +12,7 @@ export default function ProductOverview() {
   // get the currentProduct
   useEffect(() => {
     if (!currentProduct) return
-    console.log('this is the currentProduct', currentProduct)
+    // console.log('this is the currentProduct', currentProduct)
 
     // console.log('this is the currentProduct from store', currentProduct)
     const defaultStyle =
@@ -41,7 +41,6 @@ export default function ProductOverview() {
       </h4>
       <div className="main-container">
         <div className="image-gallery">
-          <br></br>
           <ImageGallery photos={photos} expand={expand} setExpand={setExpand} />
         </div>
         <div className="product-info">
