@@ -43,6 +43,7 @@
   border-radius: 10px;
   transition-property: width, height;
   transition-duration: 500ms;
+  cursor: zoom-in;
 }
 
 .product-overview .expanded-image {
@@ -54,6 +55,7 @@
   transition-property: width, height;
   transition-duration: 500ms;
   z-index: 12;
+  cursor: zoom-in;
 }
 
 .product-overview .slide {

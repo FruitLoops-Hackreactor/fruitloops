@@ -43,7 +43,7 @@
   font-size: 2rem;
   font-weight: 600;
   color: #333;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .product-overview .product-price {
@@ -58,7 +58,7 @@
 }
 
 .price-container {
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
 }
 
 .default-price {
