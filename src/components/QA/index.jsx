@@ -13,6 +13,7 @@ export default function QA() {
   let [allQuestions, setAllQuestions] = useState([])
   let [moreQuestions, setMoreQuestions] = useState(true)
   let [additionalQuestions, setAdditionalQuestions] = useState()
+  let [searchedQuestions, setSearchedQuestions] = useState([])
 
   useEffect(() => {
     if (!currentProduct) return
@@ -21,11 +22,12 @@ export default function QA() {
       .get('/qa/questions', {
         params: {
           // TEMP: hardcoded to id with good example data for testing
-          product_id: 40343,
+          product_id: 43043,
         },
       })
       .then((res) => {
         setAllQuestions(res.data.results)
+        setSearchedQuestions(res.data.results)
         setAdditionalQuestions(0)
         return res.data.results
       })
@@ -41,10 +43,14 @@ export default function QA() {
       })
   }, [currentProduct])
 
-  // render additional questions when the additionalQuestion state changes
+  /*
+   * render filtered questions when user submits a search, add questions when more
+   * questions button is clicked
+   */
   useEffect(() => {
-    setQuestions(allQuestions.slice(0, 4 + additionalQuestions))
-  }, [additionalQuestions])
+    setQuestions(searchedQuestions.slice(0, 4 + additionalQuestions))
+  }, [searchedQuestions, additionalQuestions])
+
   /*
    * check if all questions will be displayed, if so, set moreQuestion state to false
    * and display up to 2 more questions
@@ -69,18 +75,19 @@ export default function QA() {
     if (parsedIds.includes(questionId)) {
       return
     }
-    let questionsCopy = [...questions]
-    questionsCopy.map((question) => {
-      if (question.question_id === questionId) {
-        question.question_helpfulness++
-      }
-      return question
-    })
+
     axios
       .put(`/qa/questions/${questionId}/helpful`)
       .then((res) => {
         console.log('res', res)
-        setQuestions(questionsCopy)
+        setQuestions(
+          questions.map((question) => {
+            if (question.question_id === questionId) {
+              question.question_helpfulness++
+            }
+            return question
+          })
+        )
         parsedIds.push(questionId)
         localStorage.setItem('question_id', JSON.stringify(parsedIds))
       })
@@ -91,12 +98,11 @@ export default function QA() {
 
   const searchQuestionsSubmitHandler = (event, searchString) => {
     event.preventDefault()
-    console.log('search string', searchString)
-    console.log('all questions', allQuestions)
-    // let allQuestionsCopy = [...allQuestions]
-    // console.log(allQuestionsCopy)
-    // allQuestionsCopy.pop()
-    // setAllQuestions(allQuestionsCopy)
+    setSearchedQuestions(
+      allQuestions.filter((question) =>
+        question.question_body.toLowerCase().includes(searchString.toLowerCase())
+      )
+    )
   }
 
   return (

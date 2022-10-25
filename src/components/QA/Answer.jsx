@@ -7,7 +7,6 @@ const Answer = ({ answer }) => {
   }
 
   let date = formatDate(answer.date)
-  console.log('answer', answer)
 
   return (
     <div>

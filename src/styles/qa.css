@@ -38,6 +38,10 @@
   gap: 0.5rem;
 }
 
+.search-bar {
+  width: 23rem;
+}
+
 /* question modal form styles */
 form .question-form-username {
   width: 20rem;
