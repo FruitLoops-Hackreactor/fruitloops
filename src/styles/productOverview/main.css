@@ -16,3 +16,24 @@ nav {
 .product-overview .main-container {
   display: flex;
 }
+
+.banner {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 400;
+  color: #333;
+  padding: 1rem 0rem;
+}
+
+.banner-padding {
+  padding-left: .4rem;
+}
+
+.banner-sub-1 {
+  font-weight: 600;
+}
+
+.banner-sub-2 {
+  font-size: .75rem;
+}
