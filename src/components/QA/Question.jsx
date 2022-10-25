@@ -1,5 +1,6 @@
 import { useStore } from '@/utils/fastContext'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import MoreAnswersLink from './MoreAnswersLink'
 import Answer from './Answer'
 import AnswerForm from './AnswerForm'
@@ -25,6 +26,36 @@ export default function Question({ question, helpfulnessClick }) {
     } else {
       setAdditionalAnswers(0)
     }
+  }
+
+  const answerHelpfulnessClickHandler = (event, answerId) => {
+    event.preventDefault()
+    if (!localStorage.answer_id) {
+      localStorage.setItem('answer_id', JSON.stringify([]))
+    }
+    let parsedIds = JSON.parse(localStorage.getItem('answer_id'))
+    if (parsedIds.includes(answerId)) {
+      return
+    }
+
+    axios
+      .put(`/qa/answers/${answerId}/helpful`)
+      .then((res) => {
+        console.log('res', res)
+        setAnswers(
+          answers.map((answer) => {
+            if (answer.id === answerId) {
+              answer.helpfulness++
+            }
+            return answer
+          })
+        )
+        parsedIds.push(answerId)
+        localStorage.setItem('answer_id', JSON.stringify(parsedIds))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
@@ -54,7 +85,13 @@ export default function Question({ question, helpfulnessClick }) {
       </div>
       <div className="answers-container">
         {answers.map((answer) => {
-          return <Answer answer={answer} key={`A-${answer.id}`} />
+          return (
+            <Answer
+              helpfulnessClick={answerHelpfulnessClickHandler}
+              answer={answer}
+              key={`A-${answer.id}`}
+            />
+          )
         })}
         {allAnswers.length > 2 && (
           <MoreAnswersLink moreAnswers={moreAnswers} handleClick={handleMoreAnswersClick} />

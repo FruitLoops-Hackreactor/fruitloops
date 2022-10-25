@@ -8,10 +8,6 @@
   font-weight: bold;
 }
 
-#answer-info {
-  font-size: x-small;
-}
-
 #more-questions {
   margin-top: 1rem;
   padding: 1rem 0.5rem;
@@ -21,6 +17,12 @@
   margin-top: 1rem;
   margin-left: 1rem;
   padding: 1rem 0.5rem;
+}
+
+.answer-info {
+  font-size: x-small;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .question-title {
