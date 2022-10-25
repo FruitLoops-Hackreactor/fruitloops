@@ -38,7 +38,7 @@ export default function RelatedProducts() {
   }, [currentProduct])
 
   return (
-    <section className="related-products-comparison">
+    <section className="related-products-comparison" data-testid="related-products">
       <Products
         group=".related-products"
         max={NUM_CARDS}
