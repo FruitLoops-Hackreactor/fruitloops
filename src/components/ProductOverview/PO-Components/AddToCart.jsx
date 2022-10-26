@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IconStar, IconPlus, IconExclamationMark, IconX, IconCheck } from '@tabler/icons'
+import { IconExclamationMark, IconX, IconCheck } from '@tabler/icons'
 import '@/styles/productOverview/addToCart.css'
 
 export default function AddToCart({ skus }) {
@@ -103,7 +103,7 @@ export default function AddToCart({ skus }) {
             )}
           </select>
 
-          <button className="add-to-bag" onClick={() => checkout()}>
+          <button className="add-to-bag" aria-label="cart" onClick={() => checkout()}>
             ADD TO BAG
           </button>
           {/* <IconStar className="icon-star" /> */}

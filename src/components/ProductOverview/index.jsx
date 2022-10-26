@@ -29,8 +29,8 @@ export default function ProductOverview() {
 
   return (
     <div className="product-overview">
-      <h4 className="banner">
-        <span className="banner-sub-1">BEST PRICE GUARANTEE</span>{' '}
+      <h4 className="banner" data-testid="banner-test">
+        <span className="banner-sub-1">BEST PRICE GUARANTEE</span>
         <span className="banner-sub-2 banner-padding">
           If you find a lower price, we'll match it.
         </span>
