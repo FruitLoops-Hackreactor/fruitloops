@@ -40,7 +40,7 @@ export default function QuestionForm({ currentProduct }) {
   }
 
   return (
-    <form onSubmit={questionSubmitHandler}>
+    <form data-testid="question-form" onSubmit={questionSubmitHandler}>
       <h3>Ask Your Question</h3>
       <h5>{`About the ${currentProduct.name}`}</h5>
       <div className="input-group">
