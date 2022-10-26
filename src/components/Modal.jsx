@@ -36,11 +36,9 @@ export default function Modal() {
   }, [modalRef, modalContent])
 
   return (
-    <div ref={modalRef} className="modal" data-testid="modal">
-      <div ref={modalOverlayRef} className="modal-overlay" data-testid="modal-overlay">
-        <div className="modal-content" data-testid="modal-content">
-          {modalContent}
-        </div>
+    <div ref={modalRef} className="modal">
+      <div ref={modalOverlayRef} className="modal-overlay">
+        <div className="modal-content">{modalContent}</div>
       </div>
     </div>
   )

@@ -15,13 +15,7 @@ export default function ProductCard({ product, onProductClick, action, actionHan
   }
 
   return (
-    <div
-      ref={cardRef}
-      key={product.id}
-      className="product-card"
-      onClick={handleCardClick}
-      data-testid="product-card"
-    >
+    <div ref={cardRef} key={product.id} className="product-card" onClick={handleCardClick}>
       <div className="img">
         <img src={product.styles[0].photos[0].thumbnail_url} alt={product.name} />
       </div>
