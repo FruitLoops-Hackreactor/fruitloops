@@ -12,10 +12,8 @@ describe('RelatedProducts - Products', () => {
   const relatedProducts = []
 
   it('should render', () => {
-    const { queryByTestId } = render(
-      <Products {...{ max, loading, currentProduct, relatedProducts }}></Products>
-    )
+    render(<Products {...{ max, loading, currentProduct, relatedProducts }}></Products>)
 
-    expect(queryByTestId('products')).toBeTruthy()
+    expect(document.querySelector('.related-products')).toBeTruthy()
   })
 })

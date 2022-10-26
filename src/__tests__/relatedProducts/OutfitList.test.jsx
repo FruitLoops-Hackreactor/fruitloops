@@ -5,8 +5,8 @@ describe('RelatedProducts - OutfitList', () => {
   const max = 4
 
   it('should render and include the add-to-outfit-card', () => {
-    const { queryByTestId } = render(<OutfitList max={max} loading={false}></OutfitList>)
+    render(<OutfitList max={max} loading={false}></OutfitList>)
 
-    expect(queryByTestId('add-to-outfit-card')).toBeTruthy()
+    expect(document.querySelector('.add-card')).toBeTruthy()
   })
 })

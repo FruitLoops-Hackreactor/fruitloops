@@ -28,7 +28,7 @@ export default function Carousel({ group, max, children, type }) {
   if (children.length < max && type !== 'outfit') return children
 
   return (
-    <div className="carousel" data-testid="products-carousel">
+    <div className="carousel">
       <div className="carousel-nav">
         <div className="overlay left" style={{ opacity: slideIdx === 0 ? 0 : 1 }} />
         <div

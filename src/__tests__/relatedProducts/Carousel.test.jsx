@@ -5,12 +5,12 @@ describe('Related Products - Carousel', () => {
   const max = 4
 
   it('should not display carousel if there are no children', () => {
-    const { queryByTestId } = render(
+    render(
       <Carousel max={max}>
         <></>
       </Carousel>
     )
 
-    expect(queryByTestId('products-carousel')).toBeFalsy()
+    expect(document.querySelector('.products-carousel')).toBeFalsy()
   })
 })
