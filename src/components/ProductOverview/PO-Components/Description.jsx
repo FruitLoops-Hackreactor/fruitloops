@@ -22,7 +22,7 @@ export default function Description({ product }) {
   )
 
   return (
-    <div className="description-container">
+    <div className="description-container" data-testid="description-test">
       <div className="desc-title">Product Description</div>
       <div className="slogan">{product.slogan}</div>
       <div className="desc-summary">{product.description}</div>

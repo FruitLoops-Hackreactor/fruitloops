@@ -9,6 +9,7 @@ export default function ProductInformation({ product, changePhotos, expand }) {
   const [salePrice, setSalePrice] = useState('')
 
   if (!product) return
+  // console.log('product in prodinfo', product)
 
   const skusHandler = (skusObj) => {
     // console.log('these are the SKUs', skusObj)

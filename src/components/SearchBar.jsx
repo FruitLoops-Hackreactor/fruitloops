@@ -6,7 +6,7 @@ export default function SearchBar() {
   const searchRef = useRef()
 
   return (
-    <nav className="navbar-container">
+    <nav className="navbar-container" data-testid="navbar-test-id">
       <div className="insert-logo">Logo</div>
       <div className="empty-space"></div>
       <input className="text-box" ref={searchRef} type="text"></input>

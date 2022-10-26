@@ -6,7 +6,6 @@ import {
   IconChevronUp,
   IconMaximize,
 } from '@tabler/icons'
-// import ReactImageMagnify from 'react-image-magnify';
 import '/src/styles/productOverview/imageGallery.css'
 import PrismaZoom from 'react-prismazoom'
 
@@ -58,8 +57,12 @@ export default function ImageGallery({ photos, expand, setExpand }) {
           }
         })}
         <div className="down">
-          {slideIdx !== length - 1 ? (
-            <IconChevronDown className="down-arrow" onClick={nextSlide} />
+          {length && slideIdx !== length - 1 ? (
+            <IconChevronDown
+              className="down-arrow"
+              onClick={nextSlide}
+              data-testid="toggle-vertical-carousel"
+            />
           ) : null}
         </div>
       </div>
