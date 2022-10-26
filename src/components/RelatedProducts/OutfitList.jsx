@@ -55,7 +55,7 @@ export default function OutfitList({ max, loading, currentProduct }) {
           <div className="items-container">
             {/* Only render slider if there are more than the number of cards to display at once */}
             <Carousel group="outfit-carousel" max={max} type="outfit">
-              <div className="add-card" data-testid="add-to-outfit-card">
+              <div className="add-card">
                 <button onClick={addItem}>
                   <IconPlus size={24} />
                 </button>

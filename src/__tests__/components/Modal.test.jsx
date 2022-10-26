@@ -11,32 +11,26 @@ describe('Components - Modal', () => {
   beforeEach(() => {
     StoreProvider = createFastContext(intitialState).StoreProvider
     Wrapper = ({ children }) => <StoreProvider>{children}</StoreProvider>
+
+    render(
+      <Wrapper>
+        <Modal />
+      </Wrapper>
+    )
   })
 
   it('should render', () => {
-    const { queryByTestId } = render(
-      <Wrapper>
-        <Modal />
-      </Wrapper>
-    )
-
-    expect(queryByTestId('modal')).toBeTruthy()
-    expect(queryByTestId('modal-overlay')).toBeTruthy()
+    expect(document.querySelector('.modal')).toBeTruthy()
+    expect(document.querySelector('.modal-overlay')).toBeTruthy()
   })
 
   it('should unmount content and hide modal if the overlay is clicked', () => {
-    const { queryByTestId } = render(
-      <Wrapper>
-        <Modal />
-      </Wrapper>
-    )
+    expect(document.querySelector('.modal')).toBeTruthy()
+    expect(document.querySelector('.modal-overlay')).toBeTruthy()
 
-    expect(queryByTestId('modal')).toBeTruthy()
-    expect(queryByTestId('modal-overlay')).toBeTruthy()
+    fireEvent.click(document.querySelector('.modal-overlay'))
 
-    fireEvent.click(queryByTestId('modal-overlay'))
-
-    expect(queryByTestId('modal').style.display).toBe('none')
-    expect(queryByTestId('modal-content').children.length).toBe(0)
+    expect(document.querySelector('.modal').style.display).toBe('none')
+    expect(document.querySelector('.modal-content').children.length).toBe(0)
   })
 })

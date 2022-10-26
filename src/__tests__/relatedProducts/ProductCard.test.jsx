@@ -13,10 +13,8 @@ describe('RelatedProducts - ProductCard', () => {
 
   it('should render', () => {
     const action = 'compare'
-    const { queryByTestId } = render(
-      <ProductCard {...{ product, onProductClick, action, actionHandler }}></ProductCard>
-    )
+    render(<ProductCard {...{ product, onProductClick, action, actionHandler }}></ProductCard>)
 
-    expect(queryByTestId('product-card')).toBeTruthy()
+    expect(document.querySelector('.product-card')).toBeTruthy()
   })
 })
