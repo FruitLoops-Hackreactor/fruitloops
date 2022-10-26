@@ -83,7 +83,7 @@ export default function Question({ question, helpfulnessClick }) {
           </span>
         </div>
       </div>
-      <div className="answers-container">
+      <div className="answers-container" data-testid="answers-container">
         {answers.map((answer) => {
           return (
             <Answer
