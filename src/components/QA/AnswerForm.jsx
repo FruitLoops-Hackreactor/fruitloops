@@ -104,8 +104,10 @@ export default function AnswerForm({ currentProduct, question }) {
           onChange={(e) => setUsername(e.target.value)}
           defaultValue={username}
           type="text"
+          name="username"
           placeholder="Example: jack543!"
           className="answer-form-username"
+          data-testid="username"
         ></input>
         <span className="input-info">
           For privacy reasons, do not use your full name or email address
@@ -117,8 +119,10 @@ export default function AnswerForm({ currentProduct, question }) {
           onChange={(e) => setEmail(e.target.value)}
           defaultValue={email}
           type="text"
+          name="email"
           placeholder="Example: jack@email.com"
           className="answer-form-email"
+          data-testid="email"
           maxLength="60"
         ></input>
         <span className="input-info">For authentication reasons, you will not be emailed</span>
@@ -128,7 +132,9 @@ export default function AnswerForm({ currentProduct, question }) {
         <textarea
           onChange={(e) => setAnswerBody(e.target.value)}
           defaultValue={answerBody}
+          name="answer-body"
           className="answer-form-body"
+          data-testid="answer-body"
           maxLength="1000"
         ></textarea>
       </div>
