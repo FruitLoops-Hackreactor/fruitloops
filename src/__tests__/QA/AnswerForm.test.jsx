@@ -1,12 +1,13 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import product from '../mocks/product'
 import AnswerForm from '@/components/QA/AnswerForm'
+import axios from 'axios'
 
 global.cloudinary = { createUploadWidget: jest.fn(() => null) }
 
 jest.mock('axios', () => ({
-  post: jest.fn(),
+  post: jest.fn(() => Promise.reject(jest.fn())),
 }))
 
 describe('QA - Answer Form', () => {
@@ -20,8 +21,27 @@ describe('QA - Answer Form', () => {
   })
 
   it('should accept current product props', () => {
-    render(<AnswerForm currentProduct={product} />)
-    const text = `${currentProduct.name}: ${question.question_body}`
-    expect(document.querySelector(text)).toBeInTheDocument()
+    const { getByText } = render(<AnswerForm currentProduct={product} question={question} />)
+    const text = `${product.name}: ${question.question_body}`
+    expect(getByText(text)).toBeInTheDocument()
+  })
+
+  it('should trigger submit event handler', () => {
+    const { getByTestId } = render(<AnswerForm currentProduct={product} question={question} />)
+
+    const email = getByTestId('email')
+    const answerBody = getByTestId('answer-body')
+    const username = getByTestId('username')
+    const emailValue = 'jamanning35@gmail.com'
+    const answerBodyValue = 'Lawrence is bullying my code. In a good way ;)'
+    const usernameValue = 'PinTheKnight'
+
+    fireEvent.change(email, { target: { value: emailValue } })
+    fireEvent.change(answerBody, { target: { value: answerBodyValue } })
+    fireEvent.change(username, { target: { value: usernameValue } })
+
+    fireEvent.submit(document.querySelector('form'))
+
+    expect(axios.post).toHaveBeenCalledTimes(1)
   })
 })
