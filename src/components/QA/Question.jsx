@@ -80,15 +80,15 @@ export default function Question({ question, helpfulnessClick }) {
           <span className="question-helpfulness">
             <span>Helpful?</span>
             <span>
-              <a onClick={(e) => helpfulnessClick(e, question_id)} href="">
+              <button className="link" onClick={(e) => helpfulnessClick(e, question_id)} href="">
                 Yes
-              </a>
+              </button>
             </span>
             <span>{`(${question_helpfulness})`}</span>
           </span>
           <span>|</span>
           <span>
-            <a
+            <button
               onClick={(event) => {
                 event.preventDefault()
                 setModalContent(
@@ -99,10 +99,11 @@ export default function Question({ question, helpfulnessClick }) {
                   />
                 )
               }}
+              className="link"
               href=""
             >
               Add Answer
-            </a>
+            </button>
           </span>
         </div>
       </div>

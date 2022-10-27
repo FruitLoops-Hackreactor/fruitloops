@@ -42,21 +42,21 @@ const Answer = ({ answer, helpfulnessClick, reportClick }) => {
         <span>|</span>
         <span className="answer-helpfulness">
           <span>Helpful?</span>
-          <a onClick={(e) => helpfulnessClick(e, answer_id)} href="">
+          <button className="link" onClick={(e) => helpfulnessClick(e, answer_id)} href="">
             Yes
-          </a>
+          </button>
           <span>{`(${answer.helpfulness})`}</span>
         </span>
         <span>|</span>
-        <a
+        <button
           onClick={(e) => {
             clickHandler(e)
           }}
-          className="answer-report"
+          className="link"
           href=""
         >
           {reportText}
-        </a>
+        </button>
       </div>
     </div>
   )

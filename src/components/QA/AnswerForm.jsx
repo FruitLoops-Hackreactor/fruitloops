@@ -86,7 +86,7 @@ export default function AnswerForm({ currentProduct, question, addNewAnswer }) {
     thumbnails = (
       <>
         {photosCopy.map((photo, index) => {
-          return <img src={`${photo}`} key={index} height="160"></img>
+          return <img alt="uploaded by you" src={`${photo}`} key={index} height="160"></img>
         })}
       </>
     )
