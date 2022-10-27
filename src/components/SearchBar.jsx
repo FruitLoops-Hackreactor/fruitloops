@@ -14,7 +14,7 @@ export default function SearchBar() {
       <div className="empty-space"></div>
       <input className="text-box" ref={searchRef} type="text"></input>
       <div className="search-icon">
-        <IconSearch className="icon-search" />
+        <IconSearch />
       </div>
     </nav>
   )

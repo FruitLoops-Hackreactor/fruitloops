@@ -1,8 +1,9 @@
 .product-overview .bubble-container {
-  display: grid;
+  display: flex;
   padding-top: .25rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 360px;
 }
 
 .product-overview .styleSelector-container {
