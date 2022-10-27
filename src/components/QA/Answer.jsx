@@ -32,7 +32,7 @@ const Answer = ({ answer, helpfulnessClick, reportClick }) => {
               src={`${photo}`}
               height="160"
               key={`I-${index}`}
-              alt={`image uploaded by ${answerer_name}`}
+              alt={`uploaded by ${answerer_name}`}
             />
           )
         })}

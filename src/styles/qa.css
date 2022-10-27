@@ -27,6 +27,13 @@ a {
   color: var(--color-secondary)
 }
 
+.link {
+  padding-inline: 1.5rem;
+  border: 1px solid var(--color-secondary);
+  border-radius: 10px;
+  background: transparent;
+}
+
 /* answer styles */
 .answers-container {
   overflow-y: auto;
