@@ -30,7 +30,7 @@ export default function ProductOverview() {
   }
 
   return (
-    <div className="product-overview">
+    <section className="product-overview">
       <h4 className="banner" data-testid="banner-test">
         <span className="banner-sub-1">BEST PRICE GUARANTEE</span>
         <span className="banner-sub-2 banner-padding">
@@ -62,6 +62,6 @@ export default function ProductOverview() {
       {/* <div className="description">
         <Description product={currentProduct} />
       </div> */}
-    </div>
+    </section>
   )
 }
