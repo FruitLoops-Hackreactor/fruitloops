@@ -9,7 +9,9 @@ export default function SearchBar() {
   return (
     <nav className="navbar-container" data-testid="navbar-test-id">
       <div className="insert-logo">
-        <img className="logo-image" src={logo} alt="Logo" />
+        <a href="/">
+          <img className="logo-image" src={logo} alt="Logo" />
+        </a>
       </div>
       <div className="empty-space"></div>
       <input className="text-box" ref={searchRef} type="text"></input>
