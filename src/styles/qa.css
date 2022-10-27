@@ -93,6 +93,12 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
+}
+
+.question-helpfulness {
+  display: flex;
+  flex-direction: row;
   gap: 0.5rem;
 }
 

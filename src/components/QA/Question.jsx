@@ -68,23 +68,36 @@ export default function Question({ question, helpfulnessClick }) {
       .catch((err) => console.log(err))
   }
 
+  const addNewAnswer = (answer) => {
+    setAnswers((answers) => [...answers, answer])
+  }
+
   return (
     <div className="question-container">
       <div className="question-title">
         <span id="question-body">Q: {question_body}</span>
         <div className="question-requests">
-          <span>Helpful?</span>
-          <span>
-            <a onClick={(e) => helpfulnessClick(e, question_id)} href="">
-              Yes
-            </a>
+          <span className="question-helpfulness">
+            <span>Helpful?</span>
+            <span>
+              <a onClick={(e) => helpfulnessClick(e, question_id)} href="">
+                Yes
+              </a>
+            </span>
+            <span>{`(${question_helpfulness})`}</span>
           </span>
-          <span>{`(${question_helpfulness})`}</span>
+          <span>|</span>
           <span>
             <a
               onClick={(event) => {
                 event.preventDefault()
-                setModalContent(<AnswerForm currentProduct={currentProduct} question={question} />)
+                setModalContent(
+                  <AnswerForm
+                    currentProduct={currentProduct}
+                    question={question}
+                    addNewAnswer={addNewAnswer}
+                  />
+                )
               }}
               href=""
             >
