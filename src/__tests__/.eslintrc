@@ -1,6 +1,0 @@
-{
-  "rules": {
-      // Allow anonymous functions for testing
-      "react/display-name": "off"
-  }
-}
