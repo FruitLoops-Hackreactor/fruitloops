@@ -10,6 +10,10 @@ jest.mock('axios', () => ({
   post: jest.fn(() => Promise.reject(jest.fn())),
 }))
 
+jest.mock('@/utils/fastContext', () => ({
+  useStore: jest.fn(() => [jest.fn(), jest.fn()]),
+}))
+
 describe('QA - Answer Form', () => {
   const question = JSON.parse(
     `{"question_id":328983,"question_body":"Est autem aut voluptas amet quibusdam omnis.","question_date":"2021-05-19T00:00:00.000Z","asker_name":"Leopoldo46","question_helpfulness":22,"reported":false,"answers":{"3073651":{"id":3073651,"body":"Aliquam vero quis excepturi.","date":"2021-03-09T00:00:00.000Z","answerer_name":"Alba.Dooley","helpfulness":16,"photos":[]}}}`

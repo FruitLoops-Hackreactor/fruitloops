@@ -1,36 +1,81 @@
 #qa-widget * {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  margin-left: 1rem;
 }
 
-#question-body {
-  font-weight: bold;
-}
-
-#more-questions {
+#more-questions, #add-question {
   margin-top: 1rem;
   padding: 1rem 0.5rem;
 }
 
 #add-question {
-  margin-top: 1rem;
   margin-left: 1rem;
-  padding: 1rem 0.5rem;
+}
+
+a {
+  color: var(--color-secondary)
+}
+
+/* answer styles */
+.answers-container {
+  overflow-y: auto;
+  max-height: 50vh;
+  width: 75%;
+  box-shadow: 1px 23px 37px -40px rgb(0 0 0 / 58%) inset;
+  margin-left: 1rem;
+}
+
+.answer {
+  margin-bottom: 1.5rem;
+}
+
+#answer-tag {
+  font-weight: bold;
+}
+
+.answer-body-text {
+  font-size: 0.9rem;
+}
+
+.answer-body, .answer-thumbnails {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.answer-info, .answer-thumbnails {
+  padding-left: 1rem;
 }
 
 .answer-info {
   font-size: x-small;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
+.answer-helpfulness {
+  display: flex;
+  gap: 0.35rem;
+}
+
+/* question styles */
 .question-title {
   margin-bottom: 1rem;
   padding-right: 0.5rem;
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
+}
+
+.question-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+#question-body {
+  font-weight: bold;
 }
 
 .question-requests {
@@ -40,6 +85,15 @@
   gap: 0.5rem;
 }
 
+/* questions list styles */
+.questions-list{
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* search bar styles */
 .search-bar {
   width: 23rem;
   margin-bottom: 1rem;
@@ -58,7 +112,6 @@ form .question-form-body {
   width: 35rem;
   height: 15rem;
 }
-
 
 /* answer modal form styles */
 form .input-info {
@@ -83,31 +136,4 @@ form .answer-form-add-photo {
 
 form .answer-form-photos {
   margin-bottom: 0.5rem;
-}
-
-.answers-container {
-  overflow-y: auto;
-  max-height: 50vh;
-  width: 75%;
-  box-shadow: 1px 23px 37px -40px rgb(0 0 0 / 58%) inset;
-  margin-left: 1rem;
-}
-
-.answer {
-  margin-bottom: 1.5rem;
-}
-
-.question-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.questions-list{
-  max-height: 100vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
 }

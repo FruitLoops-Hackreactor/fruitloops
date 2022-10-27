@@ -109,8 +109,10 @@ export default function QA() {
   }
 
   return (
-    <section>
-      <h3 className="section-title">QUESTIONS & ANSWERS</h3>
+    <section id="qa-widget">
+      <div className="section-title">
+        <h3>QUESTIONS & ANSWERS</h3>
+      </div>
       <SearchQuestions changeHandler={searchQuestionsChangeHandler} />
       <QuestionsList questions={questions} helpfulnessClick={helpfulnessClickHandler} />
       <span>
