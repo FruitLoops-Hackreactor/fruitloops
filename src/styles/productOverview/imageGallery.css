@@ -85,7 +85,7 @@
 .product-overview .square {
   width: 3.5vw;
   height: 3.5vw;
-  border: 1px solid #808080;
+  border: none;
   margin: 18px 0px 0px 15px;
   z-index: 12;
   cursor: pointer;
@@ -93,7 +93,7 @@
 }
 
 .product-overview .square.active {
-  border: 1px solid var(--color-secondary);
+  border: 1px solid orange;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
