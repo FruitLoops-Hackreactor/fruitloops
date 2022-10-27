@@ -3,7 +3,7 @@
 }
 
 nav {
-  background-color: #ccc;
+  background-color: var(--color-secondary);
 }
 
 .product-overview .image-gallery h4, .product-info h4, .style-selector h4, .add-to-cart h4, .description h4 {
