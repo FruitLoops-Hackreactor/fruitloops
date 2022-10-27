@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import Description from '@/components/ProductOverview/PO-Components/Description'
+import Description from '@/components/ProductOverview/Description'
 
 describe('description', () => {
   it('should pass when passed in a valid product with valid properties', () => {
