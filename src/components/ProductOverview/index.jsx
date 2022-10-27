@@ -8,6 +8,7 @@ export default function ProductOverview() {
   const [currentProduct] = useStore('currentProduct')
   const [photos, setPhotos] = useState([])
   const [expand, setExpand] = useState(false)
+  const [slideIdx, setSlideIdx] = useState(0)
 
   // get the currentProduct
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function ProductOverview() {
   const changePhotos = (styleObj) => {
     // const newProd = product.find((prod) => prod.id === id)
     setPhotos(styleObj.photos)
+    setSlideIdx(0)
   }
 
   return (
@@ -41,7 +43,13 @@ export default function ProductOverview() {
       </h4>
       <div className="main-container">
         <div className="image-gallery">
-          <ImageGallery photos={photos} expand={expand} setExpand={setExpand} />
+          <ImageGallery
+            photos={photos}
+            expand={expand}
+            setExpand={setExpand}
+            slideIdx={slideIdx}
+            setSlideIdx={setSlideIdx}
+          />
         </div>
         <div className="product-info">
           <ProductInformation

@@ -5,9 +5,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   padding-inline: 14rem;
+}
+
+.logo-image {
+  height: 4rem;
+  width: 9rem;
 }
 
 .empty-space {
@@ -26,7 +31,7 @@
 .text-box {
   background: transparent;
   border: 0;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #fff;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   padding: 10px;
@@ -50,4 +55,8 @@
   padding-left: 1rem;
   display: flex;
   align-items: center;
+}
+
+.icon-search {
+  color: #fff;
 }

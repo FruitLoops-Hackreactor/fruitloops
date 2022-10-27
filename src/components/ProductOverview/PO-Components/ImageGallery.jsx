@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   // IconChevronLeft,
   // IconChevronRight,
@@ -9,10 +8,8 @@ import {
 import '/src/styles/productOverview/imageGallery.css'
 import PrismaZoom from 'react-prismazoom'
 
-export default function ImageGallery({ photos, expand, setExpand }) {
-  const [slideIdx, setSlideIdx] = useState(0)
+export default function ImageGallery({ photos, expand, setExpand, slideIdx, setSlideIdx }) {
   const length = photos.length
-  // const [zoom, setZoom] = useState(1)
 
   // given the current index, if the index reaches the max, reset the index back to 0, otherwise increment upwards
   const nextSlide = () => {

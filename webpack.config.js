@@ -51,6 +51,14 @@ export default {
         test: /\.(woff|woff2)$/,
         type: 'asset/resource',
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [

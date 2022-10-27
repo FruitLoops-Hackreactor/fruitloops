@@ -1,8 +1,10 @@
 /* IMAGE GALLERY COMPONENT */
 .product-overview .carousel {
-  background-color: #ccc;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   position: relative;
-  height: 42vw;
+  height: 40vw;
   width: 48vw;
   display: flex;
   justify-content: center;
@@ -18,9 +20,11 @@
 }
 
 .product-overview .carousel-expanded {
-  background-color: #ccc;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   position: relative;
-  height: 42vw;
+  height: 40vw;
   width: 75vw;
   display: flex;
   justify-content: center;
@@ -39,7 +43,7 @@
   object-fit: cover;
   width: auto;
   max-width: 28vw;
-  height: 33vw;
+  height: 40vw;
   border-radius: 10px;
   transition-property: width, height;
   transition-duration: 500ms;
@@ -50,7 +54,7 @@
   object-fit: cover;
   width: auto;
   max-width: 32vw;
-  height: 38.5vw;
+  height: 40vw;
   border-radius: 10px;
   transition-property: width, height;
   transition-duration: 500ms;
@@ -89,7 +93,7 @@
 }
 
 .product-overview .square.active {
-  border: 1px solid #e77600;
+  border: 1px solid var(--color-secondary);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
