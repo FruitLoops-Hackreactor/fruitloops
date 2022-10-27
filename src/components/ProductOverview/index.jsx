@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '@/utils/fastContext'
-import ImageGallery from './PO-Components/ImageGallery'
-import ProductInformation from './PO-Components/ProductInformation'
+import ImageGallery from './ImageGallery'
+import ProductInformation from './ProductInformation'
 import '@/styles/productOverview/main.css'
 
 export default function ProductOverview() {

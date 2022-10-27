@@ -14,12 +14,14 @@ export default function ProductCard({ product, onProductClick, action, actionHan
   }
 
   return (
-    <button
+    <div
+      role="link"
       ref={cardRef}
       key={product.id}
       className="product-card"
       onClick={handleCardClick}
       onKeyDown={handleCardClick}
+      tabIndex={0}
     >
       <div className="img">
         <img src={product.styles[0].photos[0].thumbnail_url} alt={product.name} />
@@ -78,6 +80,6 @@ export default function ProductCard({ product, onProductClick, action, actionHan
           )}
         </div>
       </div>
-    </button>
+    </div>
   )
 }

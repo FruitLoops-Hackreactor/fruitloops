@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import ImageGallery from '@/components/ProductOverview/PO-Components/ImageGallery'
+import ImageGallery from '@/components/ProductOverview/ImageGallery'
 
 describe('image gallery', () => {
   it('should display conditional render message when there are no photos', () => {
