@@ -3,6 +3,7 @@
   padding-top: .25rem;
   gap: 1rem;
   flex-wrap: wrap;
+  max-width: 360px;
 }
 
 .product-overview .styleSelector-container {
