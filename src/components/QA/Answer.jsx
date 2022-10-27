@@ -27,7 +27,14 @@ const Answer = ({ answer, helpfulnessClick, reportClick }) => {
       </div>
       <div className="answer-thumbnails">
         {answer.photos.map((photo, index) => {
-          return <img src={`${photo}`} height="160" key={`I-${index}`} />
+          return (
+            <img
+              src={`${photo}`}
+              height="160"
+              key={`I-${index}`}
+              alt={`image uploaded by ${answerer_name}`}
+            />
+          )
         })}
       </div>
       <div className="answer-info">
