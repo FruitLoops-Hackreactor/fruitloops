@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import ProductInformation from '@/components/ProductOverview/PO-Components/ProductInformation'
+import ProductInformation from '@/components/ProductOverview/ProductInformation'
 
 jest.mock('axios', () => ({
   get: jest.fn(() => Promise.resolve({ data: [] })),

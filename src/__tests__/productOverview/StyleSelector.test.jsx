@@ -1,5 +1,5 @@
 import { fireEvent, render, act } from '@testing-library/react'
-import StyleSelector from '@/components/ProductOverview/PO-Components/StyleSelector'
+import StyleSelector from '@/components/ProductOverview/StyleSelector'
 import productMock from '../mocks/product'
 
 jest.mock('axios', () => ({

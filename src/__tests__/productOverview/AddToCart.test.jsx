@@ -1,5 +1,5 @@
 import { screen, render, fireEvent } from '@testing-library/react'
-import AddToCart from '@/components/ProductOverview/PO-Components/AddToCart'
+import AddToCart from '@/components/ProductOverview/AddToCart'
 
 describe('add to cart', () => {
   it('should render when passed in an sku', () => {

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { IconExclamationMark, IconX, IconCheck } from '@tabler/icons'
 import '@/styles/productOverview/addToCart.css'
 
 export default function AddToCart({ skus }) {
@@ -63,11 +62,44 @@ export default function AddToCart({ skus }) {
       <div className="conditional-error-msg">
         {errorMsg && (
           <div className="notification-error-container">
-            <IconExclamationMark className="exclamation-mark" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-exclamation-mark"
+              className="exclamation-mark"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 19v.01" />
+              <path d="M12 15v-10" />
+            </svg>
+
             <div className="notification-body-error">Please select a size and quantity.</div>
             <div className="error-space"></div>
             <button className="close-notification" onClick={() => setErrorMsg(false)}>
-              <IconX className="x-symbol" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-x"
+                className="x-symbol"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
             </button>
           </div>
         )}
@@ -112,11 +144,42 @@ export default function AddToCart({ skus }) {
         <div className="conditional-success-msg">
           {successMsg && (
             <div className="notification-success">
-              <IconCheck className="check-mark" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-check"
+                className="check-mark"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 12l5 5l10 -10"></path>
+              </svg>
               <div className="notification-body-success">Successfully added to cart</div>
               <div className="error-space"></div>
               <button className="close-notification" onClick={() => setSuccessMsg(false)}>
-                <IconX className="x-symbol" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-x"
+                  className="x-symbol"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
               </button>
             </div>
           )}
