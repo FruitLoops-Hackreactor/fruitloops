@@ -39,8 +39,6 @@
   color: #333;
   max-width: 21rem;
   margin-bottom:0;
-  display: grid;
-  grid-template-columns: .1fr 1fr;
 }
 
 ul {
@@ -62,4 +60,14 @@ li {
   height: 1rem;
   padding-right: .5rem;
   grid-column: 1/2;
+}
+
+.li-container {
+  display: grid;
+  grid-template-columns: .1fr 1fr;
+}
+
+.li-container2 {
+  display: grid;
+  grid-template-columns: .1fr 1fr;
 }

@@ -103,7 +103,7 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
             return (
               <div className="app-image" key={index}>
                 <PrismaZoom maxZoom={3} scrollVelocity={0.2}>
-                  <div className={index === slideIdx ? 'slide active' : 'slide'} key={index}>
+                  <div className={index === slideIdx ? 'slide active' : 'slide'}>
                     {index === slideIdx && (
                       <img
                         src={photo.thumbnail_url}
