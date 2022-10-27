@@ -17,7 +17,7 @@ axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'
 axios.defaults.headers.common['Authorization'] = process.env.GITHUB_TOKEN
 
 // The number of products to request
-const PROD_COUNT = 10
+const PROD_COUNT = 1
 
 export default function App() {
   const setLoading = useStore('loading')[1]

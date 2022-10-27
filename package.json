@@ -7,6 +7,7 @@
     "start": "node ./server.js",
     "build": "cross-env NODE_ENV=production npx webpack build -c ./webpack.config.js",
     "dev": "npx webpack-dev-server --hot --port=3000 --history-api-fallback -c ./webpack.config.js",
+    "lint": "npx eslint -c ./.eslintrc src/**/*",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
@@ -26,7 +27,9 @@
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
@@ -44,8 +47,9 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@tabler/icons": "^1.104.0",
+    "@tabler/icons": "^1.108.0",
     "axios": "^1.1.2",
+    "compression": "^1.7.4",
     "dotenv-webpack": "^8.0.1",
     "express": "^4.18.2",
     "react": "^18.2.0",
