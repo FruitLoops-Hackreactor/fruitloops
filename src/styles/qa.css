@@ -1,15 +1,26 @@
 #qa-widget * {
   font-family: 'Inter', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 #more-questions, #add-question {
   margin-top: 1rem;
-  padding: 1rem 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-inline: 1.5rem;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--color-secondary);
+  border: 1px, solid, var(--color-secondary);
 }
 
 #add-question {
   margin-left: 1rem;
+  padding-inline: 1.5rem;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--color-secondary);
+  border: 1px, solid, var(--color-secondary);
 }
 
 a {
@@ -22,7 +33,7 @@ a {
   max-height: 50vh;
   width: 75%;
   box-shadow: 1px 23px 37px -40px rgb(0 0 0 / 58%) inset;
-  margin-left: 1rem;
+  padding: 1rem;
 }
 
 .answer {
@@ -97,6 +108,8 @@ a {
 .search-bar {
   width: 23rem;
   margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1.15rem;
 }
 
 /* question modal form styles */

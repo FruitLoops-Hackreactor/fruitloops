@@ -10,7 +10,7 @@ export default function AddQuestion() {
       onClick={() => setModalContent(<QuestionForm currentProduct={currentProduct} />)}
       id="add-question"
     >
-      ADD A QUESTION +
+      ADD A QUESTION
     </button>
   )
 }
