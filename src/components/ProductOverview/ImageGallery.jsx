@@ -31,8 +31,7 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
           {slideIdx !== 0 ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-chevron-up"
-              className="up-arrow"
+              className="icon icon-tabler icon-tabler-chevron-up up-arrow"
               onClick={prevSlide}
               width="24"
               height="24"
@@ -57,6 +56,9 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
                 className={index === slideIdx ? 'square active' : 'square'}
                 onClick={() => moveDot(index)}
                 key={index}
+                role="button"
+                tabIndex={0}
+                onKeyDown={() => moveDot(index)}
               >
                 <img src={photo.thumbnail_url} alt={photo.name} className="snippit" />
                 {index === slideIdx && <div className="highlight"></div>}
@@ -68,8 +70,7 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
           {length && slideIdx !== length - 1 ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-chevron-down"
-              className="down-arrow"
+              className="icon icon-tabler icon-tabler-chevron-down down-arrow"
               onClick={nextSlide}
               data-testid="toggle-vertical-carousel"
               width="24"
@@ -124,8 +125,7 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
         ) : null} */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-maximize"
-          className="expand-button"
+          className="icon icon-tabler icon-tabler-maximize expand-button"
           onClick={() => setExpand(!expand)}
           width="24"
           height="24"

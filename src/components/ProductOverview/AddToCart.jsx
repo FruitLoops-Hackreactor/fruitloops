@@ -64,8 +64,7 @@ export default function AddToCart({ skus }) {
           <div className="notification-error-container">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-exclamation-mark"
-              className="exclamation-mark"
+              className="icon icon-tabler icon-tabler-exclamation-mark exclamation-mark"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -85,8 +84,7 @@ export default function AddToCart({ skus }) {
             <button className="close-notification" onClick={() => setErrorMsg(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-x"
-                className="x-symbol"
+                className="icon icon-tabler icon-tabler-x x-symbol"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -146,8 +144,7 @@ export default function AddToCart({ skus }) {
             <div className="notification-success">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-check"
-                className="check-mark"
+                className="icon icon-tabler icon-tabler-check check-mark"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -165,8 +162,7 @@ export default function AddToCart({ skus }) {
               <button className="close-notification" onClick={() => setSuccessMsg(false)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-x"
-                  className="x-symbol"
+                  className="icon icon-tabler icon-tabler-x x-symbol"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
