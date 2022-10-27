@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useStore } from '@/utils/fastContext'
 import { useState } from 'react'
 
 export default function AnswerForm({ currentProduct, question }) {
@@ -7,6 +8,7 @@ export default function AnswerForm({ currentProduct, question }) {
   const [answerBody, setAnswerBody] = useState('')
   const [photos, setPhotos] = useState([])
   const [morePhotos, setMorePhotos] = useState(true)
+  const setModalContent = useStore('modalContent')[1]
   const uploadWidget = cloudinary.createUploadWidget(
     { cloudName: process.env.CLOUD_NAME, uploadPreset: 'fec-upload' },
     (err, res) => {
@@ -56,7 +58,10 @@ export default function AnswerForm({ currentProduct, question }) {
     }
     axios
       .post(`/qa/questions/${question_id}/answers`, answer)
-      .then((res) => console.log('new answer post response', res))
+      .then((res) => {
+        setModalContent(null)
+        console.log('new answer post response', res)
+      })
       .catch((err) => console.log(err))
   }
 

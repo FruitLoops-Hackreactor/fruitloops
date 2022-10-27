@@ -58,6 +58,16 @@ export default function Question({ question, helpfulnessClick }) {
       })
   }
 
+  const reportAnswerClickHandler = (event, answerId) => {
+    event.preventDefault()
+    axios
+      .put(`qa/answers/${answerId}/report`)
+      .then((res) => {
+        console.log('res', res)
+      })
+      .catch((err) => console.log(err))
+  }
+
   return (
     <div className="question-container">
       <div className="question-title">
@@ -88,6 +98,7 @@ export default function Question({ question, helpfulnessClick }) {
           return (
             <Answer
               helpfulnessClick={answerHelpfulnessClickHandler}
+              reportClick={reportAnswerClickHandler}
               answer={answer}
               key={`A-${answer.id}`}
             />
