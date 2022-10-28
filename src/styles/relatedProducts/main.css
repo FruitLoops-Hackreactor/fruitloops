@@ -95,13 +95,13 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background: #ccc;
+  overflow: hidden;
 }
 
 .related-products-comparison .product-card .img img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-  overflow: hidden;
   transition: transform 0.2s ease;
 }
 
