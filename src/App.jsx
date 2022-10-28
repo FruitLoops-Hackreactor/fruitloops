@@ -17,7 +17,7 @@ axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'
 axios.defaults.headers.common['Authorization'] = process.env.GITHUB_TOKEN
 
 // The default product id to load
-const MAIN_PROD_ID = 40344
+const DEFAULT_PROD_ID = 40344
 
 export default function App() {
   const setLoading = useStore('loading')[1]
@@ -27,7 +27,7 @@ export default function App() {
   useEffect(() => {
     const id = window.location.pathname.split('/')[1]
 
-    getProduct(id || MAIN_PROD_ID).then((product) => {
+    getProduct(id || DEFAULT_PROD_ID).then((product) => {
       setLoading(false)
       setCurrentProduct(product)
     })

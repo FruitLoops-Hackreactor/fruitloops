@@ -3,7 +3,7 @@ import Carousel from './Carousel'
 import ProductCard from './ProductCard'
 import SkeletonCard from '../SkeletonCard'
 
-export default function OutfitList({ max, loading, currentProduct }) {
+export default function OutfitList({ max, loading, currentProduct, handleProductClick }) {
   max-- // Need to decrement to account for the add to outfit card
   const [outfit, setOutfit] = useState([])
   const addItem = () => {
@@ -84,6 +84,7 @@ export default function OutfitList({ max, loading, currentProduct }) {
                       product={product}
                       action="remove"
                       actionHandler={removeItem}
+                      onProductClick={handleProductClick(product.id)}
                     />
                   ))}
             </Carousel>
