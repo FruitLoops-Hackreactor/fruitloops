@@ -22,6 +22,7 @@ export default function QA() {
       .get('/qa/questions', {
         params: {
           product_id: currentProduct.id,
+          count: 50,
         },
       })
       .then((res) => {

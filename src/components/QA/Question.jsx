@@ -10,9 +10,20 @@ export default function Question({ question, helpfulnessClick }) {
   const [currentProduct] = useStore('currentProduct')
   const [answers, setAnswers] = useState([])
   const [moreAnswers, setMoreAnswers] = useState(true)
+  const [reported, setReported] = useState(false)
   const [additionalAnswers, setAdditionalAnswers] = useState(0)
   let { question_body, question_helpfulness, question_id } = question
-  let allAnswers = Object.values(question.answers)
+
+  // create array of all answers sorted by answer helpfulness
+  let allAnswers = Object.values(question.answers).sort((ans1, ans2) => {
+    if (ans1.helpfulness < ans2.helpfulness) {
+      return 1
+    } else if (ans1.helpfulness > ans2.helpfulness) {
+      return -1
+    } else if (ans1.helpfulness === ans2.helpfuless) {
+      return 0
+    }
+  })
 
   useEffect(() => {
     setAnswers(allAnswers.slice(0, 2 + additionalAnswers))
@@ -58,19 +69,21 @@ export default function Question({ question, helpfulnessClick }) {
       })
   }
 
-  const reportAnswerClickHandler = (event, answerId) => {
-    event.preventDefault()
+  const addNewAnswer = (answer) => {
+    setAnswers((answers) => [...answers, answer])
+  }
+
+  const reportQuestionClickHandler = (questionId) => {
     axios
-      .put(`qa/answers/${answerId}/report`)
+      .put(`/qa/questions/${questionId}/report`)
       .then((res) => {
-        console.log('res', res)
+        console.log(res)
+        setReported(true)
       })
       .catch((err) => console.log(err))
   }
 
-  const addNewAnswer = (answer) => {
-    setAnswers((answers) => [...answers, answer])
-  }
+  let reportText = reported ? 'Reported' : 'Report'
 
   return (
     <div className="question-container">
@@ -105,6 +118,18 @@ export default function Question({ question, helpfulnessClick }) {
               Add Answer
             </button>
           </span>
+          <span>|</span>
+          <span>
+            <button
+              onClick={() => {
+                reportQuestionClickHandler(question_id)
+              }}
+              className="link"
+              href=""
+            >
+              {reportText}
+            </button>
+          </span>
         </div>
       </div>
       <div className="answers-container" data-testid="answers-container">
@@ -112,7 +137,6 @@ export default function Question({ question, helpfulnessClick }) {
           return (
             <Answer
               helpfulnessClick={answerHelpfulnessClickHandler}
-              reportClick={reportAnswerClickHandler}
               answer={answer}
               key={`A-${answer.id}`}
             />

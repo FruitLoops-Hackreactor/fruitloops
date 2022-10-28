@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import axios from 'axios'
 
-const Answer = ({ answer, helpfulnessClick, reportClick }) => {
+const Answer = ({ answer, helpfulnessClick }) => {
   let { answerer_name, body, id: answer_id } = answer
   const [reported, setReported] = useState(false)
 
@@ -13,8 +14,17 @@ const Answer = ({ answer, helpfulnessClick, reportClick }) => {
 
   const clickHandler = (event) => {
     event.preventDefault()
-    reportClick(event, answer_id)
+    reportAnswerClickHandler(answer_id)
     setReported(true)
+  }
+
+  const reportAnswerClickHandler = (answerId) => {
+    axios
+      .put(`qa/answers/${answerId}/report`)
+      .then((res) => {
+        console.log('res', res)
+      })
+      .catch((err) => console.log(err))
   }
 
   let reportText = reported ? 'Reported' : 'Report'
