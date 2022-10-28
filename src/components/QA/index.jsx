@@ -5,7 +5,7 @@ import SearchQuestions from './SearchQuestions'
 import QuestionsList from './QuestionsList'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
 import AddQuestion from './AddQuestion'
-import '@/styles/qa.css'
+import '@/styles/qa/index.css'
 
 export default function QA() {
   const [currentProduct] = useStore('currentProduct')
