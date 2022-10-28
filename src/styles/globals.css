@@ -58,6 +58,50 @@ section {
   .container {
     padding-inline: 1rem;
   }
+  /*Q adds for prod overview*/
+  .product-overview .main-container {
+    flex-wrap: wrap;
+  }
+  .navbar-container {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    padding-inline: 12vw;
+  }
+  .banner {
+    font-size: 12px;
+  }
+  .banner-sub-2 {
+    font-size: 9px;
+  }
+  .product-overview .carousel {
+    min-width: 22rem;
+    min-height: 22rem;
+  }
+  .product-overview .image {
+    min-width: 14rem;
+    min-height: 22rem;
+  }
+  .product-overview .expand-button {
+    visibility: hidden;
+  }
+  .product-overview .container-squares {
+    gap: .5rem;
+  }
+  .product-overview .square {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .product-overview .snippit {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .product-overview .up, .product-overview .down{
+    width: 15px;
+    height: 15px;
+  }
+  input.search-bar {
+    width: 20rem;
+  }
 }
 
 .input-group {
