@@ -30,15 +30,3 @@ export const getProduct = async (id) =>
     // Product styles
     styles: await axios.get(`/products/${id}/styles`).then((res) => res.data.results),
   })
-
-export const getProducts = async (count) => {
-  try {
-    // Get the products from the API
-    const products = await axios.get(`/products?count=${count}`).then((res) => res.data)
-    // Map each product with the details and styles
-    return await Promise.all(products.map(({ id }) => getProduct(id)))
-  } catch (err) {
-    console.error(err)
-    return []
-  }
-}
