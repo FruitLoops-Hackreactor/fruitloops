@@ -13,6 +13,7 @@ export default function RelatedProducts() {
   const relProdEl = document.querySelector('.related-products')
   // The max number of cards to display at a time
   const NUM_CARDS = relProdEl?.clientWidth < 1024 ? 2 : relProdEl?.clientWidth < 1280 ? 3 : 4
+  const handleProductClick = (id) => () => (window.location.href = `/${id}`)
 
   useEffect(() => {
     if (!currentProduct) return
@@ -45,6 +46,7 @@ export default function RelatedProducts() {
         loading={loading}
         currentProduct={currentProduct}
         relatedProducts={relatedProducts}
+        handleProductClick={handleProductClick}
       />
 
       <OutfitList
@@ -52,6 +54,7 @@ export default function RelatedProducts() {
         max={NUM_CARDS}
         loading={loading}
         currentProduct={currentProduct}
+        handleProductClick={handleProductClick}
       />
     </section>
   )

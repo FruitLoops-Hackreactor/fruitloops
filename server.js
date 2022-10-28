@@ -8,8 +8,15 @@ app.use(commpression())
 
 app.use(
   express.static(path.join(process.cwd(), 'dist'), {
-    // Cache assets for 7 days
-    maxAge: 7 * 24 * 60 * 60 * 1000,
+    // Cache assets for 365 days
+    maxAge: 31536000,
+  })
+)
+
+app.use(
+  express.static(path.join(process.cwd(), 'public'), {
+    // Cache assets for 365 days
+    maxAge: 31536000,
   })
 )
 

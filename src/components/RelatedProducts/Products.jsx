@@ -21,13 +21,17 @@ const Check = () => (
   </svg>
 )
 
-export default function Products({ max, loading, currentProduct, relatedProducts }) {
+export default function Products({
+  max,
+  loading,
+  currentProduct,
+  relatedProducts,
+  handleProductClick,
+}) {
   const setModalContent = useStore('modalContent')[1]
   const currFeatures = !currentProduct
     ? []
     : currentProduct.features.sort((a, b) => a.feature.localeCompare(b.feature))
-
-  const handleProductClick = (id) => () => (window.location.href = `/${id}`)
 
   /**
    * Get the features of both the current product and the selected product to compare
