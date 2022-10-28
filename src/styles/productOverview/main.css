@@ -24,6 +24,7 @@ nav {
   font-weight: 400;
   color: #333;
   padding: 1rem 0rem;
+  font-size: 15px;
 }
 
 .banner-padding {
@@ -35,5 +36,5 @@ nav {
 }
 
 .banner-sub-2 {
-  font-size: .75rem;
+  font-size: 12px;
 }
