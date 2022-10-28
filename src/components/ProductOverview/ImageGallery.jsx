@@ -27,26 +27,41 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
   return (
     <div className="image-gallery-container">
       <div className="container-squares">
-        <div className="up">
-          {slideIdx !== 0 ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-chevron-up up-arrow"
-              onClick={prevSlide}
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <polyline points="6 15 12 9 18 15"></polyline>
-            </svg>
-          ) : null}
-        </div>
+        {slideIdx !== 0 ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-chevron-up up-arrow up"
+            onClick={prevSlide}
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <polyline points="6 15 12 9 18 15"></polyline>
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="invisible-up-arrow"
+            onClick={prevSlide}
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <polyline points="6 15 12 9 18 15"></polyline>
+          </svg>
+        )}
         {photos?.map((photo, index) => {
           if (!photo.thumbnail_url) {
             ;<div className="square" onMouseEnter={() => moveDot(index)} key={index}></div>
@@ -66,27 +81,27 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
             )
           }
         })}
-        <div className="down">
-          {length && slideIdx !== length - 1 ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-chevron-down down-arrow"
-              onClick={nextSlide}
-              data-testid="toggle-vertical-carousel"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          ) : null}
-        </div>
+        {length && slideIdx !== length - 1 ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-chevron-down down-arrow down"
+            onClick={nextSlide}
+            data-testid="toggle-vertical-carousel"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        ) : (
+          <div></div>
+        )}
       </div>
 
       <div className={expand === false ? 'carousel' : 'carousel-expanded'}>

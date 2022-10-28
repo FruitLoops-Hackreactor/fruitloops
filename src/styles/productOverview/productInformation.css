@@ -1,6 +1,7 @@
 /* PRODUCT INFORMATION MAIN */
 .product-overview .prodInfo-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   visibility: visible;
   transition-property: visibility;

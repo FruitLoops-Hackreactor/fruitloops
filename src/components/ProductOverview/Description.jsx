@@ -27,7 +27,7 @@ export default function Description({ product }) {
       <div className="li-container" key={index}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-check"
+          className="icon icon-tabler icon-tabler-check li-check"
           width="24"
           height="24"
           viewBox="0 0 24 24"
