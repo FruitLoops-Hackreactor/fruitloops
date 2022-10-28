@@ -7,7 +7,6 @@ import './styles/globals.css'
 
 const { StoreProvider } = createFastContext({
   currentProduct: null,
-  products: [],
   loading: true,
   modalContent: null,
 })
