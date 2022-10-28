@@ -24,7 +24,7 @@ export default function Description({ product }) {
         <li>{`${feature.feature}: ${feature.value}`}</li>
       </div>
     ) : (
-      <div key={index}>
+      <div className="li-container" key={index}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-check"
