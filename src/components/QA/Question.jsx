@@ -13,7 +13,17 @@ export default function Question({ question, helpfulnessClick }) {
   const [reported, setReported] = useState(false)
   const [additionalAnswers, setAdditionalAnswers] = useState(0)
   let { question_body, question_helpfulness, question_id } = question
-  let allAnswers = Object.values(question.answers)
+
+  // create array of all answers sorted by answer helpfulness
+  let allAnswers = Object.values(question.answers).sort((ans1, ans2) => {
+    if (ans1.helpfulness < ans2.helpfulness) {
+      return 1
+    } else if (ans1.helpfulness > ans2.helpfulness) {
+      return -1
+    } else if (ans1.helpfulness === ans2.helpfuless) {
+      return 0
+    }
+  })
 
   useEffect(() => {
     setAnswers(allAnswers.slice(0, 2 + additionalAnswers))
