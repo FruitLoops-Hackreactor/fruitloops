@@ -41,7 +41,7 @@
 
 .product-overview .image {
   object-fit: cover;
-  width: auto;
+  width: 28vw;
   max-width: 28vw;
   height: 40vw;
   border-radius: 10px;
@@ -52,7 +52,7 @@
 
 .product-overview .expanded-image {
   object-fit: cover;
-  width: auto;
+  width: 28vw;
   max-width: 32vw;
   height: 40vw;
   border-radius: 10px;
