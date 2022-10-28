@@ -25,7 +25,7 @@
   border-radius: 10px;
   position: relative;
   height: 40vw;
-  width: 75vw;
+  width: 74.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,18 +75,19 @@
 }
 
 .product-overview .container-squares {
-  top: 7%;
+  top: 1%;
+  margin-left: 1vw;
   position: absolute;
   display: flex;
+  gap: .75vw;
   flex-direction: column;
   align-items: center;
 }
 
 .product-overview .square {
-  width: 3.5vw;
-  height: 3.5vw;
+  width: 4vw;
+  height: 4vw;
   border: none;
-  margin: 18px 0px 0px 15px;
   z-index: 12;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -98,8 +99,8 @@
 }
 
 .product-overview .snippit {
-  width: 3.5vw;
-  height: 3.5vw;
+  width: 4vw;
+  height: 4vw;
   justify-content: center;
   align-items: center;
   z-index: 12;
@@ -132,20 +133,18 @@
 }
 
 .product-overview .up {
-  position: absolute;
-  bottom: 96%;
-  left: 2.4rem;
-  font-size: 3rem;
+  display: flex;
+  width: 1.5vw;
+  height: 1.5vw;
   z-index: 13;
   cursor: pointer;
   user-select: none;
 }
 
 .product-overview .down {
-  position: absolute;
-  top: 98%;
-  right: 1.4rem;
-  font-size: 3rem;
+  display: flex;
+  width: 1.5vw;
+  height: 1.5vw;
   z-index: 13;
   cursor: pointer;
   user-select: none;
@@ -162,6 +161,10 @@
 
 .photo-null {
   z-index: 15;
+}
+
+.product-overview .invisible-up-arrow {
+  visibility:hidden;
 }
 
 /* .product-overview .highlight {

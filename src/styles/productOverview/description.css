@@ -54,7 +54,7 @@ li {
   grid-column: 2/3;
 }
 
-.icon-tabler-check {
+.li-check {
   justify-self: end;
   width: 1rem;
   height: 1rem;
