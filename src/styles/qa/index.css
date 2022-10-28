@@ -107,6 +107,7 @@ a {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+  font-size: 0.9rem;
 }
 
 .question-helpfulness {
