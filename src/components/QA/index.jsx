@@ -5,7 +5,7 @@ import SearchQuestions from './SearchQuestions'
 import QuestionsList from './QuestionsList'
 import MoreQuestionsBtn from './MoreQuestionsBtn'
 import AddQuestion from './AddQuestion'
-import '@/styles/qa.css'
+import '@/styles/qa/index.css'
 
 export default function QA() {
   const [currentProduct] = useStore('currentProduct')
@@ -21,7 +21,6 @@ export default function QA() {
     axios
       .get('/qa/questions', {
         params: {
-          // TEMP: hardcoded to id with good example data for testing
           product_id: currentProduct.id,
         },
       })
@@ -29,10 +28,7 @@ export default function QA() {
         setAllQuestions(res.data.results)
         setSearchedQuestions(res.data.results)
         setAdditionalQuestions(0)
-        return res.data.results
-      })
-      .then((res) => {
-        if (res.length <= 4) {
+        if (res.data.results.length <= 4) {
           setMoreQuestions(false)
         } else {
           setMoreQuestions(true)

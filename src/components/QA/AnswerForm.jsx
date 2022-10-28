@@ -2,13 +2,14 @@ import axios from 'axios'
 import { useStore } from '@/utils/fastContext'
 import { useState } from 'react'
 
-export default function AnswerForm({ currentProduct, question }) {
+export default function AnswerForm({ currentProduct, question, addNewAnswer }) {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [answerBody, setAnswerBody] = useState('')
   const [photos, setPhotos] = useState([])
   const [morePhotos, setMorePhotos] = useState(true)
   const setModalContent = useStore('modalContent')[1]
+  const [newAnswerId, setNewAnswerId] = useState(0)
   const uploadWidget = cloudinary.createUploadWidget(
     { cloudName: process.env.CLOUD_NAME, uploadPreset: 'fec-upload' },
     (err, res) => {
@@ -60,6 +61,15 @@ export default function AnswerForm({ currentProduct, question }) {
       .post(`/qa/questions/${question_id}/answers`, answer)
       .then((res) => {
         setModalContent(null)
+        addNewAnswer({
+          id: newAnswerId,
+          body: answerBody,
+          date: new Date(),
+          answerer_name: username,
+          helpfulness: 0,
+          photos: photos,
+        })
+        setNewAnswerId((prev) => prev++)
         console.log('new answer post response', res)
       })
       .catch((err) => console.log(err))
@@ -76,7 +86,7 @@ export default function AnswerForm({ currentProduct, question }) {
     thumbnails = (
       <>
         {photosCopy.map((photo, index) => {
-          return <img src={`${photo}`} key={index} height="160"></img>
+          return <img alt="uploaded by you" src={`${photo}`} key={index} height="160"></img>
         })}
       </>
     )
