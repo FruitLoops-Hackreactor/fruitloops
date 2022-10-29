@@ -1,8 +1,11 @@
 import '@/styles/productOverview/description.css'
 
 export default function Description({ product }) {
+  // if there is no product prop, do nothing
   if (!product) return
 
+  // helper function to map over the bullet points in the description
+  // if feature.value is null, render only the feature, otherwise render both feature and the value properties
   const listItems = product?.features?.map((feature, index) =>
     feature.value ? (
       <div className="li-container" key={index}>

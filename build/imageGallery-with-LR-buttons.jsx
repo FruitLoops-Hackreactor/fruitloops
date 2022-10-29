@@ -2,7 +2,6 @@ import '/src/styles/productOverview/imageGallery.css'
 import PrismaZoom from 'react-prismazoom'
 
 export default function ImageGallery({ photos, expand, setExpand, slideIdx, setSlideIdx }) {
-  // alias for amount of photos
   const length = photos.length
 
   // given the current index, if the index reaches the max, reset the index back to 0, otherwise increment upwards
@@ -15,7 +14,6 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
     setSlideIdx((idx) => (idx === 0 ? length - 1 : idx - 1))
   }
 
-  // when user clicks a photo, set index to the photo index clicked
   const moveDot = (idx) => {
     setSlideIdx(idx)
   }
@@ -60,7 +58,7 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
         )}
         {photos?.map((photo, index) => {
           if (!photo.thumbnail_url) {
-            return <div className="square" onMouseEnter={() => moveDot(index)} key={index}></div>
+            ;<div className="square" onMouseEnter={() => moveDot(index)} key={index}></div>
           } else {
             return (
               <div
@@ -101,6 +99,9 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
       </div>
 
       <div className={expand === false ? 'carousel' : 'carousel-expanded'}>
+        {/* left arrow clickHandler */}
+        {/* {slideIdx !== 0 ? <IconChevronLeft className="left-arrow" onClick={prevSlide} /> : null} */}
+        {/*  */}
         {photos?.map((photo, index) => {
           if (!photo.thumbnail_url) {
             return (
@@ -127,6 +128,10 @@ export default function ImageGallery({ photos, expand, setExpand, slideIdx, setS
             )
           }
         })}
+        {/* right arrow clickHandler */}
+        {/* {slideIdx !== length - 1 ? (
+          <IconChevronRight className="right-arrow" onClick={nextSlide} />
+        ) : null} */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-maximize expand-button"
