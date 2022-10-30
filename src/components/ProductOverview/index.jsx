@@ -10,22 +10,21 @@ export default function ProductOverview() {
   const [expand, setExpand] = useState(false)
   const [slideIdx, setSlideIdx] = useState(0)
 
-  // get the currentProduct
   useEffect(() => {
+    // if there is no current product, do nothing
     if (!currentProduct) return
-    // console.log('this is the currentProduct', currentProduct)
 
-    // console.log('this is the currentProduct from store', currentProduct)
+    // otherwise, retrieve the default style filtering by the default property, default to the first style if it does not exist
     const defaultStyle =
       currentProduct.styles.find((style) => style.default) || currentProduct.styles[0]
-    // console.log('this is the photos from store', defaultStyle)
+    // set the photos for the default style in display, to be changed later
     setPhotos(defaultStyle.photos)
   }, [currentProduct])
 
-  // when user clicks new style, we want image gallery to update
+  // when user clicks new style, update imageGallery component
   const changePhotos = (styleObj) => {
-    // const newProd = product.find((prod) => prod.id === id)
     setPhotos(styleObj.photos)
+    // edge case - if user was on photo #4 when viewing style N, reset them back to the first photo
     setSlideIdx(0)
   }
 
@@ -34,7 +33,7 @@ export default function ProductOverview() {
       <h4 className="banner" data-testid="banner-test">
         <span className="banner-sub-1">BEST PRICE GUARANTEE</span>
         <span className="banner-sub-2 banner-padding">
-          If you find a lower price, we'll match it.
+          If you find a lower price, we&apos;ll match it.
         </span>
         <span className="banner-sub-3 banner-padding">
           <b>FREE</b> shipping on all orders over $100
@@ -59,9 +58,6 @@ export default function ProductOverview() {
           />
         </div>
       </div>
-      {/* <div className="description">
-        <Description product={currentProduct} />
-      </div> */}
     </section>
   )
 }

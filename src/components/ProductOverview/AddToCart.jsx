@@ -8,19 +8,23 @@ export default function AddToCart({ skus }) {
   const [successMsg, setSuccessMsg] = useState(false)
 
   const getSizeAndQuantity = () => {
+    // if there are no skus, do nothing
     if (skus.length === 0) return
+    // map over the sku objects, and return the size and quantity properties
     const sizeAndQuantity = Object.keys(skus).map((sku) => {
       return skus[sku]
     })
-    // console.log('this is sizeAndQuantity', sizeAndQuantity)
+    // returns an array of objs
     return sizeAndQuantity
   }
 
   const getQuantity = (sizeStr) => {
     if (sizeStr) {
+      // get sizeAndQuantity via helper function, returns an array
       const sqArray = getSizeAndQuantity()
+      // for a certain sku, retrieve the quantity for the user selected size
       const quantityPerSize = sqArray.filter((sqObj) => sqObj.size === sizeStr)
-      // console.log(quantityPerSize[0].quantity)
+      // return the relevant quantity for the sku selected
       return quantityPerSize[0].quantity
     }
     return
@@ -31,10 +35,8 @@ export default function AddToCart({ skus }) {
     const totalQuantity = getQuantity(selectedSize)
     // create an array from 1 to N [1, 2, 3, ...N]
     const stock = Array.from({ length: totalQuantity }, (v, i) => i + 1)
-    // console.log('this is stock', stock)
     // map over the stock array
     return stock?.map((num, index) => {
-      // console.log('this is num', num)
       return (
         <option className="qty-options" value={num} key={index}>
           {num}
@@ -44,14 +46,22 @@ export default function AddToCart({ skus }) {
   }
 
   const checkout = () => {
+    // if user hasn't selected a size or quantity
     if (!selectedSize || !quantity) {
+      // conditional render an error msg
       setErrorMsg(true)
+      // remove the success msg on the page if it exists
       setSuccessMsg(false)
+      // reset dropdown menu
       setSelectedSize('')
       setQuantity(0)
+      // if user has selected a valid cart
     } else if (selectedSize && quantity) {
+      // remove the error msg on the page if it exists
       setErrorMsg(false)
+      // conditional render a success msg
       setSuccessMsg(true)
+      // reset dropdown menu
       setSelectedSize('')
       setQuantity(0)
     }
@@ -136,7 +146,6 @@ export default function AddToCart({ skus }) {
           <button className="add-to-bag" aria-label="cart" onClick={() => checkout()}>
             ADD TO BAG
           </button>
-          {/* <IconStar className="icon-star" /> */}
         </div>
 
         <div className="conditional-success-msg">
