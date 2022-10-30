@@ -1,4 +1,5 @@
 # Front End Capstone Project
+## About
 This project comprises of a complete redesign of our client's eCommerce retail web-portal to help sales and conversion numbers.
 
 This project was built with:
@@ -12,37 +13,41 @@ This project was built with:
 
 ## Table of Contents
 - [Front End Capstone Project](#front-end-capstone-project)
+  - [About](#about)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
     - [Product Overview](#product-overview)
-    - [Features](#features-1)
     - [Related Products](#related-products)
-    - [Features](#features-2)
     - [Questions & Answers](#questions--answers)
-    - [Getting Started](#getting-started)
-      - [Environment Variables](#environment-variables)
+  - [Getting Started](#getting-started)
   - [Contributors](#contributors)
 
 ## Features
 
 ### Product Overview
+| Image Gallery & Style Selector
+:-:
+<img src="https://user-images.githubusercontent.com/104607182/198860061-c1e5c1b4-bf6c-4679-965d-7ada004ee1ed.gif" width="400"> |
 
-### Features
+<b>Features</b>
 - Product overview renders general product information such as category, title, and price
 - Image gallery carousel with the ability to browse between, zoom and expand photos
 - Style selector dynamically lists out styles based on the current product
-- Add to cart feature that allows users to select a size and quantity and checkout the items
+- Add to cart feature that allows users to select a size & quantity and checkout
 - Responsive to different browser sizes and mobile friendly
 
 Built by <a href="https://github.com/quyencodes">Quyen Hoang</a>
 ### Related Products
-enter gif here
-### Features
-- Related products card
-- Modal comparison info
-- List behavior
-- Related products list
-- Outfit list
+| Related Products & Outfit List
+:-:
+<img src="https://user-images.githubusercontent.com/104607182/198860662-9e38dbf9-ba7e-448d-a0d4-9a84aa6a4cd6.gif" width="400">
+
+<b>Features</b>
+- Dynamically generates related items based on the current product in display
+- Product cards that contain related product information and will reroute user when clicked
+- When the star icon is clicked, a modal will appear that displays comparison information
+- Interactive carousel that displays 4 product cards at a time
+- Outfit list that allows users to keep track of their desired item(s), the list persists between user sessions
 
 Built by <a href="https://github.com/lgoodcode">Lawrence Good</a>
 
@@ -60,7 +65,7 @@ Add an Answer Modal|Navigating the Q&A List
 Built by <a href=https://github.com/jake-manning>Jake Manning</a>
 
 
-### Getting Started
+## Getting Started
 1. Clone the repo
    ```bash
    $ git clone https://github.com/FruitLoops-Hackreactor/fruitloops.git
@@ -71,37 +76,39 @@ Built by <a href=https://github.com/jake-manning>Jake Manning</a>
    ```
 3. Create your .env file (make a copy from example.env)
    ```bash
-   GITHUB_TOKEN='YOUR GITHUB TOKEN HERE'
-   CLOUD_NAME='YOUR CLOUDINARY TOKEN HERE'
+   GITHUB_TOKEN='GITHUB TOKEN HERE'
+   CLOUD_NAME='CLOUD NAME HERE'
    ```
 4. Follow the instructions in [this tutorial](https://cloudinary.com/documentation/upload_widget_tutorial) to get a Cloudinary ID and configure the upload preset
 5. Run locally in development mode
    ```bash
    npm run dev
    ```
-6. Project will be deployed on a localhost server
+6. Project will be deployed on a localhost server, navigate to your browser and enter in the url
    ```bash
    http://localhost:3000
    ```
 
-#### Environment Variables
+<b>Environment Variables</b>
 
 `GITHUB_TOKEN` - The token used to authenticate with API\
 `CLOUD_NAME` - The cloud name used to upload media to cloudinary
 
 ## Contributors
-**Quyen Hoang (Product Overview)**
-
+**Quyen Hoang (Product Overview)**\
+<img src="@/../src/assets/contributors/round-q2.png" alt="Quyen Hoang" width="68">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/quyenduhoang/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/quyencodes/)
 
-**Lawrence Good (Related Products)**
-
+**Lawrence Good (Related Products)**\
+<img src="@/../src/assets/contributors/round-law.png" alt="Lawrence Good" width="68">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/lawrence-good-dev/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/lgoodcode)
 
-**Jake Manning (Questions & Answers)**
-
+**Jake Manning (Questions & Answers)**\
+<img src="@/../src/assets/contributors/round-jake.png"
+alt="Jake Manning"
+width="68">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/jacob-manning92/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/jake-manning)
 
