@@ -96,19 +96,18 @@ Built by <a href=https://github.com/jake-manning>Jake Manning</a>
 
 ## Contributors
 **Quyen Hoang (Product Overview)**\
-<img src="@/../src/assets/contributors/round-q2.png" alt="Quyen Hoang" width="68">\
+<img src="https://user-images.githubusercontent.com/104607182/198861294-a3c1a341-0f11-4cdd-bba1-c4a254c40fc6.png" alt="Quyen Hoang" width="72">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/quyenduhoang/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/quyencodes/)
 
 **Lawrence Good (Related Products)**\
-<img src="@/../src/assets/contributors/round-law.png" alt="Lawrence Good" width="68">\
+<img src="https://user-images.githubusercontent.com/104607182/198861316-814b2047-aaf7-42a0-85cd-85624638813f.png" alt="Lawrence Good" width="72">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/lawrence-good-dev/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/lgoodcode)
 
 **Jake Manning (Questions & Answers)**\
-<img src="@/../src/assets/contributors/round-jake.png"
-alt="Jake Manning"
-width="68">\
+<img src="https://user-images.githubusercontent.com/104607182/198861326-8adeb93e-d4cb-4a39-b17e-3cb05b427170.png"
+width="72">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/jacob-manning92/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/jake-manning)
 
