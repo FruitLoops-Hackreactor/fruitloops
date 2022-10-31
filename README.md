@@ -40,7 +40,7 @@ Built by <a href="https://github.com/quyencodes">Quyen Hoang</a>
 ### Related Products
 | Related Products & Outfit List
 :-:
-<img src="https://user-images.githubusercontent.com/104607182/198860662-9e38dbf9-ba7e-448d-a0d4-9a84aa6a4cd6.gif" width="400">
+<img src="https://user-images.githubusercontent.com/104607182/198860662-9e38dbf9-ba7e-448d-a0d4-9a84aa6a4cd6.gif" width="400">|
 
 <b>Features</b>
 - Dynamically generates related items based on the current product in display
